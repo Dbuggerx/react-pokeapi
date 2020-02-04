@@ -12,7 +12,7 @@ export default createSlice({
   reducers: {
     fetchPage: (
       state,
-      action: PayloadAction<{ size: number; offset: number }>
+      action: PayloadAction<{ size: number; offset: number } | { url: string }>
     ) => {
       state.loading = true;
     },
