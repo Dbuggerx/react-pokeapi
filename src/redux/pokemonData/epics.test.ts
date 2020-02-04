@@ -69,7 +69,7 @@ describe("pokemonData epics", () => {
         testScheduler.run(({ hot, cold, expectObservable }) => {
           const action$ = new ActionsObservable(
             hot(marbles.inputAction, {
-              a: actions.fetchData({ name: "test" })
+              a: actions.fetchData({ name: "Test" })
             })
           );
 
@@ -101,7 +101,7 @@ describe("pokemonData epics", () => {
 
         const action$ = new ActionsObservable(
           hot(marbles.inputAction, {
-            a: actions.fetchData({ id: 123 })
+            a: actions.fetchData({ name: "test" })
           })
         );
 

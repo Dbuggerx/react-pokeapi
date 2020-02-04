@@ -8,6 +8,7 @@
     "@reduxjs/toolkit": "1.2.3",
     "@types/react-redux": "7.1.7",
     "pokeapi-typescript": "2.0.1",
+    "pokemon": "2.0.2",
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "react-redux": "7.1.3",

@@ -16,7 +16,7 @@ const fetchPokemonEpic: TypedEpic<
       const url =
         "url" in action.payload
           ? action.payload.url
-          : `https://pokeapi.co/api/v2/pokemon/${action.payload.name}/`;
+          : `https://pokeapi.co/api/v2/pokemon/${action.payload.name.toLowerCase()}/`;
 
       return observableFetch(url).pipe(
         map(jsonResult => {
