@@ -17,6 +17,10 @@ export type EpicDependencies<T = unknown> = {
   ) => Observable<T | Error>;
 };
 
+/**
+ * @typeparam A - The Action type
+ * @typeparam R - The API result type
+ */
 export type TypedEpic<A extends Action, R> = Epic<
   A,
   A,

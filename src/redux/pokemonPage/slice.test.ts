@@ -1,7 +1,7 @@
 import reducer, { actions } from "./index";
 import { INamedApiResourceList, IPokemon } from "pokeapi-typescript";
 
-describe("pokemon-page slice", () => {
+describe("pokemonPage slice", () => {
   it('updates state for "fetchPage" action', () => {
     const resultingState = reducer(undefined, actions.fetchPage());
 
@@ -42,6 +42,20 @@ describe("pokemon-page slice", () => {
       loading: false,
       pageNumber: 3,
       page: apiResult
+    });
+  });
+
+  it('updates state for "setError" action', () => {
+    const resultingState = reducer(
+      undefined,
+      actions.setError("testing error")
+    );
+
+    expect(resultingState).toEqual({
+      page: undefined,
+      pageNumber: 0,
+      loading: false,
+      error: "testing error"
     });
   });
 });
