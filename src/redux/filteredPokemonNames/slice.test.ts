@@ -1,21 +1,26 @@
 import reducer, { actions } from "./index";
-import { IPokemon } from "pokeapi-typescript";
 
 describe("filteredPokemonNames slice", () => {
-  it('updates state for "search" action', () => {
-    expect(reducer(undefined, actions.search("char"))).toEqual([
-      "Charmander",
-      "Charmeleon",
-      "Charizard",
-      "Charjabug"
-    ]);
+  describe('updates state for "search" action', () => {
+    test("for provided parameter", () => {
+      expect(reducer(undefined, actions.search("char"))).toEqual([
+        "Charizard",
+        "Charjabug",
+        "Charmander",
+        "Charmeleon"
+      ]);
 
-    expect(reducer(undefined, actions.search("Bl"))).toEqual([
-      "Blastoise",
-      "Blissey",
-      "Blaziken",
-      "Blitzle",
-      "Blacephalon"
-    ]);
+      expect(reducer(undefined, actions.search("Bl"))).toEqual([
+        "Blacephalon",
+        "Blastoise",
+        "Blaziken",
+        "Blissey",
+        "Blitzle"
+      ]);
+    });
+
+    test("without any parameter", () => {
+      expect(reducer(undefined, actions.search()).length).toBe(809);
+    });
   });
 });

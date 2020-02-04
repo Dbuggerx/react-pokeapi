@@ -5,12 +5,19 @@ export default createSlice({
   name: "filteredPokemonNames",
   initialState: [] as string[],
   reducers: {
-    search: (_, action: PayloadAction<string>) => {
-      return pokemon
-        .all()
-        .filter(p =>
-          p.toLocaleLowerCase().startsWith(action.payload.toLowerCase())
-        );
+    search: (_, action: PayloadAction<string | undefined>) => {
+      return action.payload
+        ? pokemon
+            .all()
+            .concat()
+            .sort()
+            .filter(p =>
+              p.toLocaleLowerCase().startsWith(action.payload!.toLowerCase())
+            )
+        : pokemon
+            .all()
+            .concat()
+            .sort();
     }
   }
 });
