@@ -1,10 +1,10 @@
 import React from "react";
 import PokemonNameSearch from "../../components/pokemonNameSearch";
 import { useDispatch } from "react-redux";
-import { useFilteredPokemonNamesEffect } from "../../hooks/filteredPokemonNames";
 import { useTypedSelector } from "../../redux/types";
+import { useFilteredPokemonNamesEffect } from "../../hooks/filteredPokemonNames";
 import { actions as filterNamesActions } from "../../redux/filteredPokemonNames";
-import { actions as pokemonActions } from "../../redux/pokemonData";
+import { actions as pokemonDataActions } from "../../redux/pokemonData";
 
 const Search: React.FC = () => {
   useFilteredPokemonNamesEffect();
@@ -22,7 +22,7 @@ const Search: React.FC = () => {
         }}
         onChoose={() => {
           dispatch(
-            pokemonActions.fetchData({
+            pokemonDataActions.fetchData({
               name: filterState.name
             })
           );
