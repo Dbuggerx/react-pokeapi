@@ -6,7 +6,8 @@ export default createSlice({
   initialState: {
     loading: false,
     error: undefined as string | undefined,
-    pageNumber: 0,
+    pageCount: 0,
+    currentPage: 0,
     page: undefined as INamedApiResourceList<IPokemon> | undefined
   },
   reducers: {
@@ -26,9 +27,13 @@ export default createSlice({
     ) => {
       state.loading = false;
       state.page = action.payload.page;
-      state.pageNumber = Math.ceil(
+      state.pageCount = Math.ceil(
         action.payload.page.count / action.payload.size
       );
+      state.currentPage =
+        state.pageCount -
+        (action.payload.page.count - action.payload.offset) /
+          action.payload.size;
     },
     setError: (state, action: PayloadAction<string>) => {
       state.error = action.payload;

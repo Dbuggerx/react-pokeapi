@@ -8,13 +8,15 @@ describe("pokemonPage slice", () => {
     expect(resultingState).toEqual({
       loading: true,
       page: undefined,
-      pageNumber: 0
+      error: undefined,
+      pageCount: 0,
+      currentPage: 0
     });
   });
 
   it('updates state for "pageFetched" action', () => {
     const apiResult: INamedApiResourceList<IPokemon> = {
-      count: 6,
+      count: 100,
       next: "next-url",
       previous: "prev-url",
       results: [
@@ -29,18 +31,20 @@ describe("pokemonPage slice", () => {
       ]
     };
 
-    const resultingState = reducer(
-      undefined,
-      actions.pageFetched({
-        page: apiResult,
-        size: 2,
-        offset: 4
-      })
-    );
-
-    expect(resultingState).toEqual({
+    expect(
+      reducer(
+        undefined,
+        actions.pageFetched({
+          page: apiResult,
+          size: 10,
+          offset: 30
+        })
+      )
+    ).toEqual({
+      error: undefined,
       loading: false,
-      pageNumber: 3,
+      pageCount: 10,
+      currentPage: 3,
       page: apiResult
     });
   });
@@ -53,7 +57,8 @@ describe("pokemonPage slice", () => {
 
     expect(resultingState).toEqual({
       page: undefined,
-      pageNumber: 0,
+      pageCount: 0,
+      currentPage: 0,
       loading: false,
       error: "testing error"
     });

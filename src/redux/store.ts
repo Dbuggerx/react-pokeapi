@@ -14,7 +14,6 @@ const store = configureStore({
   reducer: rootReducer,
   middleware: [epicMiddleware]
 });
-export type AppDispatch = typeof store.dispatch;
 export default store;
 
 epicMiddleware.run(rootEpic);

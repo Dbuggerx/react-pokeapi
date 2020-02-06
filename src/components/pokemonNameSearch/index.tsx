@@ -1,26 +1,36 @@
 import React from "react";
 
 type Props = {
-  onSearch: (param: string) => void;
-  results: string[];
+  selectedName: string;
+  suggestions: string[];
+  onType: (param: string) => void;
+  onChoose: () => void;
 };
 
-const PokemonNameSearch: React.FC<Props> = ({ onSearch, results }) => {
+//Array.from(document.querySelectorAll('option')).map(o => o.value)
+
+const PokemonNameSearch: React.FC<Props> = props => {
   return (
-    <div>
+    <form
+      onSubmit={evt => {
+        props.onChoose();
+        evt.preventDefault();
+      }}
+    >
       <input
-        type="text"
+        type="search"
         list="pokemonNames"
         onChange={evt => {
-          onSearch(evt.target.value);
+          props.onType(evt.target.value);
         }}
       />
       <datalist id="pokemonNames">
-        {results.map(r => (
+        {props.suggestions.map(r => (
           <option key={r} value={r} />
         ))}
       </datalist>
-    </div>
+      <button type="submit">Go</button>
+    </form>
   );
 };
 
