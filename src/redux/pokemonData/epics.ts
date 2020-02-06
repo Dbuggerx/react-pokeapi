@@ -1,14 +1,14 @@
 import { filter, map, mergeMap, catchError } from "rxjs/operators";
 import { IPokemon } from "pokeapi-typescript";
+import { of } from "rxjs";
 import { Actions, actions } from "./index";
 import { TypedEpic } from "../types";
-import { of } from "rxjs";
+import { ApiError } from "../errors";
 
 const fetchPokemonEpic: TypedEpic<
   | ReturnType<Actions["fetchData"]>
   | ReturnType<Actions["dataFetched"]>
-  | ReturnType<Actions["setError"]>,
-  IPokemon
+  | ReturnType<Actions["setError"]>
 > = (action$, state$, { observableFetch }) => {
   return action$.pipe(
     filter(actions.fetchData.match),
@@ -18,13 +18,11 @@ const fetchPokemonEpic: TypedEpic<
           ? action.payload.url
           : `https://pokeapi.co/api/v2/pokemon/${action.payload.name.toLowerCase()}/`;
 
-      return observableFetch(url).pipe(
-        map(jsonResult => {
-          return jsonResult instanceof Error
-            ? actions.setError(jsonResult.message)
-            : actions.dataFetched(jsonResult);
-        }),
+      return observableFetch<IPokemon>(url).pipe(
+        map(jsonResult => actions.dataFetched(jsonResult)),
         catchError(error => {
+          if (error instanceof ApiError && error.message === "404")
+            return of(actions.setError("Nothing found"));
           return of(actions.setError(error.message || error));
         })
       );

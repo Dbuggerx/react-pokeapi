@@ -1,9 +1,9 @@
 import { Action } from "redux";
 import { Epic } from "redux-observable";
 import { Observable } from "rxjs";
-import { fromFetch } from "rxjs/fetch";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 import rootReducer from "./rootReducer";
+import observableFetch from "./observableFetch";
 
 export type ObservableFetch<T> = (
   ...args: Parameters<typeof fetch>
@@ -11,21 +11,18 @@ export type ObservableFetch<T> = (
 
 export type AppState = ReturnType<typeof rootReducer>;
 
-export type EpicDependencies<T = unknown> = {
-  observableFetch: (
-    ...args: Parameters<typeof fromFetch>
-  ) => Observable<T | Error>;
+export type EpicDependencies = {
+  observableFetch: typeof observableFetch;
 };
 
 /**
  * @typeparam A - The Action type
- * @typeparam R - The API result type
  */
-export type TypedEpic<A extends Action, R> = Epic<
+export type TypedEpic<A extends Action> = Epic<
   A,
   A,
   AppState,
-  EpicDependencies<R>
+  EpicDependencies
 >;
 
 export const useTypedSelector: TypedUseSelectorHook<AppState> = useSelector;

@@ -1,16 +1,20 @@
 import { fromFetch } from "rxjs/fetch";
 import { switchMap } from "rxjs/operators";
-import { of } from "rxjs";
-import { EpicDependencies } from "./types";
+import { throwError } from "rxjs";
+import { ApiError } from "./errors";
 
-const observableFetch: EpicDependencies["observableFetch"] = (...args) =>
+/**
+ * @typeparam T - The result type
+ * @throws ApiError
+ */
+const observableFetch = <T>(...args: Parameters<typeof fromFetch>) =>
   fromFetch
     .apply(undefined, args)
     .pipe(
       switchMap(response =>
         !response.ok
-          ? of(new Error(`Error: ${response.statusText}`))
-          : response.json()
+          ? throwError(new ApiError(response))
+          : (response.json() as Promise<T>)
       )
     );
 

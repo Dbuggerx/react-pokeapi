@@ -7,7 +7,7 @@ describe("pokemonPage slice", () => {
 
     expect(resultingState).toEqual({
       loading: true,
-      page: undefined,
+      data: undefined,
       error: undefined,
       pageCount: 0,
       currentPage: 0
@@ -45,7 +45,7 @@ describe("pokemonPage slice", () => {
       loading: false,
       pageCount: 10,
       currentPage: 3,
-      page: apiResult
+      data: apiResult
     });
   });
 
@@ -56,7 +56,7 @@ describe("pokemonPage slice", () => {
     );
 
     expect(resultingState).toEqual({
-      page: undefined,
+      data: undefined,
       pageCount: 0,
       currentPage: 0,
       loading: false,

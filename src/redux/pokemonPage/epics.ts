@@ -3,6 +3,7 @@ import { INamedApiResourceList, IPokemon } from "pokeapi-typescript";
 import { Actions, actions } from "./index";
 import { TypedEpic } from "../types";
 import { of } from "rxjs";
+import { ApiError } from "../errors";
 
 const getUrlDataByAddress = (url: string) => {
   const urlObj = new URL(url);
@@ -22,8 +23,7 @@ const getDefaultUrlData = (offset: number, size: number) => ({
 const fetchPageEpic: TypedEpic<
   | ReturnType<Actions["fetchPage"]>
   | ReturnType<Actions["pageFetched"]>
-  | ReturnType<Actions["setError"]>,
-  INamedApiResourceList<IPokemon>
+  | ReturnType<Actions["setError"]>
 > = (action$, state$, { observableFetch }) => {
   return action$.pipe(
     filter(actions.fetchPage.match),
@@ -33,17 +33,17 @@ const fetchPageEpic: TypedEpic<
           ? getUrlDataByAddress(action.payload.url)
           : getDefaultUrlData(action.payload.offset, action.payload.size);
 
-      return observableFetch(urlData.url).pipe(
-        map(jsonResult => {
-          return jsonResult instanceof Error
-            ? actions.setError(jsonResult.message)
-            : actions.pageFetched({
-                page: jsonResult,
-                size: urlData.size,
-                offset: urlData.offset
-              });
-        }),
+      return observableFetch<INamedApiResourceList<IPokemon>>(urlData.url).pipe(
+        map(response =>
+          actions.pageFetched({
+            page: response,
+            size: urlData.size,
+            offset: urlData.offset
+          })
+        ),
         catchError(error => {
+          if (error instanceof ApiError && error.message === "404")
+            return of(actions.setError("Nothing found"));
           return of(actions.setError(error.message || error));
         })
       );
