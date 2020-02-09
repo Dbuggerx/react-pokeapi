@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 import rootReducer from "./rootReducer";
 import observableFetch from "./observableFetch";
+import { AnyAction } from '@reduxjs/toolkit';
 
 export type ObservableFetch<T> = (
   ...args: Parameters<typeof fetch>
@@ -18,7 +19,7 @@ export type EpicDependencies = {
 /**
  * @typeparam A - The Action type
  */
-export type TypedEpic<A extends Action> = Epic<
+export type TypedEpic<A extends Action = AnyAction> = Epic<
   A,
   A,
   AppState,

@@ -20,6 +20,7 @@ const PokemonNameSearch: React.FC<Props> = props => {
       <input
         type="search"
         list="pokemonNames"
+        value={props.selectedName}
         onChange={evt => {
           props.onType(evt.target.value);
         }}

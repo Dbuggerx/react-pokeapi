@@ -1,5 +1,6 @@
-import React from "react";
-import * as hooks from "../../hooks/pokemonPage";
+import React from 'react';
+import * as hooks from '../../hooks/pokemonPage';
+import PokemonListItem from '../../components/pokemonListItem';
 
 const PokemonList: React.FC = () => {
   hooks.usePokemonPageEffects();
@@ -14,7 +15,9 @@ const PokemonList: React.FC = () => {
       <h2>Pokemon list</h2>
       <ul>
         {state.data.results.map(r => (
-          <li key={r.name}>{r.name}</li>
+          <li key={r.name}>
+            <PokemonListItem pokemonName={r.name} details={state.details.get(r.name)} />
+          </li>
         ))}
       </ul>
     </div>

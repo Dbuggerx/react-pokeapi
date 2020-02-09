@@ -1,15 +1,30 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { INamedApiResourceList, IPokemon } from "pokeapi-typescript";
 
+export type LoadableResource<T> = {
+  loading: boolean;
+  error: string | undefined;
+  data: T | undefined;
+};
+
+export type InitialState = LoadableResource<INamedApiResourceList<IPokemon>> & {
+  pageCount: number;
+  currentPage: number;
+  details: Map<string, LoadableResource<IPokemon>>;
+};
+
+const initialState: InitialState = {
+  loading: false,
+  error: undefined as string | undefined,
+  pageCount: 0,
+  currentPage: 0,
+  data: undefined,
+  details: new Map<string, LoadableResource<IPokemon>>()
+};
+
 export default createSlice({
   name: "pokemonPage",
-  initialState: {
-    loading: false,
-    error: undefined as string | undefined,
-    pageCount: 0,
-    currentPage: 0,
-    data: undefined as INamedApiResourceList<IPokemon> | undefined
-  },
+  initialState,
   reducers: {
     fetchPage: (
       state,
@@ -27,16 +42,52 @@ export default createSlice({
     ) => {
       state.loading = false;
       state.data = action.payload.page;
-      state.pageCount = Math.ceil(
-        action.payload.page.count / action.payload.size
-      );
+      state.pageCount = Math.ceil(action.payload.page.count / action.payload.size);
       state.currentPage =
         state.pageCount -
-        (action.payload.page.count - action.payload.offset) /
-          action.payload.size;
+        (action.payload.page.count - action.payload.offset) / action.payload.size;
     },
     setError: (state, action: PayloadAction<string>) => {
       state.error = action.payload;
+    },
+    fetchDetails: (state, action: PayloadAction<string>) => {
+      const newDetails = new Map(state.details);
+
+      newDetails.set(action.payload, {
+        loading: true,
+        error: undefined,
+        data: undefined
+      });
+
+      state.details = newDetails;
+    },
+    setDetailsError: (
+      state,
+      action: PayloadAction<{ pokemonName: string; error: string }>
+    ) => {
+      const newDetails = new Map(state.details);
+
+      newDetails.set(action.payload.pokemonName, {
+        loading: false,
+        error: action.payload.error,
+        data: undefined
+      });
+
+      state.details = newDetails;
+    },
+    detailsFetched: (
+      state,
+      action: PayloadAction<{ pokemonName: string; data: IPokemon }>
+    ) => {
+      const newDetails = new Map(state.details);
+
+      newDetails.set(action.payload.pokemonName, {
+        loading: false,
+        error: undefined,
+        data: action.payload.data
+      });
+
+      state.details = newDetails;
     }
   }
 });
