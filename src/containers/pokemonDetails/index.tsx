@@ -1,12 +1,14 @@
 import React from "react";
-import { usePokemonData } from "../../hooks/pokemonData";
+import * as hooks from "../../hooks/pokemonData";
 
 const PokemonDetails: React.FC = () => {
-  const pokemonData = usePokemonData();
+  hooks.usePokemonDataEffect();
+
+  const pokemonData = hooks.usePokemonDataState();
   if (!pokemonData) return <div>No data</div>;
   if (pokemonData.error) return <div>{pokemonData.error}</div>;
   if (pokemonData.loading) return <div>Loading...</div>;
-  if (!pokemonData.data) return <></>;
+  if (!pokemonData.data) return <div>No data</div>;
 
   return (
     <div>

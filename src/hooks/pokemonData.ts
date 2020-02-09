@@ -1,28 +1,23 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useTypedSelector } from "../redux/types";
-import { actions as filteredPokemonNamesAction } from "../redux/filteredPokemonNames";
+import { actions } from "../redux/pokemonData";
+import { PokemonRouteParams } from "../routeManager";
 
-export function usePokemonDataEffects() {
+export function usePokemonDataEffect() {
   const dispatch = useDispatch();
-  const history = useHistory();
-  const pokemonData = useTypedSelector(state => state.pokemonData);
+  const { pokemonName } = useParams<PokemonRouteParams>();
 
   React.useEffect(() => {
-    dispatch(filteredPokemonNamesAction.search());
-  }, [dispatch]);
-
-  React.useEffect(() => {
-    if (pokemonData.data || pokemonData.error || pokemonData.loading)
-      history.push("/pokemon");
-  }, [history, pokemonData]);
+    dispatch(
+      actions.fetchData({
+        name: pokemonName.toLowerCase()
+      })
+    );
+  }, [dispatch, pokemonName]);
 }
 
-export function usePokemonData() {
-  const history = useHistory();
-  const pokemonData = useTypedSelector(state => state.pokemonData);
-  if (!pokemonData.loading && !pokemonData.data && !pokemonData.error)
-    history.push("/list");
-  else return pokemonData;
+export function usePokemonDataState() {
+  return useTypedSelector(state => state.pokemonData);
 }

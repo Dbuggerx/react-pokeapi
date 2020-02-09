@@ -8,7 +8,7 @@ export default createSlice({
     suggestions: [] as string[]
   },
   reducers: {
-    search: (state, action: PayloadAction<string | undefined>) => {
+    updateSuggestions: (state, action: PayloadAction<string | undefined>) => {
       if (action.payload) {
         state.name = action.payload;
         state.suggestions = pokemon

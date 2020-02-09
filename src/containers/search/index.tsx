@@ -1,32 +1,20 @@
 import React from "react";
 import PokemonNameSearch from "../../components/pokemonNameSearch";
-import { useDispatch } from "react-redux";
-import { useTypedSelector } from "../../redux/types";
-import { useFilteredPokemonNamesEffect } from "../../hooks/filteredPokemonNames";
-import { actions as filterNamesActions } from "../../redux/filteredPokemonNames";
-import { actions as pokemonDataActions } from "../../redux/pokemonData";
+import * as hooks from "../../hooks/filteredPokemonNames";
 
 const Search: React.FC = () => {
-  useFilteredPokemonNamesEffect();
-
-  const dispatch = useDispatch();
-  const filterState = useTypedSelector(state => state.filteredPokemonNames);
+  hooks.useInitialFilterSuggestionsEffect();
+  const updateSuggestions = hooks.useUpdateSuggestionsCallback();
+  const changeRoute = hooks.useChangeRouteCallback();
+  const filterState = hooks.useFilterState();
 
   return (
     <div>
       <PokemonNameSearch
         selectedName={filterState.name}
         suggestions={filterState.suggestions}
-        onType={filterParam => {
-          dispatch(filterNamesActions.search(filterParam));
-        }}
-        onChoose={() => {
-          dispatch(
-            pokemonDataActions.fetchData({
-              name: filterState.name
-            })
-          );
-        }}
+        onType={updateSuggestions}
+        onChoose={changeRoute}
       />
     </div>
   );

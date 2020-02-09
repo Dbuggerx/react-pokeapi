@@ -26,7 +26,7 @@ export default createSlice({
       error: action.payload
     }),
     clearData: state => ({
-      loading: undefined,
+      loading: false,
       data: undefined,
       error: undefined
     })

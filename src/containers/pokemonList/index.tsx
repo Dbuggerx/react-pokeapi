@@ -1,15 +1,24 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { actions as pokemonDataActions } from "../../redux/pokemonData";
+import * as hooks from "../../hooks/pokemonPage";
 
 const PokemonList: React.FC = () => {
-  const dispatch = useDispatch();
+  hooks.usePokemonPageEffects();
+  const state = hooks.usePokemonPageState();
+  if (!state) return <div>No data</div>;
+  if (state.error) return <div>{state.error}</div>;
+  if (state.loading) return <div>Loading...</div>;
+  if (!state.data) return <div>No data</div>;
 
-  React.useEffect(() => {
-    dispatch(pokemonDataActions.clearData());
-  }, [dispatch]);
-
-  return <div>Pokemon list</div>;
+  return (
+    <div>
+      <h2>Pokemon list</h2>
+      <ul>
+        {state.data.results.map(r => (
+          <li key={r.name}>{r.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default PokemonList;

@@ -1,14 +1,14 @@
 import reducer, { actions } from "./index";
 
 describe("filteredPokemonNames slice", () => {
-  describe('updates state for "search" action', () => {
+  describe('updates state for "updateSuggestions" action', () => {
     test("for provided parameter", () => {
-      expect(reducer(undefined, actions.search("char"))).toEqual({
+      expect(reducer(undefined, actions.updateSuggestions("char"))).toEqual({
         name: "char",
         suggestions: ["Charizard", "Charjabug", "Charmander", "Charmeleon"]
       });
 
-      expect(reducer(undefined, actions.search("Bl"))).toEqual({
+      expect(reducer(undefined, actions.updateSuggestions("Bl"))).toEqual({
         name: "Bl",
         suggestions: [
           "Blacephalon",
@@ -21,7 +21,7 @@ describe("filteredPokemonNames slice", () => {
     });
 
     test("without any parameter", () => {
-      const resultingState = reducer(undefined, actions.search());
+      const resultingState = reducer(undefined, actions.updateSuggestions());
       expect(resultingState.name).toEqual("");
       expect(resultingState.suggestions).toHaveLength(809);
     });
