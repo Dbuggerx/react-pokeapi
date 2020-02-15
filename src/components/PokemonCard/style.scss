@@ -9,16 +9,10 @@
   border-radius: 1.5em;
   cursor: pointer;
   transform: perspective(10em);
-  display: grid;
+  display: flex;
+  flex-flow: column nowrap;
   overflow: hidden;
   border: solid 2px black;
-  grid-template-columns: auto;
-  grid-template-rows: min-content auto min-content min-content;
-  grid-template-areas:
-    "name"
-    "image"
-    "types"
-    "status";
 
   &:hover {
     --name-background: #84318f;
@@ -27,7 +21,6 @@
   }
 
   &__name {
-    grid-area: name;
     font-size: 1.5em;
     font-weight: bold;
     display: flex;
@@ -41,14 +34,14 @@
   }
 
   &__status {
-    grid-area: status;
+    flex: 1 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   &__image {
-    grid-area: image;
+    flex: 1 0 auto;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -56,7 +49,6 @@
   }
 
   &__types {
-    grid-area: types;
     text-align: left;
   }
 

@@ -19,7 +19,7 @@ describe("pokemonPage slice", () => {
 
     it('updates state for "pageFetched" action', () => {
       const apiResult: INamedApiResourceList<IPokemon> = {
-        count: 100,
+        count: 964,
         next: "next-url",
         previous: "prev-url",
         results: [
@@ -39,14 +39,14 @@ describe("pokemonPage slice", () => {
           undefined,
           actions.pageFetched({
             page: apiResult,
-            size: 10,
-            offset: 30
+            size: 20,
+            offset: 40
           })
         )
       ).toEqual({
         error: undefined,
         loading: false,
-        pageCount: 10,
+        pageCount: 49,
         currentPage: 3,
         data: apiResult,
         details: new Map<string, LoadableResource<IPokemon>>()

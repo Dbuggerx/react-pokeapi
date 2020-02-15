@@ -10,7 +10,6 @@ import {
   faBug,
   faGhost,
   faSeedling,
-  faRing,
   faFire,
   faTint,
   faBolt,

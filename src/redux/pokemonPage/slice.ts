@@ -45,7 +45,10 @@ export default createSlice({
       state.pageCount = Math.ceil(action.payload.page.count / action.payload.size);
       state.currentPage =
         state.pageCount -
-        (action.payload.page.count - action.payload.offset) / action.payload.size;
+        Math.ceil(
+          (action.payload.page.count - action.payload.offset) / action.payload.size
+        ) +
+        1;
     },
     setError: (state, action: PayloadAction<string>) => {
       state.error = action.payload;
