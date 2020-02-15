@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
-import Search from "./containers/search";
-import PokemonDetails from "./containers/pokemonDetails";
-import PokemonList from "./containers/pokemonList";
+import Search from "./containers/Search";
+import PokemonDetails from "./containers/PokemonDetails";
+import PokemonList from "./containers/PokemonList";
 import * as routes from "./routeManager";
 import 'typeface-open-sans';
 import "./styles.css";

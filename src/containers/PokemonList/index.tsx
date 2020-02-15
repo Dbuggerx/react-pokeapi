@@ -1,6 +1,7 @@
 import React from "react";
 import * as hooks from "../../hooks/pokemonPage";
-import PokemonList from "../../components/pokemonList";
+import CardLayout from "../../components/CardLayout";
+import PokemonCard from "../../components/PokemonCard";
 
 const PokemonListContainer: React.FC = () => {
   hooks.usePokemonPageEffects();
@@ -11,12 +12,11 @@ const PokemonListContainer: React.FC = () => {
   if (!state.data) return <div>No data</div>;
 
   return (
-    <PokemonList
-      pokemons={state.data.results.map(r => ({
-        pokemonName: r.name,
-        details: state.details.get(r.name)
-      }))}
-    />
+    <CardLayout>
+      {state.data.results.map(r => (
+        <PokemonCard pokemonName={r.name} details={state.details.get(r.name)} />
+      ))}
+    </CardLayout>
   );
 };
 

@@ -1,9 +1,9 @@
 import React from "react";
 import { IPokemon } from "pokeapi-typescript";
 import { LoadableResource } from "../../redux/pokemonPage/slice";
-import TypePill from "../pokemonTypePill";
-import LoadingSpinner from "../loadingSpinner";
-import ErrorMessage from "../errorMessage";
+import TypePill from "../PokemonTypePill";
+import LoadingSpinner from "../LoadingSpinner";
+import ErrorMessage from "../ErrorMessage";
 import "./style.scss";
 
 type Props = {
@@ -19,7 +19,7 @@ const PokemonImage: React.FC<{ images: IPokemon["sprites"] | undefined }> = ({
   return imageSrc && <img src={imageSrc} />;
 };
 
-export const PokemonListItem: React.FC<Props> = props => {
+export const PokemonCard: React.FC<Props> = props => {
   return (
     <section className="pokemon-item">
       <div className="pokemon-item__name">{props.pokemonName}</div>
@@ -39,4 +39,4 @@ export const PokemonListItem: React.FC<Props> = props => {
   );
 };
 
-export default PokemonListItem;
+export default PokemonCard;

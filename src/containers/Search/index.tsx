@@ -1,5 +1,5 @@
 import React from "react";
-import PokemonNameSearch from "../../components/pokemonNameSearch";
+import PokemonNameSearch from "../../components/PokemonNameSearch";
 import * as hooks from "../../hooks/filteredPokemonNames";
 
 const Search: React.FC = () => {

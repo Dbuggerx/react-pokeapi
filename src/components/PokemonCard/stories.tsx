@@ -1,12 +1,11 @@
 import React from "react";
-import { action } from "@storybook/addon-actions";
-import PokemonListItem from "./index";
+import PokemonCard from "./index";
 import { IPokemon } from "pokeapi-typescript";
 import { boolean, text } from "@storybook/addon-knobs";
 
 export default {
-  title: "PokemonListItem",
-  component: PokemonListItem
+  title: "PokemonCard",
+  component: PokemonCard
 };
 
 const dataMock = {
@@ -32,7 +31,7 @@ const dataMock = {
 } as IPokemon;
 
 export const _default = () => (
-  <PokemonListItem
+  <PokemonCard
     pokemonName="test"
     details={{
       data: dataMock,
