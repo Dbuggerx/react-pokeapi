@@ -9,6 +9,7 @@ import "./style.scss";
 type Props = {
   pokemonName: string;
   details: LoadableResource<IPokemon> | undefined;
+  onClick: () => void;
 };
 
 const PokemonImage: React.FC<{ images: IPokemon["sprites"] | undefined }> = ({
@@ -21,7 +22,7 @@ const PokemonImage: React.FC<{ images: IPokemon["sprites"] | undefined }> = ({
 
 export const PokemonCard: React.FC<Props> = props => {
   return (
-    <section className="pokemon-item">
+    <section className="pokemon-item" onClick={props.onClick}>
       <div className="pokemon-item__name">{props.pokemonName}</div>
       <div className="pokemon-item__types">
         {props.details?.data?.types.map(t => (

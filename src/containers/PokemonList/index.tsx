@@ -6,6 +6,8 @@ import PokemonCard from "../../components/PokemonCard";
 const PokemonListContainer: React.FC = () => {
   hooks.usePokemonPageEffects();
   const state = hooks.usePokemonPageState();
+  const changeRoute = hooks.useChangeRouteCallback();
+
   if (!state) return <div>No data</div>;
   if (state.error) return <div>{state.error}</div>;
   if (state.loading) return <div>Loading...</div>;
@@ -14,7 +16,14 @@ const PokemonListContainer: React.FC = () => {
   return (
     <CardLayout>
       {state.data.results.map(r => (
-        <PokemonCard pokemonName={r.name} details={state.details.get(r.name)} />
+        <PokemonCard
+          key={r.name}
+          pokemonName={r.name}
+          details={state.details.get(r.name)}
+          onClick={() => {
+            changeRoute(r.name);
+          }}
+        />
       ))}
     </CardLayout>
   );
