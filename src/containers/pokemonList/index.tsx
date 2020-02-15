@@ -1,8 +1,8 @@
-import React from 'react';
-import * as hooks from '../../hooks/pokemonPage';
-import PokemonListItem from '../../components/pokemonListItem';
+import React from "react";
+import * as hooks from "../../hooks/pokemonPage";
+import PokemonList from "../../components/pokemonList";
 
-const PokemonList: React.FC = () => {
+const PokemonListContainer: React.FC = () => {
   hooks.usePokemonPageEffects();
   const state = hooks.usePokemonPageState();
   if (!state) return <div>No data</div>;
@@ -13,15 +13,14 @@ const PokemonList: React.FC = () => {
   return (
     <div>
       <h2>Pokemon list</h2>
-      <ul>
-        {state.data.results.map(r => (
-          <li key={r.name}>
-            <PokemonListItem pokemonName={r.name} details={state.details.get(r.name)} />
-          </li>
-        ))}
-      </ul>
+      <PokemonList
+        pokemons={state.data.results.map(r => ({
+          pokemonName: r.name,
+          details: state.details.get(r.name)
+        }))}
+      />
     </div>
   );
 };
 
-export default PokemonList;
+export default PokemonListContainer;

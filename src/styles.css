@@ -2,3 +2,15 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+body {
+  background: #d1e5ff;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}

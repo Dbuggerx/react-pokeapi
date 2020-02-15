@@ -1,0 +1,22 @@
+.pokemon-list {
+  --column-width: 15vw;
+
+  padding: 1em;
+  display: grid;
+  gap: 3.5em;
+  margin: 0 auto;
+  grid-auto-rows: auto;
+  grid-template-columns: repeat(auto-fill, minmax(var(--column-width), 1fr));
+
+  @media screen and (max-width: 1024px) {
+    --column-width: 25vw;
+  }
+
+  @media screen and (max-width: 768px) {
+    --column-width: 40vw;
+  }
+
+  @media screen and (max-width: 425px) {
+    --column-width: 80vw;
+  }
+}

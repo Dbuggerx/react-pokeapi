@@ -4,6 +4,7 @@ import Search from "./containers/search";
 import PokemonDetails from "./containers/pokemonDetails";
 import PokemonList from "./containers/pokemonList";
 import * as routes from "./routeManager";
+import 'typeface-open-sans';
 import "./styles.css";
 
 export default function App() {
