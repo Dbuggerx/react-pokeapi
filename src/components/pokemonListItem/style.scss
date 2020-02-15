@@ -1,9 +1,8 @@
 .pokemon-item {
-  --background: white;
   --name-background: orangered;
 
   font-family: "Open Sans", sans-serif;
-  background-color: var(--background);
+  background-color: white;
   box-shadow: 3px 3px 2px 3px rgba(0, 0, 0, 0.2);
   transition-property: background-color box-shadow transform;
   transition-duration: 0.5s;
@@ -45,33 +44,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  &__error {
-    color: red;
-    display: flex;
-    align-items: center;
-
-    svg {
-      margin-right: 0.2em;
-    }
-  }
-
-  &__loading {
-    color: #019fe5;
-    padding: 1em;
-
-    svg {
-      @keyframes spin {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-      animation: spin 1.5s linear infinite;
-    }
   }
 
   &__image {

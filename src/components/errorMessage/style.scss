@@ -1,0 +1,10 @@
+.error-message {
+  font-family: "Open Sans", sans-serif;
+  color: red;
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-right: 0.2em;
+  }
+}

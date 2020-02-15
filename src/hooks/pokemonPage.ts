@@ -13,7 +13,7 @@ export function usePokemonPageEffects() {
       dispatch(
         actions.fetchPage({
           offset: 0,
-          size: 10
+          size: 20
         })
       );
   }, [dispatch, pageState.currentPage]);

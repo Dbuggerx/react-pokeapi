@@ -1,9 +1,9 @@
 import React from "react";
 import { IPokemon } from "pokeapi-typescript";
-import { faSpinner, faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { LoadableResource } from "../../redux/pokemonPage/slice";
 import TypePill from "../pokemonTypePill";
+import LoadingSpinner from "../loadingSpinner";
+import ErrorMessage from "../errorMessage";
 import "./style.scss";
 
 type Props = {
@@ -32,17 +32,8 @@ export const PokemonListItem: React.FC<Props> = props => {
         <PokemonImage images={props.details?.data?.sprites} />
       </div>
       <div className="pokemon-item__status">
-        {props.details?.loading && (
-          <div className="pokemon-item__loading">
-            <FontAwesomeIcon icon={faSpinner} size="4x" />
-          </div>
-        )}
-        {props.details?.error && (
-          <div className="pokemon-item__error">
-            <FontAwesomeIcon icon={faExclamationCircle} size="2x" />
-            {props.details.error}
-          </div>
-        )}
+        {props.details?.loading && <LoadingSpinner />}
+        {props.details?.error && <ErrorMessage message={props.details.error} />}
       </div>
     </section>
   );

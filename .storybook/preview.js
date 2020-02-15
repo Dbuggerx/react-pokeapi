@@ -1,6 +1,5 @@
-import { addDecorator } from '@storybook/react';
+import { addDecorator } from "@storybook/react";
 import { withKnobs } from "@storybook/addon-knobs";
+import "typeface-open-sans";
 
 addDecorator(withKnobs);
-
-require('typeface-open-sans');

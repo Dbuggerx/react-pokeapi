@@ -1,4 +1,4 @@
-import { filter, map, mergeMap, catchError } from "rxjs/operators";
+import { filter, map, mergeMap, catchError, switchMap } from "rxjs/operators";
 import { INamedApiResourceList, IPokemon } from "pokeapi-typescript";
 import { actions } from "./index";
 import { TypedEpic } from "../types";
@@ -10,8 +10,8 @@ const getUrlDataByAddress = (url: string) => {
   const urlObj = new URL(url);
   return {
     url,
-    size: parseInt(urlObj.searchParams.get("limit")!, 10),
-    offset: parseInt(urlObj.searchParams.get("offset")!, 10)
+    size: parseInt(urlObj.searchParams.get("limit")!, 20),
+    offset: parseInt(urlObj.searchParams.get("offset")!, 0)
   };
 };
 
@@ -24,7 +24,7 @@ const getDefaultUrlData = (offset: number, size: number) => ({
 const fetchPageEpic: TypedEpic = (action$, state$, { observableFetch }) => {
   return action$.pipe(
     filter(actions.fetchPage.match),
-    mergeMap(action => {
+    switchMap(action => {
       const urlData =
         "url" in action.payload
           ? getUrlDataByAddress(action.payload.url)
@@ -44,6 +44,7 @@ const fetchPageEpic: TypedEpic = (action$, state$, { observableFetch }) => {
                   offset: urlData.offset
                 })
               );
+
               for (const result of json.results) {
                 subscriber.next(actions.fetchDetails(result.name));
               }
@@ -63,11 +64,7 @@ const fetchPageEpic: TypedEpic = (action$, state$, { observableFetch }) => {
   );
 };
 
-const fetchPokemonDetailsEpic: TypedEpic = (
-  action$,
-  state$,
-  { observableFetch }
-) => {
+const fetchPokemonDetailsEpic: TypedEpic = (action$, state$, { observableFetch }) => {
   return action$.pipe(
     filter(actions.fetchDetails.match),
     mergeMap(action => {
