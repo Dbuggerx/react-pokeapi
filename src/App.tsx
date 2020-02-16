@@ -10,7 +10,7 @@ import "./styles.css";
 export default function App() {
   return (
     <div className="App">
-      <h1>PokeApi v2</h1>
+      <h1>PokeApi v2 (work in progress)</h1>
       <Search />
       <Switch>
         <Route path={routes.pokemonRoute.path} component={PokemonDetails} />
