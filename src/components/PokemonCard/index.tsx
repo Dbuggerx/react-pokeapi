@@ -1,6 +1,6 @@
 import React from "react";
 import { IPokemon } from "pokeapi-typescript";
-import { LoadableResource } from "../../redux/pokemonPage/slice";
+import { LoadableResource } from "../../redux/types";
 import TypePill from "../PokemonTypePill";
 import LoadingSpinner from "../LoadingSpinner";
 import ErrorMessage from "../ErrorMessage";

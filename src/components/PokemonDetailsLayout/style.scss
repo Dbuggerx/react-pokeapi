@@ -1,0 +1,56 @@
+.pokemon-details {
+  font-family: "Open Sans", sans-serif;
+  padding: 2vmin;
+  background: white;
+  display: grid;
+  grid-template-columns: auto minmax(15vmax, max-content);
+  grid-template-rows: max-content max-content 1fr;
+  grid-template-areas:
+    "status status"
+    "name types"
+    "images images";
+
+  &__name {
+    grid-area: name;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  &__status {
+    grid-area: status;
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__images {
+    grid-area: images;
+    flex: 1 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+  }
+
+  &__types {
+    grid-area: types;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &__image,
+  &__types,
+  &__status {
+    padding: 0.5em;
+
+    &:empty {
+      display: none;
+    }
+  }
+}

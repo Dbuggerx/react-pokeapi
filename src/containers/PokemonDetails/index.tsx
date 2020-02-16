@@ -1,6 +1,7 @@
 import React from "react";
 import * as hooks from "../../hooks/pokemonData";
 import LoadingSpinner from '../../components/LoadingSpinner';
+import PokemonDetailsLayout from '../../components/PokemonDetailsLayout';
 
 const PokemonDetails: React.FC = () => {
   hooks.usePokemonDataEffect();
@@ -14,16 +15,7 @@ const PokemonDetails: React.FC = () => {
   return (
     <div>
       <h2>Pokemon data</h2>
-      <dl>
-        <dt>Name</dt>
-        <dd>{pokemonData.data.name}</dd>
-        <dt>Type</dt>
-        <dd>
-          {pokemonData.data.types.map(t => (
-            <div key={t.type.name}>{t.type.name}</div>
-          ))}
-        </dd>
-      </dl>
+      <PokemonDetailsLayout details={pokemonData} />
     </div>
   );
 };

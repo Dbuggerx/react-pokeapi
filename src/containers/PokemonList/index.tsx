@@ -4,6 +4,7 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 import CardLayout from "../../components/CardLayout";
 import PokemonCard from "../../components/PokemonCard";
 import Pagination from "../../components/Pagination";
+import ErrorMessage from "../../components/ErrorMessage";
 
 const PokemonListContainer: React.FC = () => {
   hooks.useFetchInitialPageEffect();
@@ -12,9 +13,9 @@ const PokemonListContainer: React.FC = () => {
   const changePage = hooks.useFetchPage();
 
   if (!state) return <div>No data</div>;
-  if (state.error) return <div>{state.error}</div>;
+  if (state.error) return <ErrorMessage message={state.error} />;
   if (state.loading) return <LoadingSpinner />;
-  if (!state.data) return <div>No data</div>;
+  if (!state.data) return <ErrorMessage message="No data" />;
 
   return (
     <>

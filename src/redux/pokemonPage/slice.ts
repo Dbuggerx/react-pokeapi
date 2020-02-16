@@ -1,11 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { INamedApiResourceList, IPokemon } from "pokeapi-typescript";
-
-export type LoadableResource<T> = {
-  loading: boolean;
-  error: string | undefined;
-  data: T | undefined;
-};
+import { LoadableResource } from "../types";
 
 export type InitialState = LoadableResource<INamedApiResourceList<IPokemon>> & {
   pageCount: number;
