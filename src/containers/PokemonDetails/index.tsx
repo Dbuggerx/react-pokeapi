@@ -49,7 +49,8 @@ const PokemonDetails: React.FC = () => {
                   pokemonData.species.data.flavor_text_entries
                     .filter(i => i.language.name === "en")
                     .reverse() // the first values from the API seem (most of the times) to be more correct
-                    .map(i => i.flavor_text.replace(/\r?\n|\r|\u000c/gm, " ")) // Remove linebreaks
+                    // Remove linebreaks and invalid chars
+                    .map(i => i.flavor_text.replace(/\r?\n|\r|\u000c/gm, " ")) // eslint-disable-line no-control-regex
                     .reduce(
                       /*
                        * As the text from the API can sometimes vary by missing spaces,
@@ -74,8 +75,12 @@ const PokemonDetails: React.FC = () => {
             <ul>
               <li>Height: {pokemonData.data.height / 10}m</li>
               <li>Weight: {pokemonData.data.weight / 10}kg</li>
-              <li>Shape: {pokemonData.species.data?.shape.name}</li>
-              <li>Habitat: {pokemonData.species.data?.habitat.name}</li>
+              {pokemonData.species.data?.shape.name && (
+                <li>Shape: {pokemonData.species.data?.shape.name}</li>
+              )}
+              {pokemonData.species.data?.habitat?.name && (
+                <li>Habitat: {pokemonData.species.data?.habitat.name}</li>
+              )}
             </ul>
           }
           abilities={

@@ -79,15 +79,15 @@ export const PokemonDetailsLayout: React.FC<Props> = props => {
 
   return (
     <article className={`pokemon-details ${classModifier}`}>
-      <section className="pokemon-details__name">{props.pokemonName}</section>
-      <section className="pokemon-details__id" title="Pokemon ID">#{props.pokemonId}</section>
+      <header className="pokemon-details__header">
+        {props.pokemonName}
+        <aside title="Pokemon ID">#{props.pokemonId}</aside>
+      </header>
       <section className="pokemon-details__images">{props.images}</section>
       <section className="pokemon-details__types">{props.types}</section>
       <section className="pokemon-details__description">
         <div className="pokemon-details__section-title">{props.descriptionTitle}</div>
-        <div className="pokemon-details__descrition-text">
-          {props.description}
-        </div>
+        <div className="pokemon-details__descrition-text">{props.description}</div>
       </section>
       <section className="pokemon-details__profile">
         <div className="pokemon-details__section-title">Profile</div>

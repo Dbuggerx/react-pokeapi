@@ -2,10 +2,8 @@ import React from "react";
 import { IPokemon } from "pokeapi-typescript";
 import { LoadableResource } from "../../redux/types";
 import TypePill from "../PokemonTypePill";
-import LoadingSpinner from "../LoadingSpinner";
-import ErrorMessage from "../ErrorMessage";
-import "./style.scss";
 import ResourceState from "../ResourceState";
+import "./style.scss";
 
 type Props = {
   pokemonName: string;

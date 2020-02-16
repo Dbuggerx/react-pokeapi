@@ -5,7 +5,7 @@ import { actions } from "./index";
 import { TypedEpic } from "../types";
 import { ApiError } from "../errors";
 import { combineEpics } from "redux-observable";
-import { Action, AnyAction } from '@reduxjs/toolkit';
+import { AnyAction } from '@reduxjs/toolkit';
 
 const fetchPokemonEpic: TypedEpic = (action$, state$, { observableFetch }) => {
   return action$.pipe(

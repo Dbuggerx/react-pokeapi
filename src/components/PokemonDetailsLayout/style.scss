@@ -10,7 +10,7 @@
   grid-template-columns: auto minmax(15vmax, max-content);
   grid-template-rows: max-content max-content 1fr max-content;
   grid-template-areas:
-    "name name id"
+    "header header header"
     "status status status"
     "images images images"
     "description description types"
@@ -40,20 +40,12 @@
     grid-area: profile;
   }
 
-  &__name {
-    grid-area: name;
+  &__header {
+    grid-area: header;
     text-transform: uppercase;
     display: flex;
     align-items: center;
-  }
-
-  &__id {
-    grid-area: id;
-    text-align: right;
-  }
-
-  &__name,
-  &__id {
+    justify-content: space-between;
     font-size: 1.5em;
     font-weight: bold;
     background-color: orangered;
