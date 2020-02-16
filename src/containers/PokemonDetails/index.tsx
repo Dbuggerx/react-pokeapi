@@ -1,5 +1,6 @@
 import React from "react";
 import * as hooks from "../../hooks/pokemonData";
+import LoadingSpinner from '../../components/LoadingSpinner';
 
 const PokemonDetails: React.FC = () => {
   hooks.usePokemonDataEffect();
@@ -7,7 +8,7 @@ const PokemonDetails: React.FC = () => {
   const pokemonData = hooks.usePokemonDataState();
   if (!pokemonData) return <div>No data</div>;
   if (pokemonData.error) return <div>{pokemonData.error}</div>;
-  if (pokemonData.loading) return <div>Loading...</div>;
+  if (pokemonData.loading) return <LoadingSpinner />;
   if (!pokemonData.data) return <div>No data</div>;
 
   return (

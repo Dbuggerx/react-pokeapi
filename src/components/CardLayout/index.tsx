@@ -4,7 +4,11 @@ import "./style.scss";
 export const CardLayout: React.FC = ({ children }) => {
   return (
     <article className="card-layout">
-      {React.Children.map(children, child => (<>{ child }</>))}
+      <div className="card-layout__grid">
+        {React.Children.map(children, child => (
+          <>{child}</>
+        ))}
+      </div>
     </article>
   );
 };

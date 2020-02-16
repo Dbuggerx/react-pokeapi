@@ -1,4 +1,4 @@
-.pokemon-item {
+.pokemon-card {
   --name-background: orangered;
 
   font-family: "Open Sans", sans-serif;
@@ -9,6 +9,7 @@
   border-radius: 1.5em;
   cursor: pointer;
   transform: perspective(10em);
+  transform-origin: center center;
   display: flex;
   flex-flow: column nowrap;
   overflow: hidden;
@@ -22,6 +23,9 @@
 
   &__name {
     font-size: 1.5em;
+    line-height: 1.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-weight: bold;
     display: flex;
     align-items: flex-end;

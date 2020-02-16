@@ -1,6 +1,10 @@
 .loading-spinner {
-  color: #019fe5;
+  color: orangered;
   padding: 1em;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   svg {
     @keyframes spin {

@@ -20,5 +20,9 @@
   &__button-right {
     color: orangered;
     cursor: pointer;
+
+    &:hover {
+      color: orange;
+    }
   }
 }

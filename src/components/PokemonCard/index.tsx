@@ -23,16 +23,16 @@ const PokemonImage: React.FC<{
 
 export const PokemonCard: React.FC<Props> = props => {
   return (
-    <section className="pokemon-item" onClick={props.onClick}>
-      <div className="pokemon-item__name">{props.pokemonName}</div>
-      <div className="pokemon-item__status">
+    <section className="pokemon-card" onClick={props.onClick}>
+      <div className="pokemon-card__name">{props.pokemonName}</div>
+      <div className="pokemon-card__status">
         {props.details?.loading && <LoadingSpinner />}
         {props.details?.error && <ErrorMessage message={props.details.error} />}
       </div>
-      <div className="pokemon-item__image">
+      <div className="pokemon-card__image">
         <PokemonImage images={props.details?.data?.sprites} alt={props.pokemonName} />
       </div>
-      <div className="pokemon-item__types">
+      <div className="pokemon-card__types">
         {props.details?.data?.types.map(t => (
           <TypePill pokemonType={t.type.name} key={t.type.name} />
         ))}

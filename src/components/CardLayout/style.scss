@@ -1,22 +1,25 @@
 .card-layout {
-  --column-width: 15vw;
+  overflow: auto;
 
-  padding: 1em;
-  display: grid;
-  gap: 3.5em;
-  margin: 0 auto;
-  grid-auto-rows: auto;
-  grid-template-columns: repeat(auto-fill, minmax(var(--column-width), 1fr));
+  &__grid {
+    --column-width: 15vw;
 
-  @media screen and (max-width: 1024px) {
-    --column-width: 25vw;
-  }
+    padding: 2em;
+    display: grid;
+    gap: 3.5em;
+    grid-auto-rows: min-content;
+    grid-template-columns: repeat(auto-fill, minmax(var(--column-width), 1fr));
 
-  @media screen and (max-width: 768px) {
-    --column-width: 40vw;
-  }
+    @media screen and (max-width: 1024px) {
+      --column-width: 25vw;
+    }
 
-  @media screen and (max-width: 425px) {
-    --column-width: 80vw;
+    @media screen and (max-width: 768px) {
+      --column-width: 40vw;
+    }
+
+    @media screen and (max-width: 425px) {
+      --column-width: 80vw;
+    }
   }
 }

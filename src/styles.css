@@ -1,6 +1,9 @@
 .App {
   font-family: sans-serif;
   text-align: center;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
 }
 
 body {
