@@ -1,16 +1,45 @@
 import reducer, { actions } from "./index";
-import { IPokemon } from "pokeapi-typescript";
+import { IPokemon, IPokemonSpecies } from "pokeapi-typescript";
 
 describe("pokemonData slice", () => {
   it('updates state for "fetchData" action', () => {
-    const resultingState = reducer(
-      { error: "test", loading: false, data: undefined },
-      actions.fetchData()
-    );
+    const currentState = {
+      error: "test",
+      loading: false,
+      data: undefined,
+      species: { error: "test", loading: false, data: undefined }
+    };
+
+    const resultingState = reducer(currentState, actions.fetchData());
 
     expect(resultingState).toEqual({
       loading: true,
-      error: undefined
+      error: undefined,
+      species: {
+        loading: false,
+        error: undefined,
+        data: undefined
+      }
+    });
+  });
+
+  it('updates state for "fetchSpecies" action', () => {
+    const currentState = {
+      error: "test",
+      loading: false,
+      data: { id: 123 } as IPokemon,
+      species: { error: "test", loading: false, data: undefined }
+    };
+
+    const resultingState = reducer(currentState, actions.fetchSpecies());
+
+    expect(resultingState).toEqual({
+      ...currentState,
+      species: {
+        loading: true,
+        error: undefined,
+        data: undefined
+      }
     });
   });
 
@@ -39,7 +68,31 @@ describe("pokemonData slice", () => {
 
     expect(resultingState).toEqual({
       loading: false,
-      data: apiResult
+      data: apiResult,
+      species: {
+        loading: false,
+        error: undefined,
+        data: undefined
+      }
+    });
+  });
+
+  it('updates state for "speciesFetched" action', () => {
+    const apiResult = {
+      id: 123
+    } as IPokemonSpecies;
+
+    const resultingState = reducer(undefined, actions.speciesFetched(apiResult));
+
+    expect(resultingState).toEqual({
+      data: undefined,
+      error: undefined,
+      loading: false,
+      species: {
+        loading: false,
+        error: undefined,
+        data: apiResult
+      }
     });
   });
 
@@ -65,12 +118,22 @@ describe("pokemonData slice", () => {
         species: null,
         stats: [],
         types: []
+      },
+      species: {
+        loading: true,
+        error: "species error",
+        data: {} as IPokemonSpecies
       }
     };
     const resultingState = reducer(currentState, actions.clearData());
 
+    expect(resultingState.loading).toBeFalsy();
     expect(resultingState.data).toBeUndefined();
     expect(resultingState.error).toBeUndefined();
+
+    expect(resultingState.species.loading).toBeFalsy();
+    expect(resultingState.species.data).toBeUndefined();
+    expect(resultingState.species.error).toBeUndefined();
   });
 
   it('updates state for "setError" action', () => {
@@ -95,18 +158,42 @@ describe("pokemonData slice", () => {
         species: null,
         stats: [],
         types: []
-      }
+      },
+      species: { error: "test", loading: true, data: undefined }
     };
 
-    const resultingState = reducer(
-      currentState,
-      actions.setError("testing error")
-    );
+    const resultingState = reducer(currentState, actions.setError("testing error"));
 
     expect(resultingState).toEqual({
       data: undefined,
       loading: false,
-      error: "testing error"
+      error: "testing error",
+      species: currentState.species
+    });
+  });
+
+  it('updates state for "setSpeciesError" action', () => {
+    const currentState = {
+      loading: true,
+      error: undefined,
+      data: {
+        id: 123
+      } as IPokemon,
+      species: { error: undefined, loading: true, data: undefined }
+    };
+
+    const resultingState = reducer(
+      currentState,
+      actions.setSpeciesError("testing error")
+    );
+
+    expect(resultingState).toEqual({
+      ...currentState,
+      species: {
+        loading: false,
+        data: undefined,
+        error: "testing error"
+      }
     });
   });
 });

@@ -2,6 +2,7 @@ import { TestScheduler } from "rxjs/testing";
 import epics from "./epics";
 import { actions } from "./index";
 import { ActionsObservable } from "redux-observable";
+import { IPokemonSpecies } from "pokeapi-typescript";
 
 describe("pokemonData epics", () => {
   let testScheduler: TestScheduler;
@@ -12,7 +13,7 @@ describe("pokemonData epics", () => {
     });
   });
 
-  describe('from "fetchData" to "dataFetched"', () => {
+  describe('from "fetchData" to "dataFetched" and "fetchSpecies"', () => {
     describe("chains actions", () => {
       const apiResult = {
         id: 123,
@@ -29,15 +30,18 @@ describe("pokemonData epics", () => {
         location_area_encounters: "",
         moves: [],
         sprites: null,
-        species: null,
+        species: {
+          name: "species name",
+          url: "species-url"
+        },
         stats: [],
         types: []
       };
 
       const marbles = {
-        inputAction: "-a---",
-        apiResult: "  --a| ",
-        output: "     ---a-"
+        inputAction: "-a------",
+        apiResult: "  --a|    ",
+        output: "     ---(ab)-"
       };
 
       test("for provided url", () => {
@@ -60,7 +64,8 @@ describe("pokemonData epics", () => {
           const output$ = epics(action$, null, dependencies);
 
           expectObservable(output$).toBe(marbles.output, {
-            a: actions.dataFetched(apiResult)
+            a: actions.dataFetched(apiResult),
+            b: actions.fetchSpecies("species-url")
           });
         });
       });
@@ -85,7 +90,8 @@ describe("pokemonData epics", () => {
           const output$ = epics(action$, null, dependencies);
 
           expectObservable(output$).toBe(marbles.output, {
-            a: actions.dataFetched(apiResult)
+            a: actions.dataFetched(apiResult),
+            b: actions.fetchSpecies("species-url")
           });
         });
       });
@@ -108,17 +114,78 @@ describe("pokemonData epics", () => {
         const state$ = null;
         const dependencies = {
           observableFetch: () =>
-            cold<Error>(
-              marbles.apiResult,
-              undefined,
-              new Error("testing error")
-            )
+            cold<Error>(marbles.apiResult, undefined, new Error("testing error"))
         };
 
         const output$ = epics(action$, state$, dependencies);
 
         expectObservable(output$).toBe(marbles.output, {
           a: actions.setError("testing error")
+        });
+      });
+    });
+  });
+
+  describe('from "fetchSpecies" to "speciesFetched"', () => {
+    it("chains actions", () => {
+      const apiResult = {
+        id: 123
+      } as IPokemonSpecies;
+
+      const marbles = {
+        inputAction: "-a---",
+        apiResult: "  --a| ",
+        output: "     ---a-"
+      };
+
+      testScheduler.run(({ hot, cold, expectObservable }) => {
+        const action$ = new ActionsObservable(
+          hot(marbles.inputAction, {
+            a: actions.fetchSpecies("the-species-url")
+          })
+        );
+
+        const dependencies = {
+          observableFetch: (url: string) =>
+            url === "the-species-url"
+              ? cold(marbles.apiResult, {
+                  a: apiResult
+                })
+              : undefined
+        };
+
+        const output$ = epics(action$, null, dependencies);
+
+        expectObservable(output$).toBe(marbles.output, {
+          a: actions.speciesFetched(apiResult)
+        });
+      });
+    });
+
+    it("handles error", () => {
+      testScheduler.run(({ hot, cold, expectObservable }) => {
+        const marbles = {
+          inputAction: "-a---",
+          apiResult: "  --#  ",
+          output: "     ---a-"
+        };
+
+        const action$ = new ActionsObservable(
+          hot(marbles.inputAction, {
+            a: actions.fetchSpecies("the-species-url")
+          })
+        );
+
+        const state$ = null;
+        const dependencies = {
+          observableFetch: () =>
+            cold<Error>(marbles.apiResult, undefined, new Error("testing error"))
+        };
+
+        const output$ = epics(action$, state$, dependencies);
+
+        expectObservable(output$).toBe(marbles.output, {
+          a: actions.setSpeciesError("testing error")
         });
       });
     });
