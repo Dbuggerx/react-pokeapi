@@ -33,9 +33,6 @@ const PokemonTypePill: React.FC<Props> = ({ pokemonType }) => {
   let classModifier = '';
 
   switch (pokemonType) {
-    case "normal":
-      classModifier = "pokemon-type-pill--normal";
-      break;
     case "fighting":
       icon = faFistRaised;
       classModifier = "pokemon-type-pill--fighting";

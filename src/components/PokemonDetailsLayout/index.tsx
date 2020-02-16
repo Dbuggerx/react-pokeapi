@@ -32,6 +32,22 @@ export const PokemonDetailsLayout: React.FC<Props> = ({ details }) => {
           <TypePill pokemonType={t.type.name} key={t.type.name} />
         ))}
       </section>
+      <section className="pokemon-details__profile">
+        <p>Height: {details.data.height / 10}m</p>
+        <p>
+          Abilities:
+          <ul>
+            {details.data.abilities.map(a => (
+              <li
+                key={a.ability.name}
+                title={a.is_hidden ? "Hidden ability" : "Normal ability"}
+              >
+                {a.ability.name}
+              </li>
+            ))}
+          </ul>
+        </p>
+      </section>
     </article>
   );
 };

@@ -5,6 +5,7 @@ import TypePill from "../PokemonTypePill";
 import LoadingSpinner from "../LoadingSpinner";
 import ErrorMessage from "../ErrorMessage";
 import "./style.scss";
+import ResourceState from "../ResourceState";
 
 type Props = {
   pokemonName: string;
@@ -26,8 +27,7 @@ export const PokemonCard: React.FC<Props> = props => {
     <section className="pokemon-card" onClick={props.onClick}>
       <div className="pokemon-card__name">{props.pokemonName}</div>
       <div className="pokemon-card__status">
-        {props.details?.loading && <LoadingSpinner />}
-        {props.details?.error && <ErrorMessage message={props.details.error} />}
+        <ResourceState state={props.details} />
       </div>
       <div className="pokemon-card__image">
         <PokemonImage images={props.details?.data?.sprites} alt={props.pokemonName} />

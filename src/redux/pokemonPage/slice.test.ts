@@ -1,18 +1,37 @@
 import reducer, { actions } from "./index";
 import { INamedApiResourceList, IPokemon } from "pokeapi-typescript";
-import { LoadableResource, InitialState } from "./slice";
+import { InitialState } from "./slice";
+import { LoadableResource } from "../types";
 
 describe("pokemonPage slice", () => {
   describe("page data", () => {
     it('updates state for "fetchPage" action', () => {
-      const resultingState = reducer(undefined, actions.fetchPage());
+      const currentState = {
+        loading: false,
+        error: "error",
+        pageCount: 111,
+        currentPage: 1,
+        data: {
+          count: 10,
+          previous: "",
+          next: "",
+          results: [{ name: "aaa", url: "http://aaa.com" }]
+        },
+        details: new Map<string, LoadableResource<IPokemon>>([
+          ["aaa", { loading: true, error: undefined, data: undefined }]
+        ])
+      };
+
+      const resultingState = reducer(currentState, actions.fetchPage());
+
+      expect(resultingState.details).not.toBe(currentState.details);
 
       expect(resultingState).toEqual({
         loading: true,
         data: undefined,
         error: undefined,
-        pageCount: 0,
-        currentPage: 0,
+        pageCount: 111,
+        currentPage: 1,
         details: new Map<string, LoadableResource<IPokemon>>()
       });
     });

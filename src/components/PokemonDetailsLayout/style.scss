@@ -4,11 +4,19 @@
   background: white;
   display: grid;
   grid-template-columns: auto minmax(15vmax, max-content);
-  grid-template-rows: max-content max-content 1fr;
+  grid-template-rows: max-content max-content 1fr max-content;
   grid-template-areas:
     "status status"
     "name types"
-    "images images";
+    "images images"
+    "profile profile";
+
+  &__profile {
+    grid-area: profile;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
 
   &__name {
     grid-area: name;

@@ -26,6 +26,9 @@ export default createSlice({
       action: PayloadAction<{ size: number; offset: number } | { url: string }>
     ) => {
       state.loading = true;
+      state.data = undefined;
+      state.error = undefined;
+      state.details = new Map<string, LoadableResource<IPokemon>>();
     },
     pageFetched: (
       state,

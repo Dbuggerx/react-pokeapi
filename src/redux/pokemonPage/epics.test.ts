@@ -81,7 +81,7 @@ describe('pokemonPage epics', () => {
           const output$ = epics(action$, null, dependencies);
 
           expectObservable(output$).toBe(marbles.output, {
-            a: actions.pageFetched({ page: apiResult, size: 80, offset: 20 }),
+            a: actions.pageFetched({ page: apiResult, size: 40, offset: 20 }),
             b: actions.fetchDetails('aaa'),
             c: actions.fetchDetails('bbb')
           });

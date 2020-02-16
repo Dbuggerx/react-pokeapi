@@ -1,10 +1,9 @@
 import React from "react";
 import * as hooks from "../../hooks/pokemonPage";
-import LoadingSpinner from "../../components/LoadingSpinner";
 import CardLayout from "../../components/CardLayout";
 import PokemonCard from "../../components/PokemonCard";
 import Pagination from "../../components/Pagination";
-import ErrorMessage from "../../components/ErrorMessage";
+import ResourceState from "../../components/ResourceState";
 
 const PokemonListContainer: React.FC = () => {
   hooks.useFetchInitialPageEffect();
@@ -12,24 +11,21 @@ const PokemonListContainer: React.FC = () => {
   const goToDetails = hooks.useGoToDetails();
   const changePage = hooks.useFetchPage();
 
-  if (!state) return <div>No data</div>;
-  if (state.error) return <ErrorMessage message={state.error} />;
-  if (state.loading) return <LoadingSpinner />;
-  if (!state.data) return <ErrorMessage message="No data" />;
-
   return (
     <>
+      <ResourceState state={state} />
       <CardLayout>
-        {state.data.results.map(r => (
-          <PokemonCard
-            key={r.name}
-            pokemonName={r.name}
-            details={state.details.get(r.name)}
-            onClick={() => {
-              goToDetails(r.name);
-            }}
-          />
-        ))}
+        {state.data &&
+          state.data.results.map(r => (
+            <PokemonCard
+              key={r.name}
+              pokemonName={r.name}
+              details={state.details.get(r.name)}
+              onClick={() => {
+                goToDetails(r.name);
+              }}
+            />
+          ))}
       </CardLayout>
       <Pagination
         currentPage={state.currentPage}

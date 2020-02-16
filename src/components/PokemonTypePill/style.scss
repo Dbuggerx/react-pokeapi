@@ -1,7 +1,7 @@
 .pokemon-type-pill {
   font-family: "Open Sans", sans-serif;
   display: inline-block;
-  background-color: white;
+  background-color: #9b9b9b;
   padding: 0.3em 0.8em;
   border-radius: 2em;
   margin: 0.2em 0;
@@ -13,10 +13,6 @@
   &__icon {
     display: inline-block;
     margin-right: 0.3em;
-  }
-
-  &--normal {
-    background-color: #9b9b9b;
   }
 
   &--fighting {

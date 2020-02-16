@@ -10,8 +10,8 @@ const getUrlDataByAddress = (url: string) => {
   const urlObj = new URL(url);
   return {
     url,
-    size: parseInt(urlObj.searchParams.get("limit")!, 20),
-    offset: parseInt(urlObj.searchParams.get("offset")!, 0)
+    size: parseInt(urlObj.searchParams.get("limit")!, 10),
+    offset: parseInt(urlObj.searchParams.get("offset")!, 10)
   };
 };
 
