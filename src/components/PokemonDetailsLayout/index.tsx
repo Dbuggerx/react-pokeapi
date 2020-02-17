@@ -5,7 +5,7 @@ type Props = {
   pokemonName: string;
   pokemonId: number;
   images: React.ReactElement;
-  mainType: string | undefined;
+  color: string | undefined;
   types: React.ReactElement;
   descriptionTitle: string | undefined;
   description: React.ReactElement;
@@ -17,63 +17,36 @@ type Props = {
 export const PokemonDetailsLayout: React.FC<Props> = props => {
   let classModifier = "";
 
-  switch (props.mainType) {
-    case "fighting":
-      classModifier = "pokemon-details--fighting";
+  switch (props.color) {
+    case "black":
+      classModifier = "pokemon-details--black";
       break;
-    case "flying":
-      classModifier = "pokemon-details--flying";
+    case "blue":
+      classModifier = "pokemon-details--blue";
       break;
-    case "poison":
-      classModifier = "pokemon-details--poison";
+    case "brown":
+      classModifier = "pokemon-details--brown";
       break;
-    case "ground":
-      classModifier = "pokemon-details--ground";
+    case "gray":
+      classModifier = "pokemon-details--gray";
       break;
-    case "rock":
-      classModifier = "pokemon-details--rock";
+    case "green":
+      classModifier = "pokemon-details--green";
       break;
-    case "bug":
-      classModifier = "pokemon-details--bug";
+    case "pink":
+      classModifier = "pokemon-details--pink";
       break;
-    case "ghost":
-      classModifier = "pokemon-details--ghost";
+    case "purple":
+      classModifier = "pokemon-details--purple";
       break;
-    case "steel":
-      classModifier = "pokemon-details--steel";
+    case "red":
+      classModifier = "pokemon-details--red";
       break;
-    case "fire":
-      classModifier = "pokemon-details--fire";
+    case "white":
+      classModifier = "pokemon-details--white";
       break;
-    case "water":
-      classModifier = "pokemon-details--water";
-      break;
-    case "grass":
-      classModifier = "pokemon-details--grass";
-      break;
-    case "electric":
-      classModifier = "pokemon-details--electric";
-      break;
-    case "psychic":
-      classModifier = "pokemon-details--psychic";
-      break;
-    case "ice":
-      classModifier = "pokemon-details--ice";
-      break;
-    case "dragon":
-      classModifier = "pokemon-details--dragon";
-      break;
-    case "dark":
-      classModifier = "pokemon-details--dark";
-      break;
-    case "fairy":
-      classModifier = "pokemon-details--fairy";
-      break;
-    case "unknown":
-      classModifier = "pokemon-details--unknown";
-      break;
-    case "shadow":
-      classModifier = "pokemon-details--shadow";
+    case "yellow":
+      classModifier = "pokemon-details--yellow";
       break;
   }
 

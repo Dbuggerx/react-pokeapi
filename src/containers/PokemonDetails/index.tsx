@@ -26,7 +26,7 @@ const PokemonDetails: React.FC = () => {
                 ))}
             </>
           }
-          mainType={mainType}
+          color={pokemonData.species.data?.color.name}
           types={
             <>
               {pokemonData.data.types.map(t => (
