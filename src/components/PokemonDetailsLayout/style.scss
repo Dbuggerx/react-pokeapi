@@ -1,5 +1,5 @@
 .pokemon-details {
-  --accent-color: #858585;
+  --accent-color: #b1b1b1;
   --accent-text: white;
 
   font-family: "Open Sans", sans-serif;
@@ -12,14 +12,14 @@
   grid-template-rows: max-content max-content 1fr max-content;
   grid-template-areas:
     "header header header"
-    "status status status"
     "images images images"
     "description description types"
     "profile abilities stats";
   gap: 2em;
   border-radius: 1.5em;
   box-shadow: 3px 3px 2px 3px rgba(0, 0, 0, 0.2);
-  color: #363636;
+  color: var(--accent-text);
+  background-color: var(--accent-color);
 
   &__abilities {
     grid-area: abilities;
@@ -50,15 +50,10 @@
     justify-content: space-between;
     font-size: 1.5em;
     font-weight: 700;
-    background-color: red;
-    color: white;
-    border-bottom: solid 8px #464646;
-    margin: -2vmin;
-    padding: 2vmin;
   }
 
   &__status {
-    grid-area: status;
+    grid-area: header;
     flex: 1 0 auto;
     display: flex;
     align-items: center;
@@ -72,6 +67,10 @@
     flex-flow: row wrap;
     justify-content: center;
     align-content: center;
+    margin: -1em -2vmin;
+    background: white;
+    padding: 2em 0;
+    color: black
   }
 
   &__types {
@@ -86,10 +85,11 @@
   &__section-title {
     font-weight: 700;
     font-size: 1.5em;
-    background-color: var(--accent-color);
-    color: var(--accent-text);
-    padding: 0.2em 0.8em;
+    padding: 0 0.8em;
     border-radius: 1em;
+    background-color: var(--accent-text);
+    color: var(--accent-color);
+    opacity: 0.8;
   }
 
   &--black {
@@ -108,7 +108,7 @@
     --accent-color: #0a810a;
   }
   &--pink {
-    --accent-color: #ff8599;
+    --accent-color: #ff8196;
   }
   &--purple {
     --accent-color: #800080;

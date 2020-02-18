@@ -2,6 +2,7 @@ import React from "react";
 import PokemonCard from "./index";
 import { IPokemon } from "pokeapi-typescript";
 import { boolean, text } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
 
 export default {
   title: "PokemonCard",
@@ -31,12 +32,15 @@ const dataMock = {
 } as IPokemon;
 
 export const _default = () => (
-  <PokemonCard
-    pokemonName="test"
-    details={{
-      data: dataMock,
-      loading: boolean("loading", false),
-      error: text("error", undefined)
-    }}
-  />
+  <div style={{ width: "15em", height: "15em" }}>
+    <PokemonCard
+      pokemonName={text("pokemon name", "test")}
+      details={{
+        data: dataMock,
+        loading: boolean("loading", false),
+        error: text("error", undefined)
+      }}
+      onClick={action("onClick")}
+    />
+  </div>
 );

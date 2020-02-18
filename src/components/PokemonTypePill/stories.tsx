@@ -1,6 +1,6 @@
 import React from "react";
 import PokemonTypePill from "./index";
-import { select } from "@storybook/addon-knobs";
+import { select, boolean } from "@storybook/addon-knobs";
 
 export default {
   title: "PokemonTypePill",
@@ -8,6 +8,7 @@ export default {
 };
 export const _default = () => (
   <PokemonTypePill
+    compact={boolean('compact', false)}
     pokemonType={select(
       "pokemon type",
       {

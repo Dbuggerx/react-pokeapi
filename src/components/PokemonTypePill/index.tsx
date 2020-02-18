@@ -20,17 +20,19 @@ import {
   faCircle,
   faMagic,
   faQuestionCircle,
-  faMehBlank
+  faMehBlank,
+  faDotCircle
 } from "@fortawesome/free-solid-svg-icons";
 import "./style.scss";
 
 type Props = {
   pokemonType: string;
+  compact?: boolean;
 };
 
-const PokemonTypePill: React.FC<Props> = ({ pokemonType }) => {
+const PokemonTypePill: React.FC<Props> = ({ pokemonType, compact }) => {
   let icon: IconDefinition | null = null;
-  let classModifier = '';
+  let classModifier = "";
 
   switch (pokemonType) {
     case "fighting":
@@ -109,13 +111,22 @@ const PokemonTypePill: React.FC<Props> = ({ pokemonType }) => {
       icon = faMehBlank;
       classModifier = "pokemon-type-pill--shadow";
       break;
+    default:
+      icon = faDotCircle;
   }
   return (
-    <div className={`pokemon-type-pill ${classModifier}`}>
-      {icon && <div className="pokemon-type-pill__icon">
-        <FontAwesomeIcon icon={icon} />
-      </div>}
-      {pokemonType}
+    <div
+      className={`pokemon-type-pill ${
+        compact ? "pokemon-type-pill--compact" : ""
+      } ${classModifier}`}
+      title={compact ? pokemonType: undefined}
+    >
+      {icon && (
+        <div className="pokemon-type-pill__icon">
+          <FontAwesomeIcon icon={icon} />
+        </div>
+      )}
+      {!compact && pokemonType}
     </div>
   );
 };

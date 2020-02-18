@@ -10,9 +10,15 @@
   color: white;
   font-weight: bold;
 
+  --icon-margin: 0.3em;
+
   &__icon {
     display: inline-block;
-    margin-right: 0.3em;
+    margin-right: var(--icon-margin);
+  }
+
+  &--compact {
+    --icon-margin: 0;
   }
 
   &--fighting {

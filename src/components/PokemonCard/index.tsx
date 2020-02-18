@@ -23,7 +23,22 @@ const PokemonImage: React.FC<{
 export const PokemonCard: React.FC<Props> = props => {
   return (
     <section className="pokemon-card" onClick={props.onClick}>
-      <div className="pokemon-card__name">{props.pokemonName}</div>
+      <svg viewBox="0 0 50 50" className="pokemon-card__curved-text">
+        <defs>
+          <path
+            id="circlePath"
+            d="M 0, 25
+            a 25,25 0 1,1 50,0"
+          />
+        </defs>
+
+        <text textAnchor="middle">
+          <textPath xlinkHref="#circlePath" startOffset="50%">
+            {props.pokemonName}
+          </textPath>
+        </text>
+      </svg>
+
       <div className="pokemon-card__status">
         <ResourceState state={props.details} />
       </div>
@@ -32,7 +47,7 @@ export const PokemonCard: React.FC<Props> = props => {
       </div>
       <div className="pokemon-card__types">
         {props.details?.data?.types.map(t => (
-          <TypePill pokemonType={t.type.name} key={t.type.name} />
+          <TypePill compact pokemonType={t.type.name} key={t.type.name} />
         ))}
       </div>
     </section>
