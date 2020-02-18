@@ -10,17 +10,5 @@
     grid-auto-rows: var(--column-width);
     grid-template-columns: repeat(auto-fill, var(--column-width));
     justify-content: center;
-
-    // @media screen and (max-width: 1024px) {
-    //   --column-width: 25vw;
-    // }
-
-    // @media screen and (max-width: 768px) {
-    //   --column-width: 40vw;
-    // }
-
-    // @media screen and (max-width: 425px) {
-    //   --column-width: 80vw;
-    // }
   }
 }
