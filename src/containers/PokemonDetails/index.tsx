@@ -7,8 +7,6 @@ import TypePill from "../../components/PokemonTypePill";
 const PokemonDetails: React.FC = () => {
   hooks.usePokemonDataEffect();
   const pokemonData = hooks.usePokemonDataState();
-  const relevantTypes = pokemonData.data?.types.filter(t => t.type.name !== "normal");
-  const mainType = relevantTypes && relevantTypes[relevantTypes?.length - 1]?.type.name;
 
   return (
     <div>
