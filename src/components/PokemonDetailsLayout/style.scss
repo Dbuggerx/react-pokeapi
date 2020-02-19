@@ -70,7 +70,7 @@
     margin: -1em -2vmin;
     background: white;
     padding: 2em 0;
-    color: black
+    color: black;
   }
 
   &__types {
@@ -95,31 +95,40 @@
   &--black {
     --accent-color: black;
   }
+
   &--blue {
     --accent-color: #3a86ff;
   }
+
   &--brown {
     --accent-color: #a12727;
   }
+
   &--gray {
     --accent-color: #525252;
   }
+
   &--green {
     --accent-color: #0a810a;
   }
+
   &--pink {
     --accent-color: #ff8196;
   }
+
   &--purple {
     --accent-color: #800080;
   }
+
   &--red {
-    --accent-color: #ff0000;
+    --accent-color: #f00;
   }
+
   &--white {
-    --accent-color: #ffffff;
+    --accent-color: #fff;
     --accent-text: #2f2f2f;
   }
+
   &--yellow {
     --accent-color: #fffb10;
     --accent-text: #695f00;

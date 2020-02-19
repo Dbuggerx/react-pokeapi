@@ -21,9 +21,11 @@ const PokemonImage: React.FC<{
 };
 
 export const PokemonCard: React.FC<Props> = props => {
-  const backgroundImageUrl = props.details?.data?.sprites && Object.entries(props.details?.data?.sprites).filter(e => e[1])[0][1];
+  const backgroundImageUrl =
+    props.details?.data?.sprites &&
+    Object.entries(props.details?.data?.sprites).find(e => e[1])![1];
   return (
-    <section className="pokemon-card" onClick={props.onClick} >
+    <section className="pokemon-card" onClick={props.onClick}>
       <svg viewBox="0 0 50 50" className="pokemon-card__curved-text">
         <defs>
           <path
@@ -51,7 +53,10 @@ export const PokemonCard: React.FC<Props> = props => {
           <TypePill compact pokemonType={t.type.name} key={t.type.name} />
         ))}
       </div>
-      <div className="pokemon-card__background" style={{backgroundImage: `url(${backgroundImageUrl})`}}></div>
+      <div
+        className="pokemon-card__background"
+        style={{ backgroundImage: `url(${backgroundImageUrl})` }}
+      ></div>
     </section>
   );
 };

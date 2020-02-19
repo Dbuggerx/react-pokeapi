@@ -1,0 +1,17 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
+  "plugins": ["stylelint-scss", "stylelint-selector-bem-pattern"],
+  "rules": {
+    "scss/selector-no-redundant-nesting-selector": true,
+    "no-duplicate-selectors": true,
+    "scss/at-rule-no-unknown": true,
+    "at-rule-no-unknown": null,
+    "plugin/selector-bem-pattern": {
+      "preset": "bem",
+      "componentName": "(([a-z0-9]+(?!-$)-?)+)",
+      "componentSelectors": {
+        "initial": "^(?:%(?:[a-z]+-?)+)|(?:\\.{componentName}(?:(?:--(?:[a-z]+-?)+)?(?:__(?:[a-z]+-?)+(?:--(?:[a-z]+-?)+)?)?)\\b(?:\\[.+\\])?)+$"
+      }
+    }
+  }
+}
