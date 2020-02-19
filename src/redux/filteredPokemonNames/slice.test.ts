@@ -10,20 +10,14 @@ describe("filteredPokemonNames slice", () => {
 
       expect(reducer(undefined, actions.updateSuggestions("Bl"))).toEqual({
         name: "Bl",
-        suggestions: [
-          "Blacephalon",
-          "Blastoise",
-          "Blaziken",
-          "Blissey",
-          "Blitzle"
-        ]
+        suggestions: ["Blacephalon", "Blastoise", "Blaziken", "Blissey", "Blitzle"]
       });
     });
 
     test("without any parameter", () => {
       const resultingState = reducer(undefined, actions.updateSuggestions());
       expect(resultingState.name).toEqual("");
-      expect(resultingState.suggestions).toHaveLength(809);
+      expect(resultingState.suggestions).toHaveLength(0);
     });
   });
 });
