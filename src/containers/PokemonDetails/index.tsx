@@ -8,20 +8,22 @@ const PokemonDetails: React.FC = () => {
   hooks.usePokemonDataEffect();
   const pokemonData = hooks.usePokemonDataState();
 
+  const images =
+    pokemonData.data && Object.entries(pokemonData.data.sprites).filter(e => e[1]);
+
   return (
     <div>
       <ResourceState state={pokemonData} />
       {pokemonData.data && (
         <PokemonDetailsLayout
+          backgroundImageUrl={images && images[0][1]}
           pokemonName={pokemonData.data.name}
           pokemonId={pokemonData.data.id}
           images={
             <>
-              {Object.entries(pokemonData.data.sprites)
-                .filter(e => e[1])
-                .map(e => (
-                  <img src={e[1]} alt={e[0]} key={e[0]} />
-                ))}
+              {images?.map(e => (
+                <img src={e[1]} alt={e[0]} key={e[0]} />
+              ))}
             </>
           }
           color={pokemonData.species.data?.color.name}
@@ -46,7 +48,6 @@ const PokemonDetails: React.FC = () => {
                 Array.from(
                   pokemonData.species.data.flavor_text_entries
                     .filter(i => i.language.name === "en")
-                    .reverse() // the first values from the API seem (most of the times) to be more correct
                     // Remove linebreaks and invalid chars
                     .map(i => i.flavor_text.replace(/\r?\n|\r|\u000c/gm, " ")) // eslint-disable-line no-control-regex
                     .reduce(

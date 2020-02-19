@@ -3,9 +3,9 @@
   --accent-text: white;
 
   font-family: "Open Sans", sans-serif;
+  font-weight: 700;
   padding: 2vmin;
   margin: 2vmin;
-  background: white;
   overflow: hidden;
   display: grid;
   grid-template-columns: auto minmax(15vmax, max-content);
@@ -17,9 +17,29 @@
     "profile abilities stats";
   gap: 2em;
   border-radius: 1.5em;
-  box-shadow: 3px 3px 2px 3px rgba(0, 0, 0, 0.2);
   color: var(--accent-text);
+  position: relative;
+  border: solid 4px white;
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.2));
   background-color: var(--accent-color);
+  
+  ul {
+    list-style-type: circle;
+  }
+
+  &__background {
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 150%;
+    background-origin: padding-box;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    filter: blur(20px) opacity(0.65);
+  }
 
   &__abilities {
     grid-area: abilities;
@@ -49,7 +69,7 @@
     align-items: center;
     justify-content: space-between;
     font-size: 1.5em;
-    font-weight: 700;
+    font-weight: 800;
   }
 
   &__status {
@@ -83,7 +103,6 @@
   }
 
   &__section-title {
-    font-weight: 700;
     font-size: 1.5em;
     padding: 0 0.8em;
     border-radius: 1em;
@@ -109,7 +128,7 @@
   }
 
   &--green {
-    --accent-color: #0a810a;
+    --accent-color: #77c360;
   }
 
   &--pink {

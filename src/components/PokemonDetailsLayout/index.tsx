@@ -12,6 +12,7 @@ type Props = {
   profile: React.ReactElement;
   abilities: React.ReactElement;
   stats: React.ReactElement;
+  backgroundImageUrl: string | undefined;
 };
 
 export const PokemonDetailsLayout: React.FC<Props> = props => {
@@ -74,6 +75,10 @@ export const PokemonDetailsLayout: React.FC<Props> = props => {
         <div className="pokemon-details__section-title">Stats</div>
         {props.stats}
       </section>
+      <div
+        className="pokemon-details__background"
+        style={{ backgroundImage: `url(${props.backgroundImageUrl})` }}
+      ></div>
     </article>
   );
 };
