@@ -4,7 +4,7 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import "./style.scss";
 
 const LoadingSpinner: React.FC = () => (
-  <div className="loading-spinner">
+  <div className="loading-spinner" data-testid="loading">
     <FontAwesomeIcon icon={faSpinner} size="4x" />
   </div>
 );

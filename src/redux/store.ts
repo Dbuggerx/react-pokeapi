@@ -16,6 +16,7 @@ const store = configureStore({
   middleware: [epicMiddleware],
   // @ts-ignore
   devTools: {
+  // @ts-ignore
     stateSanitizer(state: AppState) {
       return {
         ...state,

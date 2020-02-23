@@ -17,7 +17,7 @@ const PokemonImage: React.FC<{
 }> = ({ images, alt }) => {
   if (!images) return null;
   const imageSrc = images.front_default || Object.entries(images).filter(e => e[1])[0][1];
-  return imageSrc && <img src={imageSrc} alt={alt} />;
+  return imageSrc && <img src={imageSrc} alt={alt} data-testid="pokemon-image" />;
 };
 
 export const PokemonCard: React.FC<Props> = props => {
@@ -25,7 +25,7 @@ export const PokemonCard: React.FC<Props> = props => {
     props.details?.data?.sprites &&
     Object.entries(props.details?.data?.sprites).find(e => e[1])![1];
   return (
-    <section className="pokemon-card" onClick={props.onClick}>
+    <section className="pokemon-card" onClick={props.onClick} data-testid="card">
       <svg viewBox="0 0 50 50" className="pokemon-card__curved-text">
         <defs>
           <path
@@ -34,14 +34,12 @@ export const PokemonCard: React.FC<Props> = props => {
             a 25,25 0 1,1 50,0"
           />
         </defs>
-
         <text textAnchor="middle">
-          <textPath xlinkHref="#circlePath" startOffset="50%">
+          <textPath xlinkHref="#circlePath" startOffset="50%" data-testid="pokemon-name">
             {props.pokemonName}
           </textPath>
         </text>
       </svg>
-
       <div className="pokemon-card__status">
         <ResourceState state={props.details} />
       </div>

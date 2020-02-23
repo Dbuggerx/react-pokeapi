@@ -1,4 +1,5 @@
 {
   "eslint.enable": true,
-  "stylelint.packageManager": "yarn"
+  "stylelint.packageManager": "yarn",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
