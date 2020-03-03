@@ -11,14 +11,9 @@ export function withRedux(
   },
   initialState: any
 ) {
-  const dispatchSpy = jest.fn();
-  const reducerSpy: Reducer = (state, action) => {
-    dispatchSpy(action);
-    return {};
-  };
-  const store = createStore(combineReducers({ ...reducer, reducerSpy }), initialState);
-  // Clear redux internal dispatches
-  dispatchSpy.mockClear();
+  const store = createStore(combineReducers({ ...reducer }), initialState);
+  const dispatchSpy = jest.spyOn(store, "dispatch");
+
   return {
     result: <Provider store={store}>{ui}</Provider>,
     store,

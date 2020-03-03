@@ -9,7 +9,7 @@ import { withRedux, withRouter } from "../testHelpers";
 describe("PokemonList container", () => {
   let renderResult: RenderResult | undefined = undefined;
   let routerValuesResult: any;
-  let dispatchSpy: jest.Mock | undefined = undefined;
+  let dispatchSpy: jest.SpyInstance | undefined = undefined;
 
   beforeEach(() => {
     const initialState: Partial<AppState> = {
