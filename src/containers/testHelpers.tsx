@@ -1,8 +1,8 @@
 import React from "react";
-import { Reducer, combineReducers } from "@reduxjs/toolkit";
-import { createStore } from "redux";
+import { Reducer } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { MemoryRouter, Route } from "react-router-dom";
+import buildStore from "../redux/store";
 
 export function withRedux(
   ui: React.ReactElement,
@@ -11,7 +11,7 @@ export function withRedux(
   },
   initialState: any
 ) {
-  const store = createStore(combineReducers({ ...reducer }), initialState);
+  const store = buildStore(initialState, true);
   const dispatchSpy = jest.spyOn(store, "dispatch");
 
   return {
