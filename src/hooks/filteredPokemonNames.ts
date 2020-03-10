@@ -29,7 +29,8 @@ export function useChangeRouteCallback() {
   const filterState = useTypedSelector(state => state.filteredPokemonNames);
 
   return () => {
-    history.push(pokemonRoute.generate({ pokemonName: filterState.name }));
+    if (filterState.name.trim().length > 0)
+      history.push(pokemonRoute.generate({ pokemonName: filterState.name }));
   };
 }
 
