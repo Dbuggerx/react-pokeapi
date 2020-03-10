@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.scss";
 
 type Props = {
   selectedName: string;
@@ -7,8 +8,6 @@ type Props = {
   onChoose: () => void;
 };
 
-//Array.from(document.querySelectorAll('option')).map(o => o.value)
-
 const PokemonNameSearch: React.FC<Props> = props => {
   return (
     <form
@@ -16,6 +15,7 @@ const PokemonNameSearch: React.FC<Props> = props => {
         props.onChoose();
         evt.preventDefault();
       }}
+      className="search"
     >
       <input
         type="search"
@@ -25,13 +25,16 @@ const PokemonNameSearch: React.FC<Props> = props => {
         onChange={evt => {
           props.onType(evt.target.value);
         }}
+        className="search__input"
       />
       <datalist id="pokemonNames">
         {props.suggestions.map(r => (
           <option key={r} value={r} />
         ))}
       </datalist>
-      <button type="submit">Go</button>
+      <button type="submit" className="search__button">
+        Go
+      </button>
     </form>
   );
 };

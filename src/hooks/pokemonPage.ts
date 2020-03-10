@@ -31,18 +31,20 @@ export function useFetchPage() {
 
   return {
     fetchPrevPage: () => {
-      dispatch(
-        actions.fetchPage({
-          url: pageState.data!.previous
-        })
-      );
+      if (pageState.data?.previous)
+        dispatch(
+          actions.fetchPage({
+            url: pageState.data.previous
+          })
+        );
     },
     fetchNextPage: () => {
-      dispatch(
-        actions.fetchPage({
-          url: pageState.data!.next
-        })
-      );
+      if (pageState.data?.next)
+        dispatch(
+          actions.fetchPage({
+            url: pageState.data.next
+          })
+        );
     }
   };
 }

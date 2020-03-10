@@ -18,11 +18,11 @@
 
   &__button-left,
   &__button-right {
-    color: orangered;
+    color: var(--accent-color);
     cursor: pointer;
 
     &:hover {
-      color: orange;
+      color: var(--accent-color-highlight);
     }
   }
 }

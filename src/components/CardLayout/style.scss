@@ -1,14 +1,10 @@
 .card-layout {
-  overflow: auto;
+  --column-width: minmax(15em, auto);
 
-  &__grid {
-    --column-width: minmax(15em, auto);
-
-    padding: 2em;
-    display: grid;
-    gap: 3.5em;
-    grid-auto-rows: var(--column-width);
-    grid-template-columns: repeat(auto-fill, var(--column-width));
-    justify-content: center;
-  }
+  padding: 2em;
+  display: grid;
+  gap: 3.5em;
+  grid-auto-rows: var(--column-width);
+  grid-template-columns: repeat(auto-fill, var(--column-width));
+  justify-content: center;
 }

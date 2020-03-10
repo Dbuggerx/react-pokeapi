@@ -2,11 +2,11 @@
   font-family: sans-serif;
   display: flex;
   flex-flow: column nowrap;
-  height: 100%;
+  min-height: 100vh;
 }
 
 body {
-  background: #d1e5ff;
+  background: url(./background.jpg) #d1e5ff;
   font-family: "Open Sans", sans-serif;
 }
 
@@ -15,5 +15,10 @@ body,
 #root {
   margin: 0;
   padding: 0;
-  height: 100%;
+}
+
+:root {
+  --accent-color: #346cce;
+  --accent-color-highlight: #6091e7;
+  --bg-color: #232f3e;
 }

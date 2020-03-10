@@ -4,6 +4,7 @@ import CardLayout from "../../components/CardLayout";
 import PokemonCard from "../../components/PokemonCard";
 import Pagination from "../../components/Pagination";
 import ResourceState from "../../components/ResourceState";
+import Footer from "../../components/Footer";
 
 const PokemonListContainer: React.FC = () => {
   hooks.useFetchInitialPageEffect();
@@ -27,12 +28,14 @@ const PokemonListContainer: React.FC = () => {
             />
           ))}
       </CardLayout>
-      <Pagination
-        currentPage={state.currentPage}
-        pageCount={state.pageCount}
-        onPrev={changePage.fetchPrevPage}
-        onNext={changePage.fetchNextPage}
-      />
+      <Footer>
+        <Pagination
+          currentPage={state.currentPage}
+          pageCount={state.pageCount}
+          onPrev={changePage.fetchPrevPage}
+          onNext={changePage.fetchNextPage}
+        />
+      </Footer>
     </>
   );
 };

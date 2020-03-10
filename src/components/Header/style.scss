@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  position: sticky;
+  top: -1px;
+  margin: 0;
+  z-index: 1;
+  background: url(../../background.jpg) #d1e5ff;
+
+  &__logo {
+    height: 8em;
+    width: 20em;
+    margin-top: 1em;
+  }
+
+  &__search {
+    margin: 1em 0;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+
+  &__back-button {
+    color: var(--accent-color) !important;
+    margin-right: 0.5em;
+    cursor: pointer;
+  }
+}

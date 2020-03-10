@@ -1,0 +1,17 @@
+.footer {
+  font-family: "Open Sans", sans-serif;
+  background-color: var(--bg-color);
+  color: white;
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  padding: 0 1em;
+
+  &__info {
+    position: absolute;
+    right: 1.5em;
+    top: 1.3em;
+    color: #ccc;
+    text-align: right;
+  }
+}
