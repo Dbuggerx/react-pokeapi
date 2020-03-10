@@ -2,7 +2,7 @@ import { TestScheduler } from "rxjs/testing";
 import epics from "./epics";
 import { actions } from "./index";
 import { ActionsObservable } from "redux-observable";
-import { IPokemonSpecies } from "pokeapi-typescript";
+import { IPokemonSpecies, IPokemonSprites } from "pokeapi-typescript";
 
 describe("pokemonData epics", () => {
   let testScheduler: TestScheduler;
@@ -29,7 +29,7 @@ describe("pokemonData epics", () => {
         held_items: [],
         location_area_encounters: "",
         moves: [],
-        sprites: null,
+        sprites: {} as IPokemonSprites,
         species: {
           name: "species name",
           url: "species-url"
@@ -61,6 +61,7 @@ describe("pokemonData epics", () => {
                 : undefined
           };
 
+          // @ts-ignore
           const output$ = epics(action$, null, dependencies);
 
           expectObservable(output$).toBe(marbles.output, {
@@ -87,6 +88,7 @@ describe("pokemonData epics", () => {
                 : undefined
           };
 
+          // @ts-ignore
           const output$ = epics(action$, null, dependencies);
 
           expectObservable(output$).toBe(marbles.output, {
@@ -111,13 +113,13 @@ describe("pokemonData epics", () => {
           })
         );
 
-        const state$ = null;
         const dependencies = {
           observableFetch: () =>
             cold<Error>(marbles.apiResult, undefined, new Error("testing error"))
         };
 
-        const output$ = epics(action$, state$, dependencies);
+        // @ts-ignore
+        const output$ = epics(action$, null, dependencies);
 
         expectObservable(output$).toBe(marbles.output, {
           a: actions.setError("testing error")
@@ -154,6 +156,7 @@ describe("pokemonData epics", () => {
               : undefined
         };
 
+        // @ts-ignore
         const output$ = epics(action$, null, dependencies);
 
         expectObservable(output$).toBe(marbles.output, {
@@ -176,13 +179,13 @@ describe("pokemonData epics", () => {
           })
         );
 
-        const state$ = null;
         const dependencies = {
           observableFetch: () =>
             cold<Error>(marbles.apiResult, undefined, new Error("testing error"))
         };
 
-        const output$ = epics(action$, state$, dependencies);
+        // @ts-ignore
+        const output$ = epics(action$, null, dependencies);
 
         expectObservable(output$).toBe(marbles.output, {
           a: actions.setSpeciesError("testing error")

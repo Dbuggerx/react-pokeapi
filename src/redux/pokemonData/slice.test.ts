@@ -1,5 +1,10 @@
 import reducer, { actions } from "./index";
-import { IPokemon, IPokemonSpecies } from "pokeapi-typescript";
+import {
+  IPokemon,
+  IPokemonSpecies,
+  IPokemonSprites,
+  INamedApiResource
+} from "pokeapi-typescript";
 
 describe("pokemonData slice", () => {
   it('updates state for "fetchData" action', () => {
@@ -10,7 +15,12 @@ describe("pokemonData slice", () => {
       species: { error: "test", loading: false, data: undefined }
     };
 
-    const resultingState = reducer(currentState, actions.fetchData());
+    const resultingState = reducer(
+      currentState,
+      actions.fetchData({
+        name: "test"
+      })
+    );
 
     expect(resultingState).toEqual({
       loading: true,
@@ -31,7 +41,7 @@ describe("pokemonData slice", () => {
       species: { error: "test", loading: false, data: undefined }
     };
 
-    const resultingState = reducer(currentState, actions.fetchSpecies());
+    const resultingState = reducer(currentState, actions.fetchSpecies("test"));
 
     expect(resultingState).toEqual({
       ...currentState,
@@ -58,8 +68,8 @@ describe("pokemonData slice", () => {
       held_items: [],
       location_area_encounters: "",
       moves: [],
-      sprites: null,
-      species: null,
+      sprites: {} as IPokemonSprites,
+      species: {} as INamedApiResource<IPokemonSpecies>,
       stats: [],
       types: []
     };
@@ -114,8 +124,8 @@ describe("pokemonData slice", () => {
         held_items: [],
         location_area_encounters: "",
         moves: [],
-        sprites: null,
-        species: null,
+        sprites: {} as IPokemonSprites,
+        species: {} as INamedApiResource<IPokemonSpecies>,
         stats: [],
         types: []
       },
@@ -154,8 +164,8 @@ describe("pokemonData slice", () => {
         held_items: [],
         location_area_encounters: "",
         moves: [],
-        sprites: null,
-        species: null,
+        sprites: {} as IPokemonSprites,
+        species: {} as INamedApiResource<IPokemonSpecies>,
         stats: [],
         types: []
       },

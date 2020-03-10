@@ -1,9 +1,15 @@
-import { TestScheduler } from 'rxjs/testing';
-import epics from './epics';
-import { actions } from './index';
-import { ActionsObservable } from 'redux-observable';
+import { TestScheduler } from "rxjs/testing";
+import epics from "./epics";
+import { actions } from "./index";
+import { ActionsObservable } from "redux-observable";
+import {
+  IPokemon,
+  IPokemonSprites,
+  INamedApiResource,
+  IPokemonSpecies
+} from "pokeapi-typescript";
 
-describe('pokemonPage epics', () => {
+describe("pokemonPage epics", () => {
   let testScheduler: TestScheduler;
 
   beforeEach(() => {
@@ -13,30 +19,30 @@ describe('pokemonPage epics', () => {
   });
 
   describe('from "fetchPage" to "pageFetched" and "fetchDetails"', () => {
-    describe('chains actions', () => {
+    describe("chains actions", () => {
       const apiResult = {
         count: 6,
-        next: 'next-url',
-        previous: 'prev-url',
+        next: "next-url",
+        previous: "prev-url",
         results: [
           {
-            name: 'aaa',
-            url: 'aaa-url'
+            name: "aaa",
+            url: "aaa-url"
           },
           {
-            name: 'bbb',
-            url: 'bbb-url'
+            name: "bbb",
+            url: "bbb-url"
           }
         ]
       };
 
       const marbles = {
-        inputAction: '-a-------',
-        apiResult: '  --a|     ',
-        output: '     ---(abc)-'
+        inputAction: "-a-------",
+        apiResult: "  --a|     ",
+        output: "     ---(abc)-"
       };
 
-      test('for default url', () => {
+      test("for default url", () => {
         testScheduler.run(({ hot, cold, expectObservable }) => {
           const action$ = new ActionsObservable(
             hot(marbles.inputAction, {
@@ -51,22 +57,23 @@ describe('pokemonPage epics', () => {
               })
           };
 
+          // @ts-ignore
           const output$ = epics(action$, null, dependencies);
 
           expectObservable(output$).toBe(marbles.output, {
             a: actions.pageFetched({ page: apiResult, size: 111, offset: 222 }),
-            b: actions.fetchDetails('aaa'),
-            c: actions.fetchDetails('bbb')
+            b: actions.fetchDetails("aaa"),
+            c: actions.fetchDetails("bbb")
           });
         });
       });
 
-      test('for provided url', () => {
+      test("for provided url", () => {
         testScheduler.run(({ hot, cold, expectObservable }) => {
           const action$ = new ActionsObservable(
             hot(marbles.inputAction, {
               a: actions.fetchPage({
-                url: 'https://pokeapi.co/api/v2/pokemon?offset=20&limit=40'
+                url: "https://pokeapi.co/api/v2/pokemon?offset=20&limit=40"
               })
             })
           );
@@ -78,23 +85,24 @@ describe('pokemonPage epics', () => {
               })
           };
 
+          // @ts-ignore
           const output$ = epics(action$, null, dependencies);
 
           expectObservable(output$).toBe(marbles.output, {
             a: actions.pageFetched({ page: apiResult, size: 40, offset: 20 }),
-            b: actions.fetchDetails('aaa'),
-            c: actions.fetchDetails('bbb')
+            b: actions.fetchDetails("aaa"),
+            c: actions.fetchDetails("bbb")
           });
         });
       });
     });
 
-    it('handles error', () => {
+    it("handles error", () => {
       testScheduler.run(({ hot, cold, expectObservable }) => {
         const marbles = {
-          inputAction: '-a---',
-          apiResult: '  --#  ',
-          output: '     ---a-'
+          inputAction: "-a---",
+          apiResult: "  --#  ",
+          output: "     ---a-"
         };
 
         const action$ = new ActionsObservable(
@@ -103,26 +111,26 @@ describe('pokemonPage epics', () => {
           })
         );
 
-        const state$ = null;
         const dependencies = {
           observableFetch: () =>
-            cold<Error>(marbles.apiResult, undefined, new Error('testing error'))
+            cold<Error>(marbles.apiResult, undefined, new Error("testing error"))
         };
 
-        const output$ = epics(action$, state$, dependencies);
+        // @ts-ignore
+        const output$ = epics(action$, null, dependencies);
 
         expectObservable(output$).toBe(marbles.output, {
-          a: actions.setError('testing error')
+          a: actions.setError("testing error")
         });
       });
     });
   });
 
   describe('from "fetchDetails" to "detailsFetched"', () => {
-    it('chains actions', () => {
-      const apiResult = {
+    it("chains actions", () => {
+      const apiResult: IPokemon = {
         id: 123,
-        name: 'test',
+        name: "test",
         base_experience: 1,
         height: 2,
         is_default: false,
@@ -132,73 +140,74 @@ describe('pokemonPage epics', () => {
         forms: [],
         game_indices: [],
         held_items: [],
-        location_area_encounters: '',
+        location_area_encounters: "",
         moves: [],
-        sprites: null,
-        species: null,
+        sprites: {} as IPokemonSprites,
+        species: {} as INamedApiResource<IPokemonSpecies>,
         stats: [],
         types: []
       };
 
       const marbles = {
-        inputAction: '-a---',
-        apiResult: '  --a| ',
-        output: '     ---a-'
+        inputAction: "-a---",
+        apiResult: "  --a| ",
+        output: "     ---a-"
       };
 
       testScheduler.run(({ hot, cold, expectObservable }) => {
         const action$ = new ActionsObservable(
           hot(marbles.inputAction, {
-            a: actions.fetchDetails('Test')
+            a: actions.fetchDetails("Test")
           })
         );
 
         const dependencies = {
           observableFetch: (url: string) =>
-            url.includes('test')
+            url.includes("test")
               ? cold(marbles.apiResult, {
                   a: apiResult
                 })
               : undefined
         };
 
+        // @ts-ignore
         const output$ = epics(action$, null, dependencies);
 
         expectObservable(output$).toBe(marbles.output, {
           a: actions.detailsFetched({
-            pokemonName: 'Test',
+            pokemonName: "Test",
             data: apiResult
           })
         });
       });
     });
 
-    it('handles error', () => {
+    it("handles error", () => {
       testScheduler.run(({ hot, cold, expectObservable }) => {
         const marbles = {
-          inputAction: '-a---',
-          apiResult: '  --#  ',
-          output: '     ---a-'
+          inputAction: "-a---",
+          apiResult: "  --#  ",
+          output: "     ---a-"
         };
 
         const action$ = new ActionsObservable(
           hot(marbles.inputAction, {
-            a: actions.fetchDetails('Test')
+            a: actions.fetchDetails("Test")
           })
         );
 
-        const state$ = null;
         const dependencies = {
           observableFetch: () =>
-            cold<Error>(marbles.apiResult, undefined, new Error('testing error'))
+            cold<Error>(marbles.apiResult, undefined, new Error("testing error"))
         };
 
-        const output$ = epics(action$, state$, dependencies);
+        // @ts-ignore
+        const output$ = epics(action$, null, dependencies);
 
         expectObservable(output$).toBe(marbles.output, {
           a: actions.setDetailsError({
-            pokemonName: 'Test',
-            error: 'testing error'
+            pokemonName: "Test",
+            error: "testing error"
           })
         });
       });

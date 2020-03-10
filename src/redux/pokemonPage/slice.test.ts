@@ -1,5 +1,11 @@
 import reducer, { actions } from "./index";
-import { INamedApiResourceList, IPokemon } from "pokeapi-typescript";
+import {
+  INamedApiResourceList,
+  IPokemon,
+  IPokemonSprites,
+  INamedApiResource,
+  IPokemonSpecies
+} from "pokeapi-typescript";
 import { InitialState } from "./slice";
 import { LoadableResource } from "../types";
 
@@ -22,7 +28,13 @@ describe("pokemonPage slice", () => {
         ])
       };
 
-      const resultingState = reducer(currentState, actions.fetchPage());
+      const resultingState = reducer(
+        currentState,
+        actions.fetchPage({
+          size: 10,
+          offset: 10
+        })
+      );
 
       expect(resultingState.details).not.toBe(currentState.details);
 
@@ -161,8 +173,8 @@ describe("pokemonPage slice", () => {
         held_items: [],
         location_area_encounters: "",
         moves: [],
-        sprites: null,
-        species: null,
+        sprites: {} as IPokemonSprites,
+        species: {} as INamedApiResource<IPokemonSpecies>,
         stats: [],
         types: []
       };
