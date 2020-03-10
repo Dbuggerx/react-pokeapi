@@ -14,4 +14,13 @@
     color: #ccc;
     text-align: right;
   }
+
+  @media (max-width: 625px) {
+    .footer__info {
+      position: static;
+      text-align: center;
+      display: block;
+      padding-bottom: 1em;
+    }
+  }
 }
