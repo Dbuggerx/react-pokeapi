@@ -21,7 +21,7 @@ const PokemonListContainer: React.FC = () => {
             <PokemonCard
               key={r.name}
               pokemonName={r.name}
-              details={state.details.get(r.name)}
+              details={state.details[r.name]}
               onClick={() => {
                 goToDetails(r.name);
               }}

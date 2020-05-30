@@ -5,7 +5,7 @@ import { LoadableResource } from "../types";
 export type InitialState = LoadableResource<INamedApiResourceList<IPokemon>> & {
   pageCount: number;
   currentPage: number;
-  details: Map<string, LoadableResource<IPokemon>>;
+  details: { [key: string]: LoadableResource<IPokemon> | undefined };
 };
 
 const initialState: InitialState = {
@@ -14,7 +14,7 @@ const initialState: InitialState = {
   pageCount: 0,
   currentPage: 0,
   data: undefined,
-  details: new Map<string, LoadableResource<IPokemon>>()
+  details: {},
 };
 
 export default createSlice({
@@ -28,7 +28,7 @@ export default createSlice({
       state.loading = true;
       state.data = undefined;
       state.error = undefined;
-      state.details = new Map<string, LoadableResource<IPokemon>>();
+      state.details = {};
     },
     pageFetched: (
       state,
@@ -52,43 +52,31 @@ export default createSlice({
       state.error = action.payload;
     },
     fetchDetails: (state, action: PayloadAction<string>) => {
-      const newDetails = new Map(state.details);
-
-      newDetails.set(action.payload, {
+      state.details[action.payload] = {
         loading: true,
         error: undefined,
-        data: undefined
-      });
-
-      state.details = newDetails;
+        data: undefined,
+      };
     },
     setDetailsError: (
       state,
       action: PayloadAction<{ pokemonName: string; error: string }>
     ) => {
-      const newDetails = new Map(state.details);
-
-      newDetails.set(action.payload.pokemonName, {
+      state.details[action.payload.pokemonName] = {
         loading: false,
         error: action.payload.error,
-        data: undefined
-      });
-
-      state.details = newDetails;
+        data: undefined,
+      };
     },
     detailsFetched: (
       state,
       action: PayloadAction<{ pokemonName: string; data: IPokemon }>
     ) => {
-      const newDetails = new Map(state.details);
-
-      newDetails.set(action.payload.pokemonName, {
+      state.details[action.payload.pokemonName] = {
         loading: false,
         error: undefined,
-        data: action.payload.data
-      });
-
-      state.details = newDetails;
-    }
-  }
+        data: action.payload.data,
+      };
+    },
+  },
 });

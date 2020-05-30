@@ -74,6 +74,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:5.3.19"
       ],
       [
+        "@testing-library/dom",
+        "npm:7.7.0"
+      ],
+      [
         "@testing-library/jest-dom",
         "npm:5.9.0"
       ],
@@ -224,6 +228,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@storybook/addons", "npm:5.3.19"],
             ["@storybook/preset-create-react-app", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:3.0.0"],
             ["@storybook/react", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:5.3.19"],
+            ["@testing-library/dom", "npm:7.7.0"],
             ["@testing-library/jest-dom", "npm:5.9.0"],
             ["@testing-library/react", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:10.0.4"],
             ["@testing-library/user-event", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:10.4.0"],
@@ -5580,7 +5585,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@testing-library/user-event", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:10.4.0"],
             ["@babel/runtime", "npm:7.10.2"],
-            ["@testing-library/dom", null]
+            ["@testing-library/dom", "npm:7.7.0"]
           ],
           "packagePeers": [
             "@testing-library/dom"
@@ -20099,6 +20104,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@storybook/addons", "npm:5.3.19"],
             ["@storybook/preset-create-react-app", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:3.0.0"],
             ["@storybook/react", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:5.3.19"],
+            ["@testing-library/dom", "npm:7.7.0"],
             ["@testing-library/jest-dom", "npm:5.9.0"],
             ["@testing-library/react", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:10.0.4"],
             ["@testing-library/user-event", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:10.4.0"],

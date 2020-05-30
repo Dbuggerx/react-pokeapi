@@ -3,5 +3,9 @@
   "stylelint.packageManager": "yarn",
   "typescript.tsdk": ".vscode/pnpify/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "stylelint.stylelintPath": ".vscode/pnpify/stylelint/lib/index.js"
+  "stylelint.stylelintPath": ".vscode/pnpify/stylelint/lib/index.js",
+  "jest.pathToJest": "yarn test",
+  "npm.packageManager": "yarn",
+  "prettier.arrowParens": "avoid",
+  "prettier.trailingComma": "none"
 }

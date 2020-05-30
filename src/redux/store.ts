@@ -3,7 +3,6 @@ import { createEpicMiddleware } from "redux-observable";
 import rootReducer from "./rootReducer";
 import rootEpic from "./rootEpic";
 import observableFetch from "./observableFetch";
-import { AppState } from "./types";
 
 export default function buildStore(
   preloadedState: Parameters<typeof configureStore>[0]["preloadedState"] = undefined,
@@ -20,7 +19,7 @@ export default function buildStore(
       ? [epicMiddleware]
       : [
           ...getDefaultMiddleware({
-            immutableCheck: true,
+            immutableCheck: false,
             serializableCheck: false,
             thunk: false
           }),
@@ -30,20 +29,7 @@ export default function buildStore(
   const store = configureStore({
     reducer: rootReducer,
     middleware: disableMiddlewares ? [] : middlewares,
-    preloadedState,
-    // @ts-ignore
-    devTools: {
-      // @ts-ignore
-      stateSanitizer(state: AppState) {
-        return {
-          ...state,
-          pokemonPage: {
-            ...state.pokemonPage,
-            details: Array.from(state.pokemonPage.details.entries())
-          }
-        };
-      }
-    }
+    preloadedState
   });
 
   if (!disableMiddlewares) epicMiddleware.run(rootEpic);
