@@ -1,4 +1,5 @@
 .footer {
+  flex: 0;
   font-family: "Open Sans", sans-serif;
   background-color: var(--bg-color);
   color: white;
@@ -9,10 +10,10 @@
 
   &__info {
     position: absolute;
-    right: 1.5em;
+    left: var(--layout-padding);
     top: 1.3em;
     color: #ccc;
-    text-align: right;
+    text-align: left;
   }
 
   @media (max-width: 625px) {

@@ -1,17 +1,18 @@
 .header {
+  flex: 0;
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row nowrap;
   align-items: center;
+  justify-content: space-between;
   position: sticky;
   top: -1px;
   margin: 0;
-  z-index: 1;
-  background: url(../../background.jpg) #d1e5ff;
+  padding: 0 var(--layout-padding);
 
   &__logo {
-    height: 8em;
-    width: 20em;
+    width: 15em;
     margin-top: 1em;
+    margin-right: 2em;
   }
 
   &__search {

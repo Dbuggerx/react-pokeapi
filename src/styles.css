@@ -3,6 +3,7 @@
   display: flex;
   flex-flow: column nowrap;
   min-height: 100vh;
+  max-height: 100vh;
 }
 
 body {
@@ -17,8 +18,26 @@ body,
   padding: 0;
 }
 
+::-webkit-scrollbar {
+  width: 0.8em;
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 15px;
+}
+
 :root {
   --accent-color: #346cce;
   --accent-color-highlight: #6091e7;
   --bg-color: #232f3e;
+  --layout-padding: 4vmin;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color-highlight);
 }
