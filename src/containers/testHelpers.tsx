@@ -17,14 +17,14 @@ export function withRedux(
   return {
     result: <Provider store={store}>{ui}</Provider>,
     store,
-    dispatchSpy
+    dispatchSpy,
   };
 }
 
 export function withRouter(ui: React.ReactElement) {
   const routerValues: any = {
     history: undefined,
-    location: undefined
+    location: undefined,
   };
 
   const result = (
