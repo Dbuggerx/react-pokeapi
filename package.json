@@ -62,7 +62,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "lint-styles": "stylelint ./src/**/*.scss --config ./.stylelintrc.json"
+    "lint-styles": "stylelint ./src/**/*.scss --config ./.stylelintrc.json",
+    "audit": "npm install --package-lock-only && npm audit"
   },
   "browserslist": [
     ">0.2%",
