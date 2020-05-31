@@ -32,7 +32,7 @@
     border: none;
     margin-left: 0.5em;
     background-color: var(--accent-color);
-    color: white;
+    color: var(--accent-text-color);
 
     &:hover {
       background-color: var(--accent-color-highlight);

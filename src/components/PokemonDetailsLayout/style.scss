@@ -1,7 +1,4 @@
 .pokemon-details {
-  --accent-color: #b1b1b1;
-  --accent-text: white;
-
   flex: 0;
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
@@ -20,7 +17,7 @@
       "profile abilities stats" max-content / auto auto minmax(15vmax, max-content);
     gap: 2em;
     border-radius: 1.5em;
-    color: var(--accent-text);
+    color: var(--accent-text-color);
     position: relative;
     border: solid 4px white;
     filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.2));
@@ -121,50 +118,50 @@
     font-size: 1.5em;
     padding: 0 0.8em;
     border-radius: 1em;
-    background-color: var(--accent-text);
+    background-color: var(--accent-text-color);
     color: var(--accent-color);
     opacity: 0.8;
   }
 
-  &--black {
-    --accent-color: black;
-  }
+  // &--black {
+  //   --accent-color: black;
+  // }
 
-  &--blue {
-    --accent-color: #3a86ff;
-  }
+  // &--blue {
+  //   --accent-color: #3a86ff;
+  // }
 
-  &--brown {
-    --accent-color: #a12727;
-  }
+  // &--brown {
+  //   --accent-color: #a12727;
+  // }
 
-  &--gray {
-    --accent-color: #525252;
-  }
+  // &--gray {
+  //   --accent-color: #525252;
+  // }
 
-  &--green {
-    --accent-color: #77c360;
-  }
+  // &--green {
+  //   --accent-color: #77c360;
+  // }
 
-  &--pink {
-    --accent-color: #ff8196;
-  }
+  // &--pink {
+  //   --accent-color: #ff8196;
+  // }
 
-  &--purple {
-    --accent-color: #800080;
-  }
+  // &--purple {
+  //   --accent-color: #800080;
+  // }
 
-  &--red {
-    --accent-color: #f00;
-  }
+  // &--red {
+  //   --accent-color: #f00;
+  // }
 
-  &--white {
-    --accent-color: #fff;
-    --accent-text: #2f2f2f;
-  }
+  // &--white {
+  //   --accent-color: #fff;
+  //   --accent-text: #2f2f2f;
+  // }
 
-  &--yellow {
-    --accent-color: #fffb10;
-    --accent-text: #695f00;
-  }
+  // &--yellow {
+  //   --accent-color: #fffb10;
+  //   --accent-text: #695f00;
+  // }
 }

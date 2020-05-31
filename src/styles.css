@@ -1,8 +1,8 @@
 .App {
   display: flex;
   flex-flow: column nowrap;
-  min-height: 100vh;
-  max-height: 100vh;
+  min-height: 100%;
+  max-height: 100%;
   background: url(./background.jpg) #d1e5ff;
 }
 
@@ -15,6 +15,7 @@ body,
 #root {
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 #root {
@@ -37,6 +38,7 @@ body,
 
 :root {
   --accent-color: #346cce;
+  --accent-text-color: #fff;
   --accent-color-highlight: #6091e7;
   --bg-color: #232f3e;
   --layout-padding: 4vmin;

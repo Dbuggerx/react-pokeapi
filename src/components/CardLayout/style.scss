@@ -2,7 +2,7 @@
   --column-width: minmax(15em, auto);
 
   padding: var(--layout-padding);
-  flex: 0 1;
+  flex: 1;
   overflow: auto;
 
   &__content {
