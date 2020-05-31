@@ -1,3 +1,5 @@
+![CI](https://github.com/Dbuggerx/react-pokeapi/workflows/CI/badge.svg?branch=master)
+
 # Features
 
 - Retrieves data from the [Pokémon REST API](https://github.com/PokeAPI/pokeapi);
