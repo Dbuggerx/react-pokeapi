@@ -7,10 +7,10 @@ name: CI
 on:
   push:
     branches:
-    - master
+      - master
   pull_request:
     branches:
-    - master
+      - master
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -21,10 +21,12 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Install dependencies and test 🔧 
-      - uses: actions/checkout@v2
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
         with:
-            persist-credentials: false
+          persist-credentials: false
+          
+      - name: Test 🔧 
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
