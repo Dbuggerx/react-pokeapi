@@ -1,10 +1,19 @@
 .card-layout {
   --column-width: minmax(15em, auto);
 
-  padding: 2em;
-  display: grid;
-  gap: 3.5em;
-  grid-auto-rows: var(--column-width);
-  grid-template-columns: repeat(auto-fill, var(--column-width));
-  justify-content: center;
+  padding: var(--layout-padding);
+  flex: 0 1;
+  overflow: auto;
+
+  &__content {
+    display: grid;
+    gap: 3em;
+    grid-auto-rows: var(--column-width);
+    grid-template-columns: repeat(auto-fill, var(--column-width));
+    justify-content: space-between;
+
+    @media (max-width: 625px) {
+      justify-content: center;
+    }
+  }
 }

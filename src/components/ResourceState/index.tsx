@@ -1,9 +1,9 @@
-import React from "react";
+import React, { FC } from "react";
 import { LoadableResource } from "../../redux/types";
 import ErrorMessage from "../ErrorMessage";
 import LoadingSpinner from "../LoadingSpinner";
 
-const ResourceState: React.FC<{ state: LoadableResource<unknown> | undefined }> = ({
+const ResourceState: FC<{ state: LoadableResource<unknown> | undefined }> = ({
   state
 }) => {
   if (!state) return <ErrorMessage message="No data" />;

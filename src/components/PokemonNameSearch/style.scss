@@ -18,6 +18,7 @@
     position: relative;
     transition: border-color;
     width: 100%;
+    min-width: 35vw;
     outline: none;
 
     &:focus {
@@ -33,7 +34,7 @@
     background-color: var(--accent-color);
     color: white;
 
-    &:active {
+    &:hover {
       background-color: var(--accent-color-highlight);
     }
   }

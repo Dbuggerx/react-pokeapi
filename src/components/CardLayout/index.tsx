@@ -1,13 +1,15 @@
-import React from "react";
+import React, { FC } from "react";
 import "./style.scss";
 
-export const CardLayout: React.FC = ({ children }) => {
+const CardLayout: FC = ({ children }) => {
   return (
-    <article className="card-layout">
-      {React.Children.map(children, child => (
-        <>{child}</>
-      ))}
-    </article>
+    <div className="card-layout">
+      <article className="card-layout__content">
+        {React.Children.map(children, child => (
+          <>{child}</>
+        ))}
+      </article>
+    </div>
   );
 };
 

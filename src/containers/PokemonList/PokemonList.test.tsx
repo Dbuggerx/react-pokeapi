@@ -22,10 +22,10 @@ describe("PokemonList container", () => {
           count: 10,
           previous: "the-url-for-previous-page",
           next: "the-url-for-next-page",
-          results: [{ name: "aaa", url: "http://aaa.com" }]
+          results: [{ name: "aaa", url: "http://aaa.com" }],
         },
-        details: new Map([["aaa", { loading: true, error: undefined, data: undefined }]])
-      }
+        details: { aaa: { loading: true, error: undefined, data: undefined } },
+      },
     };
 
     const reduxResult = withRedux(<PokemonList />, { pokemonPage }, initialState);
@@ -50,17 +50,17 @@ describe("PokemonList container", () => {
         [
           {
             type: "pokemonData/clearData",
-            payload: undefined
-          }
+            payload: undefined,
+          },
         ],
         [
           {
             type: "pokemonPage/fetchPage",
             payload: {
-              url: "the-url-for-next-page"
-            }
-          }
-        ]
+              url: "the-url-for-next-page",
+            },
+          },
+        ],
       ]);
     });
 
@@ -71,17 +71,17 @@ describe("PokemonList container", () => {
         [
           {
             type: "pokemonData/clearData",
-            payload: undefined
-          }
+            payload: undefined,
+          },
         ],
         [
           {
             type: "pokemonPage/fetchPage",
             payload: {
-              url: "the-url-for-previous-page"
-            }
-          }
-        ]
+              url: "the-url-for-previous-page",
+            },
+          },
+        ],
       ]);
     });
   });

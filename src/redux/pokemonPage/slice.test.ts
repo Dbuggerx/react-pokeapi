@@ -4,7 +4,7 @@ import {
   IPokemon,
   IPokemonSprites,
   INamedApiResource,
-  IPokemonSpecies
+  IPokemonSpecies,
 } from "pokeapi-typescript";
 import { InitialState } from "./slice";
 import { LoadableResource } from "../types";
@@ -21,18 +21,16 @@ describe("pokemonPage slice", () => {
           count: 10,
           previous: "",
           next: "",
-          results: [{ name: "aaa", url: "http://aaa.com" }]
+          results: [{ name: "aaa", url: "http://aaa.com" }],
         },
-        details: new Map<string, LoadableResource<IPokemon>>([
-          ["aaa", { loading: true, error: undefined, data: undefined }]
-        ])
+        details: { aaa: { loading: true, error: undefined, data: undefined } },
       };
 
       const resultingState = reducer(
         currentState,
         actions.fetchPage({
           size: 10,
-          offset: 10
+          offset: 10,
         })
       );
 
@@ -44,7 +42,7 @@ describe("pokemonPage slice", () => {
         error: undefined,
         pageCount: 111,
         currentPage: 1,
-        details: new Map<string, LoadableResource<IPokemon>>()
+        details: {},
       });
     });
 
@@ -56,13 +54,13 @@ describe("pokemonPage slice", () => {
         results: [
           {
             name: "aaa",
-            url: "aaa-url"
+            url: "aaa-url",
           },
           {
             name: "bbb",
-            url: "bbb-url"
-          }
-        ]
+            url: "bbb-url",
+          },
+        ],
       };
 
       expect(
@@ -71,7 +69,7 @@ describe("pokemonPage slice", () => {
           actions.pageFetched({
             page: apiResult,
             size: 20,
-            offset: 40
+            offset: 40,
           })
         )
       ).toEqual({
@@ -80,7 +78,7 @@ describe("pokemonPage slice", () => {
         pageCount: 49,
         currentPage: 3,
         data: apiResult,
-        details: new Map<string, LoadableResource<IPokemon>>()
+        details: {},
       });
     });
 
@@ -93,7 +91,7 @@ describe("pokemonPage slice", () => {
         currentPage: 0,
         loading: false,
         error: "testing error",
-        details: new Map<string, LoadableResource<IPokemon>>()
+        details: {},
       });
     });
   });
@@ -114,15 +112,15 @@ describe("pokemonPage slice", () => {
           results: [
             {
               name: "aaa",
-              url: "aaa-url"
+              url: "aaa-url",
             },
             {
               name: "bbb",
-              url: "bbb-url"
-            }
-          ]
+              url: "bbb-url",
+            },
+          ],
         },
-        details: new Map<string, LoadableResource<IPokemon>>()
+        details: {},
       };
     });
 
@@ -133,9 +131,9 @@ describe("pokemonPage slice", () => {
 
       expect(resultingState).toEqual({
         ...currentState,
-        details: new Map<string, LoadableResource<IPokemon>>([
-          ["aaa", { loading: true, error: undefined, data: undefined }]
-        ])
+        details: {
+          aaa: { loading: true, error: undefined, data: undefined },
+        },
       });
     });
 
@@ -144,7 +142,7 @@ describe("pokemonPage slice", () => {
         currentState,
         actions.setDetailsError({
           pokemonName: "aaa",
-          error: "testing error"
+          error: "testing error",
         })
       );
 
@@ -152,9 +150,7 @@ describe("pokemonPage slice", () => {
 
       expect(resultingState).toEqual({
         ...currentState,
-        details: new Map<string, LoadableResource<IPokemon>>([
-          ["aaa", { loading: false, error: "testing error", data: undefined }]
-        ])
+        details: { aaa: { loading: false, error: "testing error", data: undefined } },
       });
     });
 
@@ -176,14 +172,14 @@ describe("pokemonPage slice", () => {
         sprites: {} as IPokemonSprites,
         species: {} as INamedApiResource<IPokemonSpecies>,
         stats: [],
-        types: []
+        types: [],
       };
 
       const resultingState = reducer(
         currentState,
         actions.detailsFetched({
           pokemonName: "aaa",
-          data: apiResult
+          data: apiResult,
         })
       );
 
@@ -191,9 +187,7 @@ describe("pokemonPage slice", () => {
 
       expect(resultingState).toEqual({
         ...currentState,
-        details: new Map<string, LoadableResource<IPokemon>>([
-          ["aaa", { loading: false, error: undefined, data: apiResult }]
-        ])
+        details: { aaa: { loading: false, error: undefined, data: apiResult } },
       });
     });
   });

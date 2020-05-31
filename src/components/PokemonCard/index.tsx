@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { IPokemon } from "pokeapi-typescript";
 import { LoadableResource } from "../../redux/types";
 import TypePill from "../PokemonTypePill";
@@ -20,7 +20,7 @@ const PokemonImage: React.FC<{
   return imageSrc && <img src={imageSrc} alt={alt} data-testid="pokemon-image" />;
 };
 
-export const PokemonCard: React.FC<Props> = props => {
+export const PokemonCard: FC<Props> = props => {
   const backgroundImageUrl =
     props.details?.data?.sprites &&
     Object.entries(props.details?.data?.sprites).find(e => e[1])![1];

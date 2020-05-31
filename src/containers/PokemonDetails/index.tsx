@@ -12,7 +12,7 @@ const PokemonDetails: React.FC = () => {
     pokemonData.data && Object.entries(pokemonData.data.sprites).filter(e => e[1]);
 
   return (
-    <div>
+    <>
       <ResourceState state={pokemonData} />
       {pokemonData.data && (
         <PokemonDetailsLayout
@@ -105,7 +105,7 @@ const PokemonDetails: React.FC = () => {
           }
         />
       )}
-    </div>
+    </>
   );
 };
 
