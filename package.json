@@ -34,7 +34,7 @@
     "@storybook/addons": "^5.3.19",
     "@storybook/preset-create-react-app": "^3.0.0",
     "@storybook/react": "^5.3.19",
-    "@testing-library/dom": "^7.7.0",
+    "@testing-library/dom": "^7.7.1",
     "@testing-library/jest-dom": "^5.9.0",
     "@testing-library/react": "^10.0.4",
     "@testing-library/user-event": "^10.4.0",
@@ -53,7 +53,7 @@
     "stylelint-no-unsupported-browser-features": "^4.0.0",
     "stylelint-scss": "^3.17.2",
     "stylelint-selector-bem-pattern": "^2.1.0",
-    "typescript": "3.9.3"
+    "typescript": "3.9.4"
   },
   "scripts": {
     "start": "react-scripts start",
