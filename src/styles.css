@@ -4,10 +4,10 @@
   flex-flow: column nowrap;
   min-height: 100vh;
   max-height: 100vh;
+  background: url(./background.jpg) #d1e5ff;
 }
 
 body {
-  background: url(./background.jpg) #d1e5ff;
   font-family: "Open Sans", sans-serif;
 }
 
