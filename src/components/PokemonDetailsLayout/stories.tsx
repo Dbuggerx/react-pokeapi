@@ -1,5 +1,5 @@
 import React from "react";
-import { text, color, number } from "@storybook/addon-knobs";
+import { text, color, number, select } from "@storybook/addon-knobs";
 import PokemonDetailsLayout from "./index";
 
 export default {
@@ -27,7 +27,22 @@ export const _default = () => (
     types={<MockSection>Types</MockSection>}
     profile={<MockSection>Profile</MockSection>}
     pokemonId={number("pokemon id", 123)}
-    color={color("color", "green")}
+    color={select(
+      "color",
+      {
+        black: "black",
+        blue: "blue",
+        brown: "brown",
+        gray: "gray",
+        green: "green",
+        pink: "pink",
+        purple: "purple",
+        red: "red",
+        white: "white",
+        yellow: "yellow"
+      },
+      "green"
+    )}
     descriptionTitle={text("description title", "description title")}
     description={<MockSection>Description</MockSection>}
     abilities={<MockSection>abilities</MockSection>}

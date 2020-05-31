@@ -2244,6 +2244,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/addon-backgrounds@npm:^5.3.19":
+  version: 5.3.19
+  resolution: "@storybook/addon-backgrounds@npm:5.3.19"
+  dependencies:
+    "@storybook/addons": 5.3.19
+    "@storybook/api": 5.3.19
+    "@storybook/client-logger": 5.3.19
+    "@storybook/components": 5.3.19
+    "@storybook/core-events": 5.3.19
+    "@storybook/theming": 5.3.19
+    core-js: ^3.0.1
+    memoizerific: ^1.11.3
+    react: ^16.8.3
+    util-deprecate: ^1.0.2
+  checksum: 3/ea9feeb223d8f2e14e867da9fcf7732b7fe76793bd4f41c66731cd7ebce94d8cd281941d2f8501264c2f6f287b6a577649f182e3c37b985b142d0859f366afe6
+  languageName: node
+  linkType: hard
+
 "@storybook/addon-docs@npm:^5.3.19":
   version: 5.3.19
   resolution: "@storybook/addon-docs@npm:5.3.19"
@@ -2341,7 +2359,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addons@npm:5.3.19":
+"@storybook/addons@npm:5.3.19, @storybook/addons@npm:^5.3.17":
   version: 5.3.19
   resolution: "@storybook/addons@npm:5.3.19"
   dependencies:
@@ -2376,7 +2394,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/api@npm:5.3.19":
+"@storybook/api@npm:5.3.19, @storybook/api@npm:^5.3.17":
   version: 5.3.19
   resolution: "@storybook/api@npm:5.3.19"
   dependencies:
@@ -2553,7 +2571,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/components@npm:5.3.19":
+"@storybook/components@npm:5.3.19, @storybook/components@npm:^5.3.17":
   version: 5.3.19
   resolution: "@storybook/components@npm:5.3.19"
   dependencies:
@@ -2905,7 +2923,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/theming@npm:5.3.19":
+"@storybook/theming@npm:5.3.19, @storybook/theming@npm:^5.3.17":
   version: 5.3.19
   resolution: "@storybook/theming@npm:5.3.19"
   dependencies:
@@ -6998,7 +7016,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.0.1, core-js@npm:^3.0.4, core-js@npm:^3.5.0, core-js@npm:^3.6.5":
+"core-js@npm:^3.0.1, core-js@npm:^3.0.4, core-js@npm:^3.5.0, core-js@npm:^3.6.4, core-js@npm:^3.6.5":
   version: 3.6.5
   resolution: "core-js@npm:3.6.5"
   checksum: 3/9283348dd5be2f1d07feaf90e2336b3f00a2316e3d3c6d4f789c9a67bdd4d7b08ce1c88dca4e591340130056c6b412b0b74fae039f8e259206f1073f542e4e85
@@ -16532,6 +16550,7 @@ fsevents@^1.2.7:
     "@fortawesome/react-fontawesome": ^0.1.9
     "@reduxjs/toolkit": 1.3.6
     "@storybook/addon-actions": ^6.0.0-beta.19
+    "@storybook/addon-backgrounds": ^5.3.19
     "@storybook/addon-docs": ^5.3.19
     "@storybook/addon-knobs": ^5.3.19
     "@storybook/addon-links": ^6.0.0-beta.19
@@ -16568,6 +16587,7 @@ fsevents@^1.2.7:
     redux: ^4.0.5
     redux-observable: 1.2.0
     rxjs: 6.5.5
+    storybook-addon-paddings: ^2.0.2
     stylelint: ^13.5.0
     stylelint-config-prettier: ^8.0.1
     stylelint-config-standard: ^20.0.0
@@ -16831,7 +16851,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react@npm:16.13.1, react@npm:^16.8.3":
+"react@npm:16.13.1, react@npm:^16.13.1, react@npm:^16.8.3":
   version: 16.13.1
   resolution: "react@npm:16.13.1"
   dependencies:
@@ -18665,6 +18685,21 @@ resolve@1.1.7:
   version: 2.11.2
   resolution: "store2@npm:2.11.2"
   checksum: 3/553c8943e7e162cd9f4d52c0a47333cea16419f98129db8c328e77e2daaf0e80baf313232623f4f83a2225ade8adb4504d8db173caf72d38f6a428f5e5c91ab9
+  languageName: node
+  linkType: hard
+
+"storybook-addon-paddings@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "storybook-addon-paddings@npm:2.0.2"
+  dependencies:
+    "@storybook/addons": ^5.3.17
+    "@storybook/api": ^5.3.17
+    "@storybook/components": ^5.3.17
+    "@storybook/theming": ^5.3.17
+    core-js: ^3.6.4
+    memoizerific: ^1.11.3
+    react: ^16.13.1
+  checksum: 3/f35cd8ead97cf3e49e8093e14ed4c36535a5fa72877035c77f8955274fe52a76f96fd39b200ee917dc5a730e02d4be7d96da76f941253988fc1284b68a82f093
   languageName: node
   linkType: hard
 
