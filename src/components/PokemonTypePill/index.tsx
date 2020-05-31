@@ -24,13 +24,14 @@ import {
   faDotCircle
 } from "@fortawesome/free-solid-svg-icons";
 import "./style.scss";
+import { FC } from "react";
 
 type Props = {
   pokemonType: string;
   compact?: boolean;
 };
 
-const PokemonTypePill: React.FC<Props> = ({ pokemonType, compact }) => {
+const PokemonTypePill: FC<Props> = ({ pokemonType, compact }) => {
   let icon: IconDefinition | null = null;
   let classModifier = "";
 
@@ -119,7 +120,7 @@ const PokemonTypePill: React.FC<Props> = ({ pokemonType, compact }) => {
       className={`pokemon-type-pill ${
         compact ? "pokemon-type-pill--compact" : ""
       } ${classModifier}`}
-      title={compact ? pokemonType: undefined}
+      title={compact ? pokemonType : undefined}
     >
       {icon && (
         <div className="pokemon-type-pill__icon">

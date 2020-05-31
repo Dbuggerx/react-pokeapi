@@ -7,7 +7,7 @@ export default {
   component: CardLayout
 };
 
-export const _default = () => {
+export const Default = () => {
   const mocks = Array.from({ length: number("item count", 15) }, (_, i) => (
     <div key={i} style={{ border: "solid 1px black" }}>{`Card ${i}`}</div>
   ));

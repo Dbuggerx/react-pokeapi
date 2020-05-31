@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import "./style.scss";
 
 type Props = {
@@ -15,7 +15,7 @@ type Props = {
   backgroundImageUrl: string | undefined;
 };
 
-export const PokemonDetailsLayout: React.FC<Props> = props => {
+export const PokemonDetailsLayout: FC<Props> = props => {
   let classModifier = "";
 
   switch (props.color) {

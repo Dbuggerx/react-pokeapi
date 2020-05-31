@@ -5,4 +5,4 @@ export default {
   title: "LoadingSpinner",
   component: LoadingSpinner
 };
-export const _default = () => <LoadingSpinner />;
+export const Default = () => <LoadingSpinner />;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import "./style.scss";
@@ -10,7 +10,7 @@ type Props = {
   onNext: () => void;
 };
 
-const Pagination: React.FC<Props> = props => (
+const Pagination: FC<Props> = props => (
   <div className="pagination">
     <div
       className="pagination__button-left"

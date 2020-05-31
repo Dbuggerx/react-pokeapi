@@ -1,7 +1,7 @@
-import React from "react";
+import React, { FC } from "react";
 import "./style.scss";
 
-export const CardLayout: React.FC = ({ children }) => {
+const CardLayout: FC = ({ children }) => {
   return (
     <div className="card-layout">
       <article className="card-layout__content">

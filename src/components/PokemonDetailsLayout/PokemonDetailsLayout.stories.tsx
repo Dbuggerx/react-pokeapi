@@ -1,6 +1,6 @@
 import React from "react";
-import { text, color, number, select } from "@storybook/addon-knobs";
-import PokemonDetailsLayout from "./index";
+import { text, number, select } from "@storybook/addon-knobs";
+import { PokemonDetailsLayout } from "./index";
 
 export default {
   title: "PokemonDetailsLayout",
@@ -20,7 +20,7 @@ const MockSection: React.FC = ({ children }) => (
   </div>
 );
 
-export const _default = () => (
+export const Default = () => (
   <PokemonDetailsLayout
     pokemonName={text("pokemon name", "test")}
     images={<MockSection>Images</MockSection>}
