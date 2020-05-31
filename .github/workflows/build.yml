@@ -26,11 +26,13 @@ jobs:
         with:
           persist-credentials: false
           
-      - name: Test 🔧 
-      - uses: actions/setup-node@v1
+      - name: Setup Node 🔧 
+        uses: actions/setup-node@v1
         with:
           node-version: '12'
-      - run: |
+          
+      - name: Test 🔎
+        run: |
           yarn install
           yarn test
    
