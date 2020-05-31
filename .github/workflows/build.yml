@@ -28,8 +28,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
-      - run: yarn install
-      - run: yarn test
+      - run: |
+          yarn install
+          yarn test
    
       - name: Build 👷
         run: yarn run build
