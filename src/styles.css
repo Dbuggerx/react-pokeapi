@@ -42,6 +42,9 @@ body,
   --accent-color-highlight: #6091e7;
   --bg-color: #232f3e;
   --layout-padding: 4vmin;
+
+  scrollbar-color: var(--accent-color) transparent;
+  scrollbar-width: thin;
 }
 
 ::-webkit-scrollbar-thumb:hover {

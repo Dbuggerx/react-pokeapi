@@ -1,8 +1,8 @@
 import React from "react";
-import * as hooks from "../../hooks/pokemonData";
 import PokemonDetailsLayout from "../../components/PokemonDetailsLayout";
-import ResourceState from "../../components/ResourceState";
 import TypePill from "../../components/PokemonTypePill";
+import ResourceState from "../../components/ResourceState";
+import * as hooks from "../../hooks/pokemonData";
 
 const PokemonDetails: React.FC = () => {
   hooks.usePokemonDataEffect();
@@ -38,7 +38,7 @@ const PokemonDetails: React.FC = () => {
             pokemonData.species.data?.genera.find(g => g.language.name === "en")?.genus
           }
           description={
-            <div>
+            <>
               {pokemonData.species.data &&
                 /*
                  * Unfortunatelly, the API results contain repeated data in "flavor_text_entries",
@@ -68,7 +68,7 @@ const PokemonDetails: React.FC = () => {
                   );
                   return acc;
                 }, [] as React.ReactElement[])}
-            </div>
+            </>
           }
           profile={
             <ul>

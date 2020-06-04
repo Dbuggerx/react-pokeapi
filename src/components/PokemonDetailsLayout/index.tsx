@@ -23,7 +23,7 @@ export const PokemonDetailsLayout: FC<Props> = props => {
     <div className="pokemon-details">
       <article className="pokemon-details__content">
         <header className="pokemon-details__header">
-          {props.pokemonName}
+          <h1 className="pokemon-details__name">{props.pokemonName}</h1>
           <aside title="Pokemon ID">#{props.pokemonId}</aside>
         </header>
         <section className="pokemon-details__images">{props.images}</section>

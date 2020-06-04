@@ -1,5 +1,5 @@
-import React, { FC } from "react";
 import { IPokemon } from "pokeapi-typescript";
+import React, { FC } from "react";
 import { LoadableResource } from "../../redux/types";
 import TypePill from "../PokemonTypePill";
 import ResourceState from "../ResourceState";
@@ -20,6 +20,18 @@ const PokemonImage: React.FC<{
   return imageSrc && <img src={imageSrc} alt={alt} data-testid="pokemon-image" />;
 };
 
+export const PokemonNameSvgShape: React.FC = () => (
+  <svg display="none">
+    <defs>
+      <path
+        id="circlePath"
+        d="M 0, 25
+      a 25,25 0 1,1 50,0"
+      />
+    </defs>
+  </svg>
+);
+
 export const PokemonCard: FC<Props> = props => {
   const backgroundImageUrl =
     props.details?.data?.sprites &&
@@ -27,13 +39,6 @@ export const PokemonCard: FC<Props> = props => {
   return (
     <section className="pokemon-card" onClick={props.onClick} data-testid="card">
       <svg viewBox="0 0 50 50" className="pokemon-card__curved-text">
-        <defs>
-          <path
-            id="circlePath"
-            d="M 0, 25
-            a 25,25 0 1,1 50,0"
-          />
-        </defs>
         <text textAnchor="middle">
           <textPath xlinkHref="#circlePath" startOffset="50%" data-testid="pokemon-name">
             {props.pokemonName}

@@ -1,10 +1,10 @@
 import React from "react";
-import * as hooks from "../../hooks/pokemonPage";
 import CardLayout from "../../components/CardLayout";
-import PokemonCard from "../../components/PokemonCard";
-import Pagination from "../../components/Pagination";
-import ResourceState from "../../components/ResourceState";
 import Footer from "../../components/Footer";
+import Pagination from "../../components/Pagination";
+import PokemonCard, { PokemonNameSvgShape } from "../../components/PokemonCard";
+import ResourceState from "../../components/ResourceState";
+import * as hooks from "../../hooks/pokemonPage";
 
 const PokemonListContainer: React.FC = () => {
   hooks.useFetchInitialPageEffect();
@@ -15,19 +15,24 @@ const PokemonListContainer: React.FC = () => {
   return (
     <>
       <ResourceState state={state} />
-      <CardLayout>
-        {state.data &&
-          state.data.results.map(r => (
-            <PokemonCard
-              key={r.name}
-              pokemonName={r.name}
-              details={state.details[r.name]}
-              onClick={() => {
-                goToDetails(r.name);
-              }}
-            />
-          ))}
-      </CardLayout>
+      {state.data && (
+        <>
+          <PokemonNameSvgShape />
+          <CardLayout>
+            {state.data.results.map(r => (
+              <PokemonCard
+                key={r.name}
+                pokemonName={r.name}
+                details={state.details[r.name]}
+                onClick={() => {
+                  goToDetails(r.name);
+                }}
+              />
+            ))}
+          </CardLayout>
+        </>
+      )}
+
       <Footer>
         <Pagination
           currentPage={state.currentPage}

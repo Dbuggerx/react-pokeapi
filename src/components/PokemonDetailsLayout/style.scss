@@ -1,14 +1,26 @@
 .pokemon-details {
-  flex: 0;
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
-  overflow: auto;
-  height: 100%;
+  border-radius: 1.5em;
+  color: var(--accent-text-color);
+  position: relative;
+  border: solid 4px white;
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.2));
+  background-color: var(--accent-color);
+  overflow: hidden;
+  display: flex;
+  margin: var(--layout-padding);
+  padding: calc(var(--layout-padding) / 2);
+  scrollbar-color: var(--accent-color-highlight) transparent;
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--accent-color-highlight);
+  }
 
   &__content {
-    overflow: hidden;
-    padding: var(--layout-padding);
-    margin: var(--layout-padding);
+    padding: calc(var(--layout-padding) / 2);
+    width: 100%;
+    overflow: auto;
     display: grid;
     grid-template:
       "header header header" max-content
@@ -16,12 +28,6 @@
       "description description types" 1fr
       "profile abilities stats" max-content / auto auto minmax(15vmax, max-content);
     gap: 2em;
-    border-radius: 1.5em;
-    color: var(--accent-text-color);
-    position: relative;
-    border: solid 4px white;
-    filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.2));
-    background-color: var(--accent-color);
 
     @media (max-width: 625px) {
       grid-template:
@@ -84,6 +90,11 @@
     font-weight: 800;
   }
 
+  &__name {
+    font-size: 1.5em;
+    margin: 0;
+  }
+
   &__status {
     grid-area: header;
     flex: 1 0 auto;
@@ -99,10 +110,10 @@
     flex-flow: row wrap;
     justify-content: center;
     align-content: center;
-    margin: -1em calc(var(--layout-padding) * -1);
     background: white;
     padding: 2em 0;
     color: black;
+    border-radius: 1em;
   }
 
   &__types {
@@ -112,6 +123,13 @@
     align-items: flex-start;
     justify-content: flex-end;
     align-content: flex-start;
+
+    @media (min-width: 625px) {
+      > * {
+        position: sticky;
+        top: 0;
+      }
+    }
   }
 
   &__section-title {
@@ -122,46 +140,4 @@
     color: var(--accent-color);
     opacity: 0.8;
   }
-
-  // &--black {
-  //   --accent-color: black;
-  // }
-
-  // &--blue {
-  //   --accent-color: #3a86ff;
-  // }
-
-  // &--brown {
-  //   --accent-color: #a12727;
-  // }
-
-  // &--gray {
-  //   --accent-color: #525252;
-  // }
-
-  // &--green {
-  //   --accent-color: #77c360;
-  // }
-
-  // &--pink {
-  //   --accent-color: #ff8196;
-  // }
-
-  // &--purple {
-  //   --accent-color: #800080;
-  // }
-
-  // &--red {
-  //   --accent-color: #f00;
-  // }
-
-  // &--white {
-  //   --accent-color: #fff;
-  //   --accent-text: #2f2f2f;
-  // }
-
-  // &--yellow {
-  //   --accent-color: #fffb10;
-  //   --accent-text: #695f00;
-  // }
 }
