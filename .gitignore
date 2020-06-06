@@ -1,3 +1,7 @@
 node_modules/
 build/
 package-lock.json
+.yarn/*
+!.yarn/cache
+!.yarn/releases
+!.yarn/plugins
