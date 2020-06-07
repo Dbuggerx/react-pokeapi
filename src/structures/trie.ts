@@ -1,9 +1,11 @@
 type Node = {
-  [key: string]: Trie;
+  [key: string]: Trie | undefined;
 };
 
 /**
  * @author https://github.com/amejiarosario/dsa.js-data-structures-algorithms-javascript/blob/master/src/data-structures/trees/trie.js
+ * @tutorial https://www.geeksforgeeks.org/advantages-trie-data-structure/
+ * @tutorial https://practice.geeksforgeeks.org/problems/difference-between-bst-and-tries
  */
 export default class Trie {
   val: string | undefined;
@@ -24,7 +26,7 @@ export default class Trie {
 
     for (const char of word) {
       curr.children[char] = curr.children[char] || new Trie(char);
-      curr = curr.children[char];
+      curr = curr.children[char]!;
     }
 
     curr.isWord = true;
@@ -40,9 +42,9 @@ export default class Trie {
 
     // find word and stack path
     for (const char of word) {
-      if (!curr.children[char]) return false;
-
-      curr = curr.children[char];
+      const child = curr.children[char];
+      if (!child) return false;
+      curr = child;
       stack.push(curr);
     }
 
@@ -52,7 +54,7 @@ export default class Trie {
     // remove non words without children
     while (stack.length) {
       const parent = stack.pop();
-      if (child?.val && !child.isWord && !Object.keys(child.children).length)
+      if (child?.val && !child.isWord && Object.keys(child.children).length === 0)
         delete parent?.children[child.val];
 
       child = parent;
@@ -68,9 +70,9 @@ export default class Trie {
     let curr: Trie = this;
 
     for (const char of word) {
-      if (!curr.children[char]) return false;
-
-      curr = curr.children[char];
+      const child = curr.children[char];
+      if (!child) return false;
+      curr = child;
     }
 
     return curr;
@@ -102,27 +104,21 @@ export default class Trie {
    * @param prefix - The prefix to append to each word.
    * @param node - Current node to start backtracking.
    */
-  getAllWords(prefix = "", node: Trie = this) {
-    let words: string[] = [];
+  *getAllWords(prefix = "", node: Trie = this): IterableIterator<string> {
+    if (!node) return;
 
-    if (!node) return words;
+    if (node.isWord) yield prefix;
 
-    if (node.isWord) words.push(prefix);
-
-    for (const char of Object.keys(node.children)) {
-      const newWords = this.getAllWords(`${prefix}${char}`, node.children[char]);
-      words = words.concat(newWords);
-    }
-
-    return words;
+    for (const char of Object.keys(node.children))
+      yield* this.getAllWords(`${prefix}${char}`, node.children[char]);
   }
 
   /**
    * Return a list of words matching the prefix
    * @param prefix - The prefix to match.
    */
-  autocomplete(prefix = "") {
+  *autocomplete(prefix = ""): IterableIterator<string> {
     const curr = this.searchNode(prefix);
-    return curr ? this.getAllWords(prefix, curr) : [];
+    if (curr) yield* this.getAllWords(prefix, curr);
   }
 }

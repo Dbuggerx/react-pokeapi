@@ -28,17 +28,17 @@ describe("Trie", () => {
   describe("insert", () => {
     it("inserts a word", () => {
       trie.insert("ab");
-      expect(trie.children.a).toBeDefined();
-      expect(trie.children.a.children.b).toBeDefined();
-      expect(trie.children.a.isWord).toEqual(false);
-      expect(trie.children.a.children.b.isWord).toEqual(true);
+      expect(trie.children?.a).toBeDefined();
+      expect(trie.children?.a?.children.b).toBeDefined();
+      expect(trie.children?.a?.isWord).toEqual(false);
+      expect(trie.children?.a?.children?.b?.isWord).toEqual(true);
     });
 
-    it("should insert multiple words with the same root", () => {
+    it("inserts multiple words in the same root", () => {
       trie.insert("a");
       trie.insert("ab");
-      expect(trie.children.a.isWord).toEqual(true);
-      expect(trie.children.a.children.b.isWord).toEqual(true);
+      expect(trie.children?.a?.isWord).toEqual(true);
+      expect(trie.children?.a?.children?.b?.isWord).toEqual(true);
     });
   });
 
@@ -49,29 +49,29 @@ describe("Trie", () => {
       trie.insert("door");
     });
 
-    it("should search for words", () => {
+    it("searches for words", () => {
       expect(trie.search("dog")).toEqual(true);
     });
 
-    it("should not match incomplete words by default", () => {
+    it("does not match incomplete words by default", () => {
       expect(trie.search("do")).toEqual(false);
     });
 
-    it("should match partial words if partial is set", () => {
+    it("matches partial words if partial is set", () => {
       expect(trie.search("do", true)).toEqual(true);
       expect(trie.startsWith("do")).toEqual(true);
     });
 
-    it("should match full words if partial is set", () => {
+    it("matches full words if partial is set", () => {
       expect(trie.search("dogs", true)).toEqual(true);
       expect(trie.startsWith("dogs")).toEqual(true);
     });
 
-    it("should not match non existing words", () => {
+    it("does not match non existing words", () => {
       expect(trie.search("doors")).toEqual(false);
     });
 
-    it("should not match non existing words with partials", () => {
+    it("does not match non existing words with partials", () => {
       expect(trie.search("doors", true)).toEqual(false);
       expect(trie.startsWith("doors")).toEqual(false);
     });
@@ -87,14 +87,14 @@ describe("Trie", () => {
     });
 
     describe("getAllWords", () => {
-      it("should get all words", () => {
-        const words = trie.getAllWords();
+      it("gets all words", () => {
+        const words = Array.from(trie.getAllWords());
         expect(words.length).toEqual(5);
         expect(words).toEqual(["dog", "dogs", "door", "day", "cat"]);
       });
 
-      it("should use prefix", () => {
-        const words = trie.getAllWords("Adrian's ");
+      it("applies prefix", () => {
+        const words = Array.from(trie.getAllWords("Adrian's "));
         expect(words.length).toEqual(5);
         expect(words).toEqual([
           "Adrian's dog",
@@ -107,47 +107,47 @@ describe("Trie", () => {
     });
 
     describe("autocomplete", () => {
-      it("should return all words if not prefix is given", () => {
-        const words = trie.autocomplete();
+      it("returns all words if prefix is not provided", () => {
+        const words = Array.from(trie.autocomplete());
         expect(words.length).toBe(5);
         expect(words).toEqual(["dog", "dogs", "door", "day", "cat"]);
       });
 
-      it("should auto complete words given a prefix", () => {
-        const words = trie.autocomplete("do");
+      it("returns words matching the provided prefix", () => {
+        const words = Array.from(trie.autocomplete("do"));
         expect(words.length).toBe(3);
         expect(words).toEqual(["dog", "dogs", "door"]);
       });
 
-      it("should handle non-existing words prefixes", () => {
-        const words = trie.autocomplete("co");
+      it("handles non-existing words prefixes", () => {
+        const words = Array.from(trie.autocomplete("co"));
         expect(words.length).toBe(0);
         expect(words).toEqual([]);
       });
     });
 
     describe("remove", () => {
-      it("should remove a word", () => {
+      it("removes a word", () => {
         trie = new Trie();
         trie.insert("a");
         expect(trie.remove("a")).toEqual(true);
-        expect(trie.getAllWords()).toEqual([]);
+        expect(Array.from(trie.getAllWords())).toEqual([]);
       });
 
-      it("should remove word and keep other words", () => {
+      it("removes a word and keep others", () => {
         trie = new Trie();
         trie.insert("a");
         trie.insert("ab");
         expect(trie.remove("a")).toEqual(true);
-        expect(trie.getAllWords()).toEqual(["ab"]);
+        expect(Array.from(trie.getAllWords())).toEqual(["ab"]);
       });
 
-      it("should remove surrounding word", () => {
+      it("removes surrounding word", () => {
         trie = new Trie();
         trie.insert("a");
         trie.insert("ab");
         expect(trie.remove("ab")).toEqual(true);
-        expect(trie.getAllWords()).toEqual(["a"]);
+        expect(Array.from(trie.getAllWords())).toEqual(["a"]);
       });
 
       it("should return false when word is not found", () => {
@@ -158,7 +158,7 @@ describe("Trie", () => {
         expect(trie.remove("dog")).toBe(true);
         expect(trie.search("dogs")).toBe(true);
         expect(trie.startsWith("dog")).toBe(true);
-        expect(trie.getAllWords()).toEqual(["dogs", "door", "day", "cat"]);
+        expect(Array.from(trie.getAllWords())).toEqual(["dogs", "door", "day", "cat"]);
       });
 
       it("should remove word and no longer match partials", () => {
@@ -166,7 +166,7 @@ describe("Trie", () => {
         expect(trie.search("dogs")).toBe(false);
         expect(trie.search("dog")).toBe(true);
         expect(trie.startsWith("dog")).toBe(true);
-        expect(trie.getAllWords()).toEqual(["dog", "door", "day", "cat"]);
+        expect(Array.from(trie.getAllWords())).toEqual(["dog", "door", "day", "cat"]);
       });
     });
   });
