@@ -5,12 +5,12 @@ describe("filteredPokemonNames slice", () => {
     test("for provided parameter", () => {
       expect(reducer(undefined, actions.updateSuggestions("char"))).toEqual({
         name: "char",
-        suggestions: ["Charizard", "Charjabug", "Charmander", "Charmeleon"]
+        suggestions: ["charizard", "charjabug", "charmander", "charmeleon"]
       });
 
       expect(reducer(undefined, actions.updateSuggestions("Bl"))).toEqual({
         name: "Bl",
-        suggestions: ["Blacephalon", "Blastoise", "Blaziken", "Blissey", "Blitzle"]
+        suggestions: ["blacephalon", "blastoise", "blaziken", "blissey", "blitzle"]
       });
     });
 
