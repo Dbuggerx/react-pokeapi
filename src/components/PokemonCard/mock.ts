@@ -1,4 +1,3 @@
-import { IPokemon } from "pokeapi-typescript";
 export default {
   abilities: [
     {
@@ -10,13 +9,18 @@ export default {
       slot: 3
     },
     {
-      ability: { name: "overgrow", url: "https://pokeapi.co/api/v2/ability/65/" },
+      ability: {
+        name: "overgrow",
+        url: "https://pokeapi.co/api/v2/ability/65/"
+      },
       is_hidden: false,
       slot: 1
     }
   ],
   base_experience: 64,
-  forms: [{ name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon-form/1/" }],
+  forms: [
+    { name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon-form/1/" }
+  ],
   game_indices: [
     {
       game_index: 1,
@@ -36,15 +40,24 @@ export default {
     },
     {
       game_index: 1,
-      version: { name: "soulsilver", url: "https://pokeapi.co/api/v2/version/16/" }
+      version: {
+        name: "soulsilver",
+        url: "https://pokeapi.co/api/v2/version/16/"
+      }
     },
     {
       game_index: 1,
-      version: { name: "heartgold", url: "https://pokeapi.co/api/v2/version/15/" }
+      version: {
+        name: "heartgold",
+        url: "https://pokeapi.co/api/v2/version/15/"
+      }
     },
     {
       game_index: 1,
-      version: { name: "platinum", url: "https://pokeapi.co/api/v2/version/14/" }
+      version: {
+        name: "platinum",
+        url: "https://pokeapi.co/api/v2/version/14/"
+      }
     },
     {
       game_index: 1,
@@ -56,7 +69,10 @@ export default {
     },
     {
       game_index: 1,
-      version: { name: "leafgreen", url: "https://pokeapi.co/api/v2/version/11/" }
+      version: {
+        name: "leafgreen",
+        url: "https://pokeapi.co/api/v2/version/11/"
+      }
     },
     {
       game_index: 1,
@@ -2556,7 +2572,10 @@ export default {
       ]
     },
     {
-      move: { name: "poison-powder", url: "https://pokeapi.co/api/v2/move/77/" },
+      move: {
+        name: "poison-powder",
+        url: "https://pokeapi.co/api/v2/move/77/"
+      },
       version_group_details: [
         {
           level_learned_at: 13,
@@ -3630,7 +3649,10 @@ export default {
       ]
     },
     {
-      move: { name: "defense-curl", url: "https://pokeapi.co/api/v2/move/111/" },
+      move: {
+        name: "defense-curl",
+        url: "https://pokeapi.co/api/v2/move/111/"
+      },
       version_group_details: [
         {
           level_learned_at: 0,
@@ -3668,7 +3690,10 @@ export default {
       ]
     },
     {
-      move: { name: "light-screen", url: "https://pokeapi.co/api/v2/move/113/" },
+      move: {
+        name: "light-screen",
+        url: "https://pokeapi.co/api/v2/move/113/"
+      },
       version_group_details: [
         {
           level_learned_at: 0,
@@ -7340,7 +7365,10 @@ export default {
       ]
     },
     {
-      move: { name: "hidden-power", url: "https://pokeapi.co/api/v2/move/237/" },
+      move: {
+        name: "hidden-power",
+        url: "https://pokeapi.co/api/v2/move/237/"
+      },
       version_group_details: [
         {
           level_learned_at: 0,
@@ -7998,7 +8026,10 @@ export default {
       ]
     },
     {
-      move: { name: "nature-power", url: "https://pokeapi.co/api/v2/move/267/" },
+      move: {
+        name: "nature-power",
+        url: "https://pokeapi.co/api/v2/move/267/"
+      },
       version_group_details: [
         {
           level_learned_at: 0,
@@ -8299,7 +8330,10 @@ export default {
       ]
     },
     {
-      move: { name: "secret-power", url: "https://pokeapi.co/api/v2/move/290/" },
+      move: {
+        name: "secret-power",
+        url: "https://pokeapi.co/api/v2/move/290/"
+      },
       version_group_details: [
         {
           level_learned_at: 0,
@@ -8403,7 +8437,10 @@ export default {
       ]
     },
     {
-      move: { name: "grass-whistle", url: "https://pokeapi.co/api/v2/move/320/" },
+      move: {
+        name: "grass-whistle",
+        url: "https://pokeapi.co/api/v2/move/320/"
+      },
       version_group_details: [
         {
           level_learned_at: 0,
@@ -8633,7 +8670,10 @@ export default {
       ]
     },
     {
-      move: { name: "magical-leaf", url: "https://pokeapi.co/api/v2/move/345/" },
+      move: {
+        name: "magical-leaf",
+        url: "https://pokeapi.co/api/v2/move/345/"
+      },
       version_group_details: [
         {
           level_learned_at: 0,
@@ -8770,7 +8810,10 @@ export default {
       ]
     },
     {
-      move: { name: "natural-gift", url: "https://pokeapi.co/api/v2/move/363/" },
+      move: {
+        name: "natural-gift",
+        url: "https://pokeapi.co/api/v2/move/363/"
+      },
       version_group_details: [
         {
           level_learned_at: 0,
@@ -9667,7 +9710,10 @@ export default {
       ]
     },
     {
-      move: { name: "echoed-voice", url: "https://pokeapi.co/api/v2/move/497/" },
+      move: {
+        name: "echoed-voice",
+        url: "https://pokeapi.co/api/v2/move/497/"
+      },
       version_group_details: [
         {
           level_learned_at: 0,
@@ -9738,7 +9784,10 @@ export default {
       ]
     },
     {
-      move: { name: "grass-pledge", url: "https://pokeapi.co/api/v2/move/520/" },
+      move: {
+        name: "grass-pledge",
+        url: "https://pokeapi.co/api/v2/move/520/"
+      },
       version_group_details: [
         {
           level_learned_at: 0,
@@ -9836,7 +9885,10 @@ export default {
       ]
     },
     {
-      move: { name: "grassy-terrain", url: "https://pokeapi.co/api/v2/move/580/" },
+      move: {
+        name: "grassy-terrain",
+        url: "https://pokeapi.co/api/v2/move/580/"
+      },
       version_group_details: [
         {
           level_learned_at: 0,
@@ -9952,7 +10004,18 @@ export default {
     front_female: "",
     front_shiny:
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png",
-    front_shiny_female: ""
+    front_shiny_female: "",
+    other: {
+      dream_world: {
+        front_default:
+          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg",
+        front_female: null
+      },
+      "official-artwork": {
+        front_default:
+          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+      }
+    }
   },
   stats: [
     {
@@ -9963,7 +10026,10 @@ export default {
     {
       base_stat: 65,
       effort: 0,
-      stat: { name: "special-defense", url: "https://pokeapi.co/api/v2/stat/5/" }
+      stat: {
+        name: "special-defense",
+        url: "https://pokeapi.co/api/v2/stat/5/"
+      }
     },
     {
       base_stat: 65,

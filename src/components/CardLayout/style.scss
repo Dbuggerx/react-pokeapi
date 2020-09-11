@@ -1,5 +1,5 @@
 .card-layout {
-  --column-width: minmax(15em, auto);
+  --size: 15em;
 
   padding: var(--layout-padding);
   flex: 1;
@@ -8,8 +8,8 @@
   &__content {
     display: grid;
     gap: 3em;
-    grid-auto-rows: var(--column-width);
-    grid-template-columns: repeat(auto-fill, var(--column-width));
+    grid-auto-rows: var(--size);
+    grid-template-columns: repeat(auto-fill, var(--size));
     justify-content: space-between;
 
     @media (max-width: 625px) {

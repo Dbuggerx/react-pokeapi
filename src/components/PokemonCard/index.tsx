@@ -16,8 +16,19 @@ const PokemonImage: React.FC<{
   alt: string;
 }> = ({ images, alt }) => {
   if (!images) return null;
-  const imageSrc = images.front_default || Object.entries(images).filter(e => e[1])[0][1];
-  return imageSrc && <img src={imageSrc} alt={alt} data-testid="pokemon-image" />;
+  const imageSrc =
+    // @ts-expect-error - The "other" property is unfortunately not typed
+    images.other["official-artwork"].front_default;
+  return (
+    imageSrc && (
+      <img
+        src={imageSrc}
+        alt={alt}
+        data-testid="pokemon-image"
+        className="pokemon-card__image"
+      />
+    )
+  );
 };
 
 export const PokemonNameSvgShape: React.FC = () => (
@@ -34,13 +45,22 @@ export const PokemonNameSvgShape: React.FC = () => (
 
 export const PokemonCard: FC<Props> = props => {
   const backgroundImageUrl =
-    props.details?.data?.sprites &&
-    Object.entries(props.details?.data?.sprites).find(e => e[1])![1];
+    // @ts-expect-error - The "other" property is unfortunately not typed
+    props.details?.data?.sprites.other["official-artwork"].front_default;
+
   return (
-    <section className="pokemon-card" onClick={props.onClick} data-testid="card">
+    <section
+      className="pokemon-card"
+      onClick={props.onClick}
+      data-testid="card"
+    >
       <svg viewBox="0 0 50 50" className="pokemon-card__curved-text">
         <text textAnchor="middle">
-          <textPath xlinkHref="#circlePath" startOffset="50%" data-testid="pokemon-name">
+          <textPath
+            xlinkHref="#circlePath"
+            startOffset="50%"
+            data-testid="pokemon-name"
+          >
             {props.pokemonName}
           </textPath>
         </text>
@@ -48,9 +68,10 @@ export const PokemonCard: FC<Props> = props => {
       <div className="pokemon-card__status">
         <ResourceState state={props.details} />
       </div>
-      <div className="pokemon-card__image">
-        <PokemonImage images={props.details?.data?.sprites} alt={props.pokemonName} />
-      </div>
+      <PokemonImage
+        images={props.details?.data?.sprites}
+        alt={props.pokemonName}
+      />
       <div className="pokemon-card__types">
         {props.details?.data?.types.map(t => (
           <TypePill compact pokemonType={t.type.name} key={t.type.name} />

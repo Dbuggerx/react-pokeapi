@@ -1,5 +1,5 @@
-import React from "react";
 import { render, RenderResult } from "@testing-library/react";
+import React from "react";
 import PokemonCard from "./";
 import mock from "./mock";
 
@@ -29,7 +29,7 @@ describe("PokemonCard", () => {
     const { getByTestId } = doRender();
     expect(getByTestId("pokemon-image")).toHaveAttribute(
       "src",
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
     );
   });
 

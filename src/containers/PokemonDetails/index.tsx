@@ -9,14 +9,20 @@ const PokemonDetails: React.FC = () => {
   const pokemonData = hooks.usePokemonDataState();
 
   const images =
-    pokemonData.data && Object.entries(pokemonData.data.sprites).filter(e => e[1]);
+    pokemonData.data &&
+    Object.entries(pokemonData.data.sprites).filter(
+      e => typeof e[1] === "string"
+    );
 
   return (
     <>
       <ResourceState state={pokemonData} />
       {pokemonData.data && (
         <PokemonDetailsLayout
-          backgroundImageUrl={images && images[0][1]}
+          backgroundImageUrl={
+            // @ts-expect-error - The "other" property is unfortunately not typed
+            pokemonData?.data?.sprites.other.dream_world.front_default
+          }
           pokemonName={pokemonData.data.name}
           pokemonId={pokemonData.data.id}
           images={
@@ -35,7 +41,8 @@ const PokemonDetails: React.FC = () => {
             </>
           }
           descriptionTitle={
-            pokemonData.species.data?.genera.find(g => g.language.name === "en")?.genus
+            pokemonData.species.data?.genera.find(g => g.language.name === "en")
+              ?.genus
           }
           description={
             <>
@@ -55,7 +62,8 @@ const PokemonDetails: React.FC = () => {
                        * As the text from the API can sometimes vary by missing spaces,
                        * I'm using the first 10 chars to differentiate the texts
                        */
-                      (acc, cur) => acc.set(cur.toLowerCase().substring(0, 10), cur),
+                      (acc, cur) =>
+                        acc.set(cur.toLowerCase().substring(0, 10), cur),
                       new Map<string, string>()
                     )
                     .values()
