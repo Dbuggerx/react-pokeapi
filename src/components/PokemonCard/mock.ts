@@ -1,3 +1,5 @@
+import { IPokemon } from "pokeapi-typescript";
+
 export default {
   abilities: [
     {
