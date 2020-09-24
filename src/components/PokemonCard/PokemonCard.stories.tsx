@@ -1,7 +1,6 @@
+import type { Story } from "@storybook/react/types-6-0";
 import React from "react";
-import { boolean, text } from "@storybook/addon-knobs";
-import { action } from "@storybook/addon-actions";
-import PokemonCard from "./index";
+import PokemonCard, { PokemonNameSvgShape } from "./index";
 import mock from "./mock";
 
 export default {
@@ -9,16 +8,20 @@ export default {
   component: PokemonCard
 };
 
-export const _default = () => (
+type Props = React.ComponentProps<typeof PokemonCard>;
+const Template: Story<Props> = args => (
   <div style={{ width: "15em", height: "15em" }}>
-    <PokemonCard
-      pokemonName={text("pokemon name", "test")}
-      details={{
-        data: mock,
-        loading: boolean("loading", false),
-        error: text("error", "")
-      }}
-      onClick={action("onClick")}
-    />
+    <PokemonNameSvgShape />
+    <PokemonCard {...args} />
   </div>
 );
+
+export const Default: Story<Props> = Template.bind({});
+Default.args = {
+  pokemonName: "test",
+  details: {
+    data: mock,
+    loading: false,
+    error: ""
+  }
+};

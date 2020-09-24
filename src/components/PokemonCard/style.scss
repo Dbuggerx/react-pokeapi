@@ -17,6 +17,7 @@
   background-color: white;
   filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.2));
   box-shadow: inset 0 0 2px 5px #ccc;
+  padding: 0;
 
   &,
   &__background {
@@ -33,6 +34,7 @@
     background-size: 550%;
     width: 100%;
     height: 100%;
+    top: 0;
     position: absolute;
     z-index: -1;
     opacity: 0.8;
@@ -67,6 +69,7 @@
     width: 100%;
     height: 100%;
     pointer-events: none;
+    top: 0;
 
     text {
       font-size: 0.5em;
@@ -94,7 +97,7 @@
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    margin-top: 3.5em;
+    margin-top: 4em;
     max-height: 50%;
   }
 

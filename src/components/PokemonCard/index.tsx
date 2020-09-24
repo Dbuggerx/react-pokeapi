@@ -32,7 +32,7 @@ const PokemonImage: React.FC<{
 };
 
 export const PokemonNameSvgShape: React.FC = () => (
-  <svg display="none">
+  <svg style={{ display: "none" }}>
     <defs>
       <path
         id="circlePath"
