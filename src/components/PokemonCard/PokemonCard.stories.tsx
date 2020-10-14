@@ -1,4 +1,4 @@
-import type { Story } from "@storybook/react/types-6-0";
+import type { Meta, Story } from "@storybook/react/types-6-0";
 import React from "react";
 import PokemonCard, { PokemonNameSvgShape } from "./index";
 import mock from "./mock";
@@ -6,7 +6,7 @@ import mock from "./mock";
 export default {
   title: "PokemonCard",
   component: PokemonCard
-};
+} as Meta;
 
 type Props = React.ComponentProps<typeof PokemonCard>;
 const Template: Story<Props> = args => (

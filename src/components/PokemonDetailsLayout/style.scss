@@ -9,8 +9,8 @@
   background-color: var(--accent-color);
   overflow: hidden;
   display: flex;
-  margin: var(--layout-padding);
-  padding: calc(var(--layout-padding) / 2);
+  margin: var(--layout-padding, 1em);
+  padding: calc(var(--layout-padding, 1em) / 2);
   scrollbar-color: var(--accent-color-highlight) transparent;
 
   ::-webkit-scrollbar-thumb {
@@ -77,6 +77,8 @@
 
   &__description {
     grid-area: description;
+    padding: 0;
+    margin: 0;
   }
 
   &__descrition-text {
@@ -144,7 +146,7 @@
     font-size: 1.5em;
     padding: 0 0.8em;
     border-radius: 1em;
-    background-color: var(--accent-text-color);
+    background-color: var(--accent-text-color, white);
     color: var(--accent-color);
     opacity: 0.8;
   }

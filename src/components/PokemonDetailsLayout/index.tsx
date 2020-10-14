@@ -29,8 +29,12 @@ export const PokemonDetailsLayout: FC<Props> = props => {
         <section className="pokemon-details__images">{props.images}</section>
         <section className="pokemon-details__types">{props.types}</section>
         <section className="pokemon-details__description">
-          <div className="pokemon-details__section-title">{props.descriptionTitle}</div>
-          <div className="pokemon-details__descrition-text">{props.description}</div>
+          <div className="pokemon-details__section-title">
+            {props.descriptionTitle}
+          </div>
+          <div className="pokemon-details__descrition-text">
+            {props.description}
+          </div>
         </section>
         <section className="pokemon-details__profile">
           <div className="pokemon-details__section-title">Profile</div>
