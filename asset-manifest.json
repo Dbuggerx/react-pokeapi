@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/react-pokeapi/static/css/main.4fff5556.chunk.css",
-    "main.js": "/react-pokeapi/static/js/main.9a635e85.chunk.js",
-    "main.js.map": "/react-pokeapi/static/js/main.9a635e85.chunk.js.map",
+    "main.js": "/react-pokeapi/static/js/main.99a50158.chunk.js",
+    "main.js.map": "/react-pokeapi/static/js/main.99a50158.chunk.js.map",
     "runtime-main.js": "/react-pokeapi/static/js/runtime-main.7bc606f9.js",
     "runtime-main.js.map": "/react-pokeapi/static/js/runtime-main.7bc606f9.js.map",
     "static/css/2.a2f204b1.chunk.css": "/react-pokeapi/static/css/2.a2f204b1.chunk.css",
     "static/js/2.d3514a2a.chunk.js": "/react-pokeapi/static/js/2.d3514a2a.chunk.js",
     "static/js/2.d3514a2a.chunk.js.map": "/react-pokeapi/static/js/2.d3514a2a.chunk.js.map",
     "index.html": "/react-pokeapi/index.html",
-    "precache-manifest.241c41f92748eedb1d796e84af82cd56.js": "/react-pokeapi/precache-manifest.241c41f92748eedb1d796e84af82cd56.js",
+    "precache-manifest.61c6943fb0662434d980182f5e18cfe6.js": "/react-pokeapi/precache-manifest.61c6943fb0662434d980182f5e18cfe6.js",
     "service-worker.js": "/react-pokeapi/service-worker.js",
     "static/css/2.a2f204b1.chunk.css.map": "/react-pokeapi/static/css/2.a2f204b1.chunk.css.map",
     "static/css/main.4fff5556.chunk.css.map": "/react-pokeapi/static/css/main.4fff5556.chunk.css.map",
@@ -22,6 +22,6 @@
     "static/css/2.a2f204b1.chunk.css",
     "static/js/2.d3514a2a.chunk.js",
     "static/css/main.4fff5556.chunk.css",
-    "static/js/main.9a635e85.chunk.js"
+    "static/js/main.99a50158.chunk.js"
   ]
 }
