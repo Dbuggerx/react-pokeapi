@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8ce64b9036958e2f5c1d34f14b6a75f0",
+    "revision": "30a67ad64225146bb2e2125e51e3de20",
     "url": "/react-pokeapi/index.html"
   },
   {
-    "revision": "043d6d304bc59952b0b5",
+    "revision": "a5609d9f9cc4fe19a302",
     "url": "/react-pokeapi/static/css/2.a2f204b1.chunk.css"
   },
   {
-    "revision": "6534848375ad541afc38",
+    "revision": "eb4089bba77dce11acc7",
     "url": "/react-pokeapi/static/css/main.7c6803eb.chunk.css"
   },
   {
-    "revision": "043d6d304bc59952b0b5",
-    "url": "/react-pokeapi/static/js/2.ecb0eb90.chunk.js"
+    "revision": "a5609d9f9cc4fe19a302",
+    "url": "/react-pokeapi/static/js/2.5484ffe7.chunk.js"
   },
   {
-    "revision": "13af30d646018c83cb267c4e5d849471",
-    "url": "/react-pokeapi/static/js/2.ecb0eb90.chunk.js.LICENSE.txt"
+    "revision": "b5ff4111ab81c8c91e9e746653eb6fff",
+    "url": "/react-pokeapi/static/js/2.5484ffe7.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "6534848375ad541afc38",
-    "url": "/react-pokeapi/static/js/main.282d8977.chunk.js"
+    "revision": "eb4089bba77dce11acc7",
+    "url": "/react-pokeapi/static/js/main.2c564790.chunk.js"
   },
   {
     "revision": "9660215e8f987379a0cb",
