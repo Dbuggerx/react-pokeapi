@@ -7,9 +7,11 @@ import ResourceState from "../../components/ResourceState";
 import * as hooks from "../../hooks/pokemonPage";
 
 const PokemonListContainer: React.FC = () => {
+  const ref = React.useRef<HTMLDivElement>(null);
+
   hooks.useFetchInitialPageEffect();
   const state = hooks.usePokemonPageState();
-  const goToDetails = hooks.useGoToDetails();
+  const goToDetails = hooks.useGoToDetails(ref);
   const changePage = hooks.useFetchPage();
 
   return (
@@ -18,7 +20,7 @@ const PokemonListContainer: React.FC = () => {
       {state.data && (
         <>
           <PokemonNameSvgShape />
-          <CardLayout>
+          <CardLayout ref={ref}>
             {state.data.results.map(r => (
               <PokemonCard
                 key={r.name}

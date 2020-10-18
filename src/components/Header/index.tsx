@@ -1,12 +1,16 @@
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Link, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Search from "../../containers/Search";
 import * as routes from "../../routeManager";
 import "./style.scss";
 
-const Header: React.FC = () => {
+type Props = {
+  goBack: () => void;
+};
+
+const Header: React.FC<Props> = props => {
   const [scrolled, setScrolled] = React.useState(false);
 
   React.useLayoutEffect(() => {
@@ -37,13 +41,13 @@ const Header: React.FC = () => {
       </a>
       <div className="header__search">
         <Route path={routes.pokemonRoute.path}>
-          <Link
-            to={routes.listRoute.path}
+          <button
             title="Go back"
             className="header__back-button"
+            onClick={props.goBack}
           >
             <FontAwesomeIcon icon={faArrowLeft} size="2x" />
-          </Link>
+          </button>
         </Route>
         <Search />
       </div>

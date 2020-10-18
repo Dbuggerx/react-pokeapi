@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { actions } from "../redux/pokemonPage";
-import { useHistory } from "react-router-dom";
-import { useTypedSelector } from "../redux/types";
+import { useHistory, useLocation } from "react-router-dom";
 import { actions as pokemonDataActions } from "../redux/pokemonData";
+import { actions } from "../redux/pokemonPage";
+import { useTypedSelector } from "../redux/types";
 import { pokemonRoute } from "../routeManager";
 
 export function useFetchInitialPageEffect() {
@@ -53,10 +53,25 @@ export function usePokemonPageState() {
   return useTypedSelector(state => state.pokemonPage);
 }
 
-export function useGoToDetails() {
+type HistoryState = {
+  scrollTop?: number;
+};
+
+export function useGoToDetails(scrollAreaRef: React.RefObject<HTMLElement>) {
   const history = useHistory();
+  const location = useLocation();
+
+  React.useLayoutEffect(() => {
+    const historyState = location?.state as HistoryState | undefined;
+    if (historyState?.scrollTop)
+      scrollAreaRef.current?.scrollBy(0, historyState?.scrollTop);
+  }, [location, scrollAreaRef]);
 
   return (pokemonName: string) => {
+    history.replace(location.pathname, {
+      scrollTop: scrollAreaRef.current?.scrollTop
+    } as HistoryState);
+
     history.push(pokemonRoute.generate({ pokemonName }));
   };
 }

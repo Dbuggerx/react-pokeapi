@@ -30,6 +30,13 @@
     margin-right: 0.5em;
     cursor: pointer;
 
+    &,
+    &:focus {
+      background: none;
+      border: none;
+      outline: none;
+    }
+
     &:hover {
       color: var(--accent-color-highlight);
     }
