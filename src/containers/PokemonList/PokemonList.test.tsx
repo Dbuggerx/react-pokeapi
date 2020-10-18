@@ -1,10 +1,10 @@
-import React from "react";
 import { render, RenderResult } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import React from "react";
 import pokemonPage from "../../redux/pokemonPage";
-import { AppState } from "../../redux/types";
-import PokemonList from "./";
+import type { AppState } from "../../redux/types";
 import { withRedux, withRouter } from "../testHelpers";
+import PokemonList from "./";
 
 describe("PokemonList container", () => {
   let renderResult: RenderResult | undefined = undefined;
@@ -22,13 +22,17 @@ describe("PokemonList container", () => {
           count: 10,
           previous: "the-url-for-previous-page",
           next: "the-url-for-next-page",
-          results: [{ name: "aaa", url: "http://aaa.com" }],
+          results: [{ name: "aaa", url: "http://aaa.com" }]
         },
-        details: { aaa: { loading: true, error: undefined, data: undefined } },
-      },
+        details: { aaa: { loading: true, error: undefined, data: undefined } }
+      }
     };
 
-    const reduxResult = withRedux(<PokemonList />, { pokemonPage }, initialState);
+    const reduxResult = withRedux(
+      <PokemonList />,
+      { pokemonPage },
+      initialState
+    );
     dispatchSpy = reduxResult.dispatchSpy;
 
     const routerResult = withRouter(reduxResult.result);
@@ -50,17 +54,17 @@ describe("PokemonList container", () => {
         [
           {
             type: "pokemonData/clearData",
-            payload: undefined,
-          },
+            payload: undefined
+          }
         ],
         [
           {
             type: "pokemonPage/fetchPage",
             payload: {
-              url: "the-url-for-next-page",
-            },
-          },
-        ],
+              url: "the-url-for-next-page"
+            }
+          }
+        ]
       ]);
     });
 
@@ -71,17 +75,17 @@ describe("PokemonList container", () => {
         [
           {
             type: "pokemonData/clearData",
-            payload: undefined,
-          },
+            payload: undefined
+          }
         ],
         [
           {
             type: "pokemonPage/fetchPage",
             payload: {
-              url: "the-url-for-previous-page",
-            },
-          },
-        ],
+              url: "the-url-for-previous-page"
+            }
+          }
+        ]
       ]);
     });
   });

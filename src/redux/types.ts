@@ -1,12 +1,13 @@
-import { Action } from "redux";
-import { Epic } from "redux-observable";
-import { Observable } from "rxjs";
+import type { Action, AnyAction } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
-import rootReducer from "./rootReducer";
+import type { Epic } from "redux-observable";
+import type { Observable } from "rxjs";
 import observableFetch from "./observableFetch";
-import { AnyAction } from "@reduxjs/toolkit";
+import rootReducer from "./rootReducer";
 
-export type ObservableFetch<T> = (...args: Parameters<typeof fetch>) => Observable<T>;
+export type ObservableFetch<T> = (
+  ...args: Parameters<typeof fetch>
+) => Observable<T>;
 
 export type AppState = ReturnType<typeof rootReducer>;
 

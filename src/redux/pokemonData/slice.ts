@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IPokemon, IPokemonSpecies } from "pokeapi-typescript";
-import { LoadableResource } from "../types";
+import type { IPokemon, IPokemonSpecies } from "pokeapi-typescript";
+import type { LoadableResource } from "../types";
 
 type State = LoadableResource<IPokemon> & {
   species: LoadableResource<IPokemonSpecies>;
@@ -19,7 +19,10 @@ export default createSlice({
     }
   } as State,
   reducers: {
-    fetchData: (state, action: PayloadAction<{ url: string } | { name: string }>) => ({
+    fetchData: (
+      state,
+      action: PayloadAction<{ url: string } | { name: string }>
+    ) => ({
       loading: true,
       error: undefined,
       data: undefined,

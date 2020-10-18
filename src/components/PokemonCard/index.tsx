@@ -1,6 +1,6 @@
-import { IPokemon } from "pokeapi-typescript";
-import React, { FC } from "react";
-import { LoadableResource } from "../../redux/types";
+import type { IPokemon } from "pokeapi-typescript";
+import React from "react";
+import type { LoadableResource } from "../../redux/types";
 import TypePill from "../PokemonTypePill";
 import ResourceState from "../ResourceState";
 import "./style.scss";
@@ -43,7 +43,7 @@ export const PokemonNameSvgShape: React.FC = () => (
   </svg>
 );
 
-export const PokemonCard: FC<Props> = props => {
+export const PokemonCard: React.FC<Props> = props => {
   const backgroundImageUrl =
     // @ts-expect-error - The "other" property is unfortunately not typed
     props.details?.data?.sprites.other["official-artwork"].front_default;

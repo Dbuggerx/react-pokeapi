@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { useTypedSelector } from "../redux/types";
 import { actions } from "../redux/pokemonData";
-import { PokemonRouteParams } from "../routeManager";
+import { useTypedSelector } from "../redux/types";
+import type { PokemonRouteParams } from "../routeManager";
 
 export function usePokemonDataEffect() {
   const dispatch = useDispatch();

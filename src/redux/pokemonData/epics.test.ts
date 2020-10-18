@@ -1,8 +1,8 @@
+import type { IPokemonSpecies, IPokemonSprites } from "pokeapi-typescript";
+import { ActionsObservable } from "redux-observable";
 import { TestScheduler } from "rxjs/testing";
 import epics from "./epics";
 import { actions } from "./index";
-import { ActionsObservable } from "redux-observable";
-import { IPokemonSpecies, IPokemonSprites } from "pokeapi-typescript";
 
 describe("pokemonData epics", () => {
   let testScheduler: TestScheduler;
@@ -115,7 +115,11 @@ describe("pokemonData epics", () => {
 
         const dependencies = {
           observableFetch: () =>
-            cold<Error>(marbles.apiResult, undefined, new Error("testing error"))
+            cold<Error>(
+              marbles.apiResult,
+              undefined,
+              new Error("testing error")
+            )
         };
 
         // @ts-ignore
@@ -181,7 +185,11 @@ describe("pokemonData epics", () => {
 
         const dependencies = {
           observableFetch: () =>
-            cold<Error>(marbles.apiResult, undefined, new Error("testing error"))
+            cold<Error>(
+              marbles.apiResult,
+              undefined,
+              new Error("testing error")
+            )
         };
 
         // @ts-ignore

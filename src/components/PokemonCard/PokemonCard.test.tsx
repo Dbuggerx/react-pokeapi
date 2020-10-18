@@ -1,10 +1,9 @@
-import { render, RenderResult } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import React from "react";
 import PokemonCard from "./";
 import mock from "./mock";
 
 describe("PokemonCard", () => {
-  let renderResult: RenderResult | undefined = undefined;
   const onClickMock = jest.fn();
 
   const doRender = (loading = false, error: string | undefined = undefined) =>

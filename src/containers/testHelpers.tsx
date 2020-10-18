@@ -1,5 +1,5 @@
+import type { Reducer } from "@reduxjs/toolkit";
 import React from "react";
-import { Reducer } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { MemoryRouter, Route } from "react-router-dom";
 import buildStore from "../redux/store";
@@ -17,14 +17,14 @@ export function withRedux(
   return {
     result: <Provider store={store}>{ui}</Provider>,
     store,
-    dispatchSpy,
+    dispatchSpy
   };
 }
 
 export function withRouter(ui: React.ReactElement) {
   const routerValues: any = {
     history: undefined,
-    location: undefined,
+    location: undefined
   };
 
   const result = (

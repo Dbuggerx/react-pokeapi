@@ -1,13 +1,12 @@
-import reducer, { actions } from "./index";
-import {
+import type {
+  INamedApiResource,
   INamedApiResourceList,
   IPokemon,
-  IPokemonSprites,
-  INamedApiResource,
   IPokemonSpecies,
+  IPokemonSprites
 } from "pokeapi-typescript";
-import { InitialState } from "./slice";
-import { LoadableResource } from "../types";
+import reducer, { actions } from "./index";
+import type { InitialState } from "./slice";
 
 describe("pokemonPage slice", () => {
   describe("page data", () => {
@@ -21,16 +20,16 @@ describe("pokemonPage slice", () => {
           count: 10,
           previous: "",
           next: "",
-          results: [{ name: "aaa", url: "http://aaa.com" }],
+          results: [{ name: "aaa", url: "http://aaa.com" }]
         },
-        details: { aaa: { loading: true, error: undefined, data: undefined } },
+        details: { aaa: { loading: true, error: undefined, data: undefined } }
       };
 
       const resultingState = reducer(
         currentState,
         actions.fetchPage({
           size: 10,
-          offset: 10,
+          offset: 10
         })
       );
 
@@ -42,7 +41,7 @@ describe("pokemonPage slice", () => {
         error: undefined,
         pageCount: 111,
         currentPage: 1,
-        details: {},
+        details: {}
       });
     });
 
@@ -54,13 +53,13 @@ describe("pokemonPage slice", () => {
         results: [
           {
             name: "aaa",
-            url: "aaa-url",
+            url: "aaa-url"
           },
           {
             name: "bbb",
-            url: "bbb-url",
-          },
-        ],
+            url: "bbb-url"
+          }
+        ]
       };
 
       expect(
@@ -69,7 +68,7 @@ describe("pokemonPage slice", () => {
           actions.pageFetched({
             page: apiResult,
             size: 20,
-            offset: 40,
+            offset: 40
           })
         )
       ).toEqual({
@@ -78,12 +77,15 @@ describe("pokemonPage slice", () => {
         pageCount: 49,
         currentPage: 3,
         data: apiResult,
-        details: {},
+        details: {}
       });
     });
 
     it('updates state for "setError" action', () => {
-      const resultingState = reducer(undefined, actions.setError("testing error"));
+      const resultingState = reducer(
+        undefined,
+        actions.setError("testing error")
+      );
 
       expect(resultingState).toEqual({
         data: undefined,
@@ -91,7 +93,7 @@ describe("pokemonPage slice", () => {
         currentPage: 0,
         loading: false,
         error: "testing error",
-        details: {},
+        details: {}
       });
     });
   });
@@ -112,15 +114,15 @@ describe("pokemonPage slice", () => {
           results: [
             {
               name: "aaa",
-              url: "aaa-url",
+              url: "aaa-url"
             },
             {
               name: "bbb",
-              url: "bbb-url",
-            },
-          ],
+              url: "bbb-url"
+            }
+          ]
         },
-        details: {},
+        details: {}
       };
     });
 
@@ -132,8 +134,8 @@ describe("pokemonPage slice", () => {
       expect(resultingState).toEqual({
         ...currentState,
         details: {
-          aaa: { loading: true, error: undefined, data: undefined },
-        },
+          aaa: { loading: true, error: undefined, data: undefined }
+        }
       });
     });
 
@@ -142,7 +144,7 @@ describe("pokemonPage slice", () => {
         currentState,
         actions.setDetailsError({
           pokemonName: "aaa",
-          error: "testing error",
+          error: "testing error"
         })
       );
 
@@ -150,7 +152,9 @@ describe("pokemonPage slice", () => {
 
       expect(resultingState).toEqual({
         ...currentState,
-        details: { aaa: { loading: false, error: "testing error", data: undefined } },
+        details: {
+          aaa: { loading: false, error: "testing error", data: undefined }
+        }
       });
     });
 
@@ -172,14 +176,14 @@ describe("pokemonPage slice", () => {
         sprites: {} as IPokemonSprites,
         species: {} as INamedApiResource<IPokemonSpecies>,
         stats: [],
-        types: [],
+        types: []
       };
 
       const resultingState = reducer(
         currentState,
         actions.detailsFetched({
           pokemonName: "aaa",
-          data: apiResult,
+          data: apiResult
         })
       );
 
@@ -187,7 +191,7 @@ describe("pokemonPage slice", () => {
 
       expect(resultingState).toEqual({
         ...currentState,
-        details: { aaa: { loading: false, error: undefined, data: apiResult } },
+        details: { aaa: { loading: false, error: undefined, data: apiResult } }
       });
     });
   });

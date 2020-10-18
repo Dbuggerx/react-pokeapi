@@ -1,10 +1,10 @@
-import reducer, { actions } from "./index";
-import {
+import type {
+  INamedApiResource,
   IPokemon,
   IPokemonSpecies,
-  IPokemonSprites,
-  INamedApiResource
+  IPokemonSprites
 } from "pokeapi-typescript";
+import reducer, { actions } from "./index";
 
 describe("pokemonData slice", () => {
   it('updates state for "fetchData" action', () => {
@@ -92,7 +92,10 @@ describe("pokemonData slice", () => {
       id: 123
     } as IPokemonSpecies;
 
-    const resultingState = reducer(undefined, actions.speciesFetched(apiResult));
+    const resultingState = reducer(
+      undefined,
+      actions.speciesFetched(apiResult)
+    );
 
     expect(resultingState).toEqual({
       data: undefined,
@@ -172,7 +175,10 @@ describe("pokemonData slice", () => {
       species: { error: "test", loading: true, data: undefined }
     };
 
-    const resultingState = reducer(currentState, actions.setError("testing error"));
+    const resultingState = reducer(
+      currentState,
+      actions.setError("testing error")
+    );
 
     expect(resultingState).toEqual({
       data: undefined,

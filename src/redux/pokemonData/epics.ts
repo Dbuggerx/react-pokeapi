@@ -1,11 +1,11 @@
-import { filter, map, mergeMap, catchError, switchMap } from "rxjs/operators";
-import { IPokemon, IPokemonSpecies } from "pokeapi-typescript";
-import { of, Observable } from "rxjs";
-import { actions } from "./index";
-import { TypedEpic } from "../types";
-import { ApiError } from "../errors";
+import type { AnyAction } from "@reduxjs/toolkit";
+import type { IPokemon, IPokemonSpecies } from "pokeapi-typescript";
 import { combineEpics } from "redux-observable";
-import { AnyAction } from '@reduxjs/toolkit';
+import { Observable, of } from "rxjs";
+import { catchError, filter, map, mergeMap, switchMap } from "rxjs/operators";
+import { ApiError } from "../errors";
+import type { TypedEpic } from "../types";
+import { actions } from "./index";
 
 const fetchPokemonEpic: TypedEpic = (action$, state$, { observableFetch }) => {
   return action$.pipe(
@@ -38,7 +38,11 @@ const fetchPokemonEpic: TypedEpic = (action$, state$, { observableFetch }) => {
   );
 };
 
-const fetchPokemonSpeciesEpic: TypedEpic = (action$, state$, { observableFetch }) =>
+const fetchPokemonSpeciesEpic: TypedEpic = (
+  action$,
+  state$,
+  { observableFetch }
+) =>
   action$.pipe(
     filter(actions.fetchSpecies.match),
     switchMap(action =>

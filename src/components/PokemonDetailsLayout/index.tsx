@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import { useThemeColorEffect } from "./hooks";
 import "./style.scss";
 
@@ -16,7 +16,7 @@ type Props = {
   backgroundImageUrl: string | undefined;
 };
 
-export const PokemonDetailsLayout: FC<Props> = props => {
+export const PokemonDetailsLayout: React.FC<Props> = props => {
   useThemeColorEffect(props.color);
 
   return (

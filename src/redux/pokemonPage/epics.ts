@@ -1,10 +1,10 @@
-import { filter, map, mergeMap, catchError, switchMap } from "rxjs/operators";
-import { INamedApiResourceList, IPokemon } from "pokeapi-typescript";
-import { actions } from "./index";
-import { TypedEpic } from "../types";
-import { of, Observable } from "rxjs";
-import { ApiError } from "../errors";
+import type { INamedApiResourceList, IPokemon } from "pokeapi-typescript";
 import { combineEpics } from "redux-observable";
+import { Observable, of } from "rxjs";
+import { catchError, filter, map, mergeMap, switchMap } from "rxjs/operators";
+import { ApiError } from "../errors";
+import type { TypedEpic } from "../types";
+import { actions } from "./index";
 
 const getUrlDataByAddress = (url: string) => {
   const urlObj = new URL(url);
@@ -64,7 +64,11 @@ const fetchPageEpic: TypedEpic = (action$, state$, { observableFetch }) => {
   );
 };
 
-const fetchPokemonDetailsEpic: TypedEpic = (action$, state$, { observableFetch }) => {
+const fetchPokemonDetailsEpic: TypedEpic = (
+  action$,
+  state$,
+  { observableFetch }
+) => {
   return action$.pipe(
     filter(actions.fetchDetails.match),
     mergeMap(action => {
