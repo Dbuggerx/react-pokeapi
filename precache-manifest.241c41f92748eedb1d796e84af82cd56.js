@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "86841034e7ffda261dab64d4dfe692c0",
+    "revision": "4e7f94fb07a27b37847b1ff0b70fb72c",
     "url": "/react-pokeapi/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-pokeapi/static/css/2.a2f204b1.chunk.css"
   },
   {
-    "revision": "07c75fa0ee49f03619af",
+    "revision": "e9f924ac4314f377fc22",
     "url": "/react-pokeapi/static/css/main.4fff5556.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-pokeapi/static/js/2.d3514a2a.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "07c75fa0ee49f03619af",
-    "url": "/react-pokeapi/static/js/main.ddbdd288.chunk.js"
+    "revision": "e9f924ac4314f377fc22",
+    "url": "/react-pokeapi/static/js/main.9a635e85.chunk.js"
   },
   {
     "revision": "9660215e8f987379a0cb",
