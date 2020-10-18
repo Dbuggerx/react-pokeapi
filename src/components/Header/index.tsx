@@ -4,6 +4,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import Search from "../../containers/Search";
 import * as routes from "../../routeManager";
+import { useHasScrolled } from "./hooks";
 import "./style.scss";
 
 type Props = {
@@ -11,20 +12,7 @@ type Props = {
 };
 
 const Header: React.FC<Props> = props => {
-  const [scrolled, setScrolled] = React.useState(false);
-
-  React.useLayoutEffect(() => {
-    function onScroll(evt: Event) {
-      setScrolled((evt.target as HTMLDivElement).scrollTop > 0);
-    }
-
-    document.addEventListener("scroll", onScroll, true);
-
-    return () => {
-      setScrolled(false);
-      document.removeEventListener("scroll", onScroll, true);
-    };
-  }, []);
+  const scrolled = useHasScrolled();
 
   return (
     <header className={`header ${scrolled ? "header--scrolled" : ""}`}>
