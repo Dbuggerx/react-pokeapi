@@ -4,7 +4,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { actions as pokemonDataActions } from "../redux/pokemonData";
 import { actions } from "../redux/pokemonPage";
 import { useTypedSelector } from "../redux/types";
-import { pokemonRoute } from "../routeManager";
+import { listRoute, pokemonRoute } from "../routeManager";
 
 export function useFetchInitialPageEffect() {
   const dispatch = useDispatch();
@@ -53,8 +53,12 @@ export function usePokemonPageState() {
   return useTypedSelector(state => state.pokemonPage);
 }
 
-type HistoryState = {
+type ListHistoryState = {
   scrollTop?: number;
+};
+
+type DetailsHistoryState = {
+  listIsAvailable?: boolean;
 };
 
 export function useGoToDetails(scrollAreaRef: React.RefObject<HTMLElement>) {
@@ -62,7 +66,7 @@ export function useGoToDetails(scrollAreaRef: React.RefObject<HTMLElement>) {
   const location = useLocation();
 
   React.useLayoutEffect(() => {
-    const historyState = location?.state as HistoryState | undefined;
+    const historyState = location?.state as ListHistoryState | undefined;
     if (historyState?.scrollTop)
       scrollAreaRef.current?.scrollBy(0, historyState?.scrollTop);
   }, [location, scrollAreaRef]);
@@ -70,8 +74,23 @@ export function useGoToDetails(scrollAreaRef: React.RefObject<HTMLElement>) {
   return (pokemonName: string) => {
     history.replace(location.pathname, {
       scrollTop: scrollAreaRef.current?.scrollTop
-    } as HistoryState);
+    } as ListHistoryState);
 
-    history.push(pokemonRoute.generate({ pokemonName }));
+    history.push(pokemonRoute.generate({ pokemonName }), {
+      listIsAvailable: true
+    } as DetailsHistoryState);
   };
+}
+
+export function useGoBack() {
+  const history = useHistory();
+  const location = useLocation();
+
+  const goBack = React.useCallback(() => {
+    const historyState = location?.state as DetailsHistoryState | undefined;
+    if (historyState?.listIsAvailable) history.goBack();
+    else history.push(listRoute.path);
+  }, [history, location]);
+
+  return goBack;
 }
