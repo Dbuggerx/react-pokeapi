@@ -78,7 +78,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:>=7.9.0, @babel/core@npm:^7.1.0, @babel/core@npm:^7.11.6, @babel/core@npm:^7.4.5, @babel/core@npm:^7.7.5, @babel/core@npm:^7.9.0":
+"@babel/core@npm:>=7.9.0, @babel/core@npm:^7.1.0, @babel/core@npm:^7.12.3, @babel/core@npm:^7.4.5, @babel/core@npm:^7.7.5, @babel/core@npm:^7.9.0":
   version: 7.12.3
   resolution: "@babel/core@npm:7.12.3"
   dependencies:
@@ -3456,7 +3456,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/eslint@npm:^7":
+"@types/eslint@npm:^7.2.4":
   version: 7.2.4
   resolution: "@types/eslint@npm:7.2.4"
   dependencies:
@@ -3658,7 +3658,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^14.11.8":
+"@types/node@npm:*, @types/node@npm:^14.11.10":
   version: 14.11.10
   resolution: "@types/node@npm:14.11.10"
   checksum: 74c50cfd07b5e4bbc4303c063acf8524048f5035161f009ea2ceeb12001d278fd43a1e399d03f6277caa5c67c61a785bf406f0541b8fc2252e1bcaaa2f2d414b
@@ -3801,13 +3801,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:16.9.52":
+"@types/react@npm:*":
   version: 16.9.52
   resolution: "@types/react@npm:16.9.52"
   dependencies:
     "@types/prop-types": "*"
     csstype: ^3.0.2
   checksum: 5e352e28b7a5ee6104a1ddddb7585ce50f88c5fca78f2edb73cc6df897ab3efa4404111052b643782d130755b8657494f3f5324b1eba4644b4a36fea34fec6fb
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:16.9.53":
+  version: 16.9.53
+  resolution: "@types/react@npm:16.9.53"
+  dependencies:
+    "@types/prop-types": "*"
+    csstype: ^3.0.2
+  checksum: 01c646c8f08306660441a14495e926c0362114da7813c3bc3d4d58b47590ee92274bbbff18f3fafd465a09369daa25982d68ba6628f1080120b62d40ce75ca40
   languageName: node
   linkType: hard
 
@@ -16603,7 +16613,21 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-dom@npm:16.13.1, react-dom@npm:^16.8.3":
+"react-dom@npm:16.14.0":
+  version: 16.14.0
+  resolution: "react-dom@npm:16.14.0"
+  dependencies:
+    loose-envify: ^1.1.0
+    object-assign: ^4.1.1
+    prop-types: ^15.6.2
+    scheduler: ^0.19.1
+  peerDependencies:
+    react: ^16.14.0
+  checksum: a13558f0e7c6d1a98684214460bcd4b9005500015b5048fb1b0d2856786b8764dbc713e6b078a5b1a56e17866400e1d862183c7a0a513ae8351de11f6f6749d2
+  languageName: node
+  linkType: hard
+
+"react-dom@npm:^16.8.3":
   version: 16.13.1
   resolution: "react-dom@npm:16.13.1"
   dependencies:
@@ -16712,7 +16736,7 @@ fsevents@^1.2.7:
   version: 0.0.0-use.local
   resolution: "react-pokeapi@workspace:."
   dependencies:
-    "@babel/core": ^7.11.6
+    "@babel/core": ^7.12.3
     "@fortawesome/fontawesome-svg-core": ^1.2.32
     "@fortawesome/free-solid-svg-icons": ^5.15.1
     "@fortawesome/react-fontawesome": ^0.1.11
@@ -16731,11 +16755,11 @@ fsevents@^1.2.7:
     "@testing-library/user-event": ^12.1.8
     "@types/babel__core": 7.1.10
     "@types/core-js": 2.5.4
-    "@types/eslint": ^7
+    "@types/eslint": ^7.2.4
     "@types/jest": ^26.0.14
     "@types/mdx-js__react": 1.5.3
-    "@types/node": ^14.11.8
-    "@types/react": 16.9.52
+    "@types/node": ^14.11.10
+    "@types/react": 16.9.53
     "@types/react-dom": 16.9.8
     "@types/react-is": 16.7.1
     "@types/react-redux": 7.1.9
@@ -16758,8 +16782,8 @@ fsevents@^1.2.7:
     node-sass: ^4.14.1
     pokeapi-typescript: 2.1.0
     pokemon: 2.0.2
-    react: 16.13.1
-    react-dom: 16.13.1
+    react: 16.14.0
+    react-dom: 16.14.0
     react-is: ^16.13.1
     react-redux: 7.2.1
     react-router: ^5.2.0
@@ -16981,7 +17005,18 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react@npm:16.13.1, react@npm:^16.8.3":
+"react@npm:16.14.0":
+  version: 16.14.0
+  resolution: "react@npm:16.14.0"
+  dependencies:
+    loose-envify: ^1.1.0
+    object-assign: ^4.1.1
+    prop-types: ^15.6.2
+  checksum: 2769580b22952a52de3b5b2ea0f09cb904030b762d759739f49ab4da0b1f550e5c087ce3728c4be90f423d09481e0c075483c0c30b1ea9c549445c8b12020fd3
+  languageName: node
+  linkType: hard
+
+"react@npm:^16.8.3":
   version: 16.13.1
   resolution: "react@npm:16.13.1"
   dependencies:
