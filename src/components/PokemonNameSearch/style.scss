@@ -7,7 +7,7 @@
   &__input {
     appearance: none;
     background-color: white;
-    border: solid 1px var(--accent-color);
+    border: solid 1px var(--bg-color);
     box-sizing: border-box;
     border-radius: var(--border-radius);
     display: block;
@@ -31,8 +31,9 @@
     outline: none;
     border: none;
     margin-left: 0.5em;
-    background-color: var(--accent-color);
-    color: var(--accent-text-color);
+    background-color: var(--bg-color);
+    color: #fff;
+    cursor: pointer;
 
     &:hover {
       background-color: var(--accent-color-highlight);

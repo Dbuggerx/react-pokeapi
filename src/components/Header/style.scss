@@ -8,11 +8,14 @@
   top: -1px;
   margin: 0;
   padding: 0 var(--layout-padding);
+  background: var(--accent-color);
+  border-bottom: solid 6px #000;
 
   &__logo {
     width: 15em;
-    margin-top: 1em;
+    margin: 0.5em;
     margin-right: 2em;
+    transition: width, 0.5s;
   }
 
   &__search {
@@ -23,8 +26,18 @@
   }
 
   &__back-button {
-    color: var(--accent-color) !important;
+    color: var(--bg-color);
     margin-right: 0.5em;
     cursor: pointer;
+
+    &:hover {
+      color: var(--accent-color-highlight);
+    }
+  }
+
+  &--scrolled {
+    .header__logo {
+      width: 7em;
+    }
   }
 }
