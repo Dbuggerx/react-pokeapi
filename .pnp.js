@@ -66,6 +66,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-redux", "npm:7.1.9"],
             ["@types/react-router", "npm:5.1.8"],
             ["@types/react-router-dom", "npm:5.1.6"],
+            ["@types/react-transition-group", "npm:4.4.0"],
             ["@types/testing-library__jest-dom", "npm:5.9.4"],
             ["@typescript-eslint/eslint-plugin", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:4.4.1"],
             ["@typescript-eslint/parser", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:4.4.1"],
@@ -90,6 +91,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-router", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:5.2.0"],
             ["react-router-dom", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:5.2.0"],
             ["react-scripts", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:3.4.3"],
+            ["react-transition-group", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:4.4.1"],
             ["redux", "npm:4.0.5"],
             ["redux-observable", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:1.2.0"],
             ["rxjs", "npm:6.6.3"],
@@ -8752,6 +8754,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@types/react-transition-group", [
+        ["npm:4.4.0", {
+          "packageLocation": "./.yarn/cache/@types-react-transition-group-npm-4.4.0-dc81edfd45-b761f70623.zip/node_modules/@types/react-transition-group/",
+          "packageDependencies": [
+            ["@types/react-transition-group", "npm:4.4.0"],
+            ["@types/react", "npm:16.9.52"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@types/reactcss", [
         ["npm:1.2.3", {
           "packageLocation": "./.yarn/cache/@types-reactcss-npm-1.2.3-96e8e8973b-5ac6dfc02c.zip/node_modules/@types/reactcss/",
@@ -13675,6 +13687,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["dom-converter", "npm:0.2.0"],
             ["utila", "npm:0.4.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["dom-helpers", [
+        ["npm:5.2.0", {
+          "packageLocation": "./.yarn/cache/dom-helpers-npm-5.2.0-4c13ee1a2c-9ef27628f4.zip/node_modules/dom-helpers/",
+          "packageDependencies": [
+            ["dom-helpers", "npm:5.2.0"],
+            ["@babel/runtime", "npm:7.12.1"],
+            ["csstype", "npm:3.0.3"]
           ],
           "linkType": "HARD",
         }]
@@ -23514,6 +23537,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-redux", "npm:7.1.9"],
             ["@types/react-router", "npm:5.1.8"],
             ["@types/react-router-dom", "npm:5.1.6"],
+            ["@types/react-transition-group", "npm:4.4.0"],
             ["@types/testing-library__jest-dom", "npm:5.9.4"],
             ["@typescript-eslint/eslint-plugin", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:4.4.1"],
             ["@typescript-eslint/parser", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:4.4.1"],
@@ -23538,6 +23562,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-router", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:5.2.0"],
             ["react-router-dom", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:5.2.0"],
             ["react-scripts", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:3.4.3"],
+            ["react-transition-group", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:4.4.1"],
             ["redux", "npm:4.0.5"],
             ["redux-observable", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:1.2.0"],
             ["rxjs", "npm:6.6.3"],
@@ -23887,6 +23912,29 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "packagePeers": [
             "@types/react",
+            "react"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["react-transition-group", [
+        ["virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:4.4.1", {
+          "packageLocation": "./.yarn/$$virtual/react-transition-group-virtual-2ac1349b01/0/cache/react-transition-group-npm-4.4.1-5b62a122ef-e14446123f.zip/node_modules/react-transition-group/",
+          "packageDependencies": [
+            ["react-transition-group", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:4.4.1"],
+            ["@babel/runtime", "npm:7.12.1"],
+            ["@types/react", "npm:16.9.53"],
+            ["@types/react-dom", "npm:16.9.8"],
+            ["dom-helpers", "npm:5.2.0"],
+            ["loose-envify", "npm:1.4.0"],
+            ["prop-types", "npm:15.7.2"],
+            ["react", "npm:16.14.0"],
+            ["react-dom", "virtual:9b22d41d8b3c87b3c205cb8db4afa15292d69ba13301cf867b3ce89cf2cca9a4688530a3725400d2894d393aca8a727c2030fcaf21d6acc5eaf79185f21c9eed#npm:16.14.0"]
+          ],
+          "packagePeers": [
+            "@types/react-dom",
+            "@types/react",
+            "react-dom",
             "react"
           ],
           "linkType": "HARD",

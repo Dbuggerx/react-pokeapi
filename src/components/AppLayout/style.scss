@@ -1,4 +1,23 @@
-.App {
+.route-transition {
+  &-enter-active,
+  &-exit-active {
+    transition: opacity 1s;
+  }
+  &-enter {
+    opacity: 0;
+  }
+  &-enter-active {
+    opacity: 1;
+  }
+  &-exit {
+    opacity: 1;
+  }
+  &-exit-active {
+    opacity: 0;
+  }
+}
+
+.app {
   display: flex;
   flex-flow: column nowrap;
   min-height: 100%;
