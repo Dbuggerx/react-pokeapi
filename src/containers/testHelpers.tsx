@@ -1,16 +1,9 @@
-import type { Reducer } from "@reduxjs/toolkit";
 import React from "react";
 import { Provider } from "react-redux";
 import { MemoryRouter, Route } from "react-router-dom";
 import buildStore from "../redux/store";
 
-export function withRedux(
-  ui: React.ReactElement,
-  reducer: {
-    [key: string]: Reducer;
-  },
-  initialState: any
-) {
+export function withRedux(ui: React.ReactElement, initialState: any) {
   const store = buildStore(initialState, true);
   const dispatchSpy = jest.spyOn(store, "dispatch");
 

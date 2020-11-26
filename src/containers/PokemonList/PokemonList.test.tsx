@@ -1,13 +1,11 @@
-import { render, RenderResult } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
-import pokemonPage from "../../redux/pokemonPage";
 import type { AppState } from "../../redux/types";
 import { withRedux, withRouter } from "../testHelpers";
 import PokemonList from "./";
 
 describe("PokemonList container", () => {
-  let renderResult: RenderResult | undefined = undefined;
   let routerValuesResult: any;
   let dispatchSpy: jest.SpyInstance | undefined = undefined;
 
@@ -28,27 +26,23 @@ describe("PokemonList container", () => {
       }
     };
 
-    const reduxResult = withRedux(
-      <PokemonList />,
-      { pokemonPage },
-      initialState
-    );
+    const reduxResult = withRedux(<PokemonList />, initialState);
     dispatchSpy = reduxResult.dispatchSpy;
 
     const routerResult = withRouter(reduxResult.result);
-    renderResult = render(routerResult.result);
+    render(routerResult.result);
     routerValuesResult = routerResult.routerValues;
   });
 
   describe("pagination", () => {
     it("renders current and total page", () => {
-      expect(renderResult!.getByTestId("pagination-values")).toHaveTextContent(
+      expect(screen.getByTestId("pagination-values")).toHaveTextContent(
         /^page 2 of 111$/
       );
     });
 
     it("goes to next page", () => {
-      userEvent.click(renderResult!.getByTestId("pagination-button-right"));
+      userEvent.click(screen.getByTestId("pagination-button-right"));
 
       expect(dispatchSpy!.mock.calls).toEqual([
         [
@@ -69,7 +63,7 @@ describe("PokemonList container", () => {
     });
 
     it("goes to previous page", () => {
-      userEvent.click(renderResult!.getByTestId("pagination-button-left"));
+      userEvent.click(screen.getByTestId("pagination-button-left"));
 
       expect(dispatchSpy!.mock.calls).toEqual([
         [
@@ -94,7 +88,7 @@ describe("PokemonList container", () => {
     test("go to pokemon details route on click", () => {
       expect(routerValuesResult.location.pathname).toEqual("/");
 
-      userEvent.click(renderResult!.getByTestId("card"));
+      userEvent.click(screen.getByTestId("card"));
 
       expect(routerValuesResult.location.pathname).toEqual("/pokemon/aaa");
     });
