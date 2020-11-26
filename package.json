@@ -72,6 +72,7 @@
     "husky": "^4.3.0",
     "node-sass": "^4.14.1",
     "react-is": "^17.0.1",
+    "standard-version": "^9.0.0",
     "stylelint": "^13.8.0",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^20.0.0",
@@ -90,7 +91,11 @@
     "lint": "eslint --ext tsx,ts src",
     "lint-styles": "stylelint ./src/**/*.scss --config ./.stylelintrc.json",
     "audit": "npm install --package-lock-only && npm audit",
-    "update-yarn": "yarn set version latest && yarn plugin import typescript && yarn plugin import interactive-tools && yarn dlx @yarnpkg/pnpify --sdk vscode"
+    "update-yarn": "yarn set version latest && yarn plugin import typescript && yarn plugin import interactive-tools && yarn dlx @yarnpkg/pnpify --sdk vscode",
+    "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:patch": "standard-version --release-as patch",
+    "release:major": "standard-version --release-as major"
   },
   "browserslist": [
     ">0.2%",
