@@ -1,7 +1,15 @@
+import { AnyAction } from "@reduxjs/toolkit";
 import type { INamedApiResourceList, IPokemon } from "pokeapi-typescript";
-import { combineEpics } from "redux-observable";
+import { combineEpics, ofType } from "redux-observable";
 import { Observable, of } from "rxjs";
-import { catchError, filter, map, mergeMap, switchMap } from "rxjs/operators";
+import {
+  catchError,
+  filter,
+  map,
+  mergeMap,
+  switchMap,
+  takeUntil
+} from "rxjs/operators";
 import { ApiError } from "../errors";
 import type { TypedEpic } from "../types";
 import { actions } from "./index";
@@ -33,10 +41,7 @@ const fetchPageEpic: TypedEpic = (action$, state$, { observableFetch }) => {
       return observableFetch<INamedApiResourceList<IPokemon>>(urlData.url).pipe(
         mergeMap(
           json =>
-            new Observable<
-              | ReturnType<typeof actions.pageFetched>
-              | ReturnType<typeof actions.fetchDetails>
-            >(subscriber => {
+            new Observable<AnyAction>(subscriber => {
               subscriber.next(
                 actions.pageFetched({
                   page: json,
@@ -91,7 +96,8 @@ const fetchPokemonDetailsEpic: TypedEpic = (
                   : error.message || error
             })
           )
-        )
+        ),
+        takeUntil(action$.pipe(ofType(actions.fetchPage.type)))
       );
     })
   );

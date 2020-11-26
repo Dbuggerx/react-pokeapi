@@ -2,7 +2,14 @@ import type { AnyAction } from "@reduxjs/toolkit";
 import type { IPokemon, IPokemonSpecies } from "pokeapi-typescript";
 import { combineEpics } from "redux-observable";
 import { Observable, of } from "rxjs";
-import { catchError, filter, map, mergeMap, switchMap } from "rxjs/operators";
+import {
+  catchError,
+  filter,
+  map,
+  mergeMap,
+  switchMap,
+  takeUntil
+} from "rxjs/operators";
 import { ApiError } from "../errors";
 import type { TypedEpic } from "../types";
 import { actions } from "./index";
@@ -32,7 +39,8 @@ const fetchPokemonEpic: TypedEpic = (action$, state$, { observableFetch }) => {
                 : error.message || error
             )
           )
-        )
+        ),
+        takeUntil(action$.pipe(filter(actions.clearData.match)))
       );
     })
   );
@@ -56,7 +64,8 @@ const fetchPokemonSpeciesEpic: TypedEpic = (
                 : error.message || error
             )
           )
-        )
+        ),
+        takeUntil(action$.pipe(filter(actions.clearData.match)))
       )
     )
   );
