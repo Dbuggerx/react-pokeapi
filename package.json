@@ -1,6 +1,6 @@
 {
   "name": "react-pokeapi",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "AGPL-3.0",
   "description": "Simple application made with React, Redux, etc to interact with the PokeApi v2",
   "keywords": [],
