@@ -1,6 +1,7 @@
 node_modules/
 build/
 package-lock.json
+.eslintcache
 .yarn/*
 !.yarn/cache
 !.yarn/releases
