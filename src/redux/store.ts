@@ -1,11 +1,13 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { createEpicMiddleware } from "redux-observable";
-import rootReducer from "./rootReducer";
-import rootEpic from "./rootEpic";
 import observableFetch from "./observableFetch";
+import rootEpic from "./rootEpic";
+import rootReducer from "./rootReducer";
 
 export default function buildStore(
-  preloadedState: Parameters<typeof configureStore>[0]["preloadedState"] = undefined,
+  preloadedState: Parameters<
+    typeof configureStore
+  >[0]["preloadedState"] = undefined,
   disableMiddlewares = false
 ) {
   const epicMiddleware = createEpicMiddleware({

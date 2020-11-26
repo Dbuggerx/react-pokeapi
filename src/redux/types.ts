@@ -1,5 +1,5 @@
-import type { Action, AnyAction } from "@reduxjs/toolkit";
-import { TypedUseSelectorHook, useSelector } from "react-redux";
+import type { Action, AnyAction, PayloadAction } from "@reduxjs/toolkit";
+import { createSelectorHook } from "react-redux";
 import type { Epic } from "redux-observable";
 import type { Observable } from "rxjs";
 import observableFetch from "./observableFetch";
@@ -18,14 +18,14 @@ export type EpicDependencies = {
 /**
  * @typeparam A - The Action type
  */
-export type TypedEpic<A extends Action = AnyAction> = Epic<
+export type TypedEpic<A extends Action = AnyAction | PayloadAction> = Epic<
   A,
   A,
   AppState,
   EpicDependencies
 >;
 
-export const useTypedSelector: TypedUseSelectorHook<AppState> = useSelector;
+export const useTypedSelector = createSelectorHook<AppState>();
 
 export type LoadableResource<T> = {
   loading: boolean;
