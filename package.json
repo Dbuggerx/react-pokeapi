@@ -42,6 +42,8 @@
     ]
   },
   "devDependencies": {
-    "@types/testing-library__jest-dom": "^5.14.3"
+    "@types/testing-library__jest-dom": "^5.14.3",
+    "msw": "^0.39.2",
+    "pokenode-ts": "^1.13.1"
   }
 }
