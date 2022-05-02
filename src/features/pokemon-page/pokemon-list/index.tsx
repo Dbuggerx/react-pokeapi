@@ -1,6 +1,7 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import PokemonCard from "../pokemon-card";
 import { useFetchPage, usePageData } from "./hooks";
+import { generateDetailsPath } from "../../../pages/details";
 
 export default function List() {
   const { fetchNextPage, fetchPrevPage } = useFetchPage();
@@ -19,6 +20,7 @@ export default function List() {
         {pokemonInfoIds.map((pokemonName) => (
           <li key={pokemonName}>
             <PokemonCard pokemonName={pokemonName} />
+            <Link to={`/${generateDetailsPath(pokemonName)}`}>Details</Link>
           </li>
         ))}
       </ul>

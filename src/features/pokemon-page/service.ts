@@ -1,3 +1,7 @@
+import type { EntityState } from "@reduxjs/toolkit";
+import type { LoadableResource } from "../../redux/types";
+import type { PokemonInfo } from "./types";
+
 export function getUrlData(
   args: { size: number; offset: number } | { url: string }
 ) {
@@ -34,4 +38,15 @@ export function getPaginationInfo(
     currentPage:
       pageCount - Math.ceil((totalItems - itemOffset) / pageSize) + 1,
   };
+}
+
+export function idFromUrl(url: string) {
+  return url.match(/(\d+)\/$/)?.[1];
+}
+
+export function speciesUrlSelector(
+  state: EntityState<LoadableResource<PokemonInfo>>,
+  pokemonName: string
+) {
+  return state.entities[pokemonName]?.data?.species?.url;
 }

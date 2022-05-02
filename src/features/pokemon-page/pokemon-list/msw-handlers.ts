@@ -8,7 +8,7 @@ export const getPokemonPagePayload = (
 ) => ({
   count: 123,
   next: "https://pokeapi.co/api/v2/pokemon?offset=10&limit=10",
-  previous: "https://pokeapi.co/api/v2/pokemon?offset=10&limit=10",
+  previous: "https://pokeapi.co/api/v2/pokemon?offset=0&limit=10",
   results: Array.from({ length: pageSize }, (_, i) => {
     const id = currentPage * pageSize + i;
     return {

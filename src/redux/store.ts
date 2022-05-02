@@ -1,10 +1,12 @@
 import type { ThunkAction, Action } from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit";
 import pokemonPageSlice from "../features/pokemon-page/slice";
+import pokemonDetailsSlice from "../features/pokemon-details/slice";
 
 function getRootReducer() {
   return {
     [pokemonPageSlice.name]: pokemonPageSlice.reducer,
+    [pokemonDetailsSlice.name]: pokemonDetailsSlice.reducer,
   };
 }
 

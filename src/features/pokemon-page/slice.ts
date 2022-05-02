@@ -5,7 +5,7 @@ import type { LoadableResource } from "../../redux/types";
 import type { PokemonInfo, PokemonPageItem } from "./types";
 import type { RootState } from "../../redux/store";
 import * as thunks from "./thunks";
-import { getPaginationInfo } from "./service";
+import { getPaginationInfo, idFromUrl, speciesUrlSelector } from "./service";
 
 const pokemonListEntityAdapter = createEntityAdapter<PokemonPageItem>({
   selectId: (pokemon) => pokemon.name,
@@ -139,6 +139,16 @@ export const selectors = {
    * @see https://react-redux.js.org/api/hooks#using-memoizing-selectors
    */
   makeInfoSelectors() {
-    return pokemonInfoEntityAdapter.getSelectors(pokemonInfoSelector);
+    const speciesUrl = createSelector(
+      [pokemonInfoSelector, (_, pokemonName: string) => pokemonName],
+      (state, pokemonName) => speciesUrlSelector(state, pokemonName)
+    );
+
+    return {
+      ...pokemonInfoEntityAdapter.getSelectors(pokemonInfoSelector),
+      speciesId: createSelector([speciesUrl], (url) =>
+        url ? idFromUrl(url) : undefined
+      ),
+    };
   },
 };

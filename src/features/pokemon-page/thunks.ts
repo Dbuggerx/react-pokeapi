@@ -1,4 +1,4 @@
-import { createAsyncThunk, isFulfilled } from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { RootState } from "../../redux/store";
 import { getUrlData } from "./service";
 import type { PokemonInfo, PokemonPageList } from "./types";
@@ -18,9 +18,7 @@ export const fetchPokemonPage = createAsyncThunk<
       pokemonList.abort();
     });
 
-    const isAFulfilledAction = isFulfilled(fetchPokemonList);
-
-    if (!isAFulfilledAction(await pokemonList)) return;
+    await pokemonList;
 
     const {
       pokemonPage: { data },
@@ -63,8 +61,7 @@ export const fetchPokemonInfo = createAsyncThunk<
       } = getState();
       const pokemonInfo = info.entities[args.pokemonName];
 
-      if (pokemonInfo?.loading || pokemonInfo?.data.abilities) {
-        // Already fetched or in progress, don't need to re-fetch
+      if (pokemonInfo?.data.abilities) {
         return false;
       }
     },

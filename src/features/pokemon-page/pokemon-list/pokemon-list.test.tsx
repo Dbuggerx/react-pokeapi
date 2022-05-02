@@ -5,15 +5,16 @@ import {
   fireEvent,
   waitFor,
 } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import { Provider } from "react-redux";
 import { setupServer } from "msw/node";
-import PokemonList from ".";
 import {
   errorPokemonPageHandler,
   regularPokemonInfoHandler,
   regularPokemonPageHandler,
 } from "./msw-handlers";
 import { buildStore } from "../../../redux/store";
-import { Provider } from "react-redux";
+import PokemonList from ".";
 
 const server = setupServer(
   regularPokemonPageHandler,
@@ -31,22 +32,17 @@ describe("Pokemon list component", () => {
     const store = buildStore();
 
     render(
-      <Provider store={store}>
-        <PokemonList />
-      </Provider>
+      <MemoryRouter>
+        <Provider store={store}>
+          <PokemonList />
+        </Provider>
+      </MemoryRouter>
     );
   }
 
   it("displays the loading indicator", () => {
     setup();
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
-  });
-
-  it("displays the correct page number", async () => {
-    setup();
-    await waitForElementToBeRemoved(screen.queryByText(/loading/i));
-
-    expect(screen.getByText(/page:/i)).toHaveTextContent(/^Page: 1$/);
   });
 
   it("does not display error message", () => {
@@ -57,54 +53,137 @@ describe("Pokemon list component", () => {
   it("displays the items", async () => {
     setup();
     await waitForElementToBeRemoved(screen.queryByText(/loading/i));
-
-    await waitFor(() => {
-      const itemsContent = screen
-        .getAllByRole("listitem")
-        .map((i) => i.textContent);
-
-      expect(itemsContent).toEqual([
-        "result 0",
-        "result 1",
-        "result 2",
-        "result 3",
-        "result 4",
-        "result 5",
-        "result 6",
-        "result 7",
-        "result 8",
-        "result 9",
-      ]);
-    });
   });
 
-  it("goes to the next page", async () => {
-    setup();
+  describe("page navigation", () => {
+    it("displays the correct page number", async () => {
+      setup();
+      await waitForElementToBeRemoved(screen.queryByText(/loading/i));
 
-    await waitForElementToBeRemoved(screen.queryByText(/loading/i));
-    fireEvent.click(
-      screen.getByRole("button", {
-        name: /next/i,
-      })
-    );
+      expect(screen.getByText(/page:/i)).toHaveTextContent(/^Page: 1$/);
+    });
 
-    await waitFor(() => {
-      const itemsContent = screen
-        .getAllByRole("listitem")
-        .map((i) => i.textContent);
+    it("goes to the next page", async () => {
+      setup();
 
-      expect(itemsContent).toEqual([
-        "result 10",
-        "result 11",
-        "result 12",
-        "result 13",
-        "result 14",
-        "result 15",
-        "result 16",
-        "result 17",
-        "result 18",
-        "result 19",
-      ]);
+      await waitForElementToBeRemoved(screen.queryByText(/loading/i));
+      fireEvent.click(
+        screen.getByRole("button", {
+          name: /next/i,
+        })
+      );
+
+      await waitFor(() => {
+        const itemsContent = screen
+          .getAllByRole("listitem")
+          .map((i) => i.textContent);
+
+        expect(itemsContent).toEqual([
+          expect.stringContaining("result 10"),
+          expect.stringContaining("result 11"),
+          expect.stringContaining("result 12"),
+          expect.stringContaining("result 13"),
+          expect.stringContaining("result 14"),
+          expect.stringContaining("result 15"),
+          expect.stringContaining("result 16"),
+          expect.stringContaining("result 17"),
+          expect.stringContaining("result 18"),
+          expect.stringContaining("result 19"),
+        ]);
+      });
+
+      expect(screen.getByText(/page:/i)).toHaveTextContent(/^Page: 2$/);
+    });
+
+    it("goes to the prev page", async () => {
+      setup();
+
+      await waitForElementToBeRemoved(screen.queryByText(/loading/i));
+      fireEvent.click(
+        screen.getByRole("button", {
+          name: /next/i,
+        })
+      );
+
+      await waitFor(() => {
+        const itemsContent = screen
+          .getAllByRole("listitem")
+          .map((i) => i.textContent);
+
+        expect(itemsContent).toEqual([
+          expect.stringContaining("result 10"),
+          expect.stringContaining("result 11"),
+          expect.stringContaining("result 12"),
+          expect.stringContaining("result 13"),
+          expect.stringContaining("result 14"),
+          expect.stringContaining("result 15"),
+          expect.stringContaining("result 16"),
+          expect.stringContaining("result 17"),
+          expect.stringContaining("result 18"),
+          expect.stringContaining("result 19"),
+        ]);
+      });
+
+      fireEvent.click(
+        screen.getByRole("button", {
+          name: /prev/i,
+        })
+      );
+
+      await waitFor(() => {
+        const itemsContent = screen
+          .getAllByRole("listitem")
+          .map((i) => i.textContent);
+
+        expect(itemsContent).toEqual([
+          expect.stringContaining("result 0"),
+          expect.stringContaining("result 1"),
+          expect.stringContaining("result 2"),
+          expect.stringContaining("result 3"),
+          expect.stringContaining("result 4"),
+          expect.stringContaining("result 5"),
+          expect.stringContaining("result 6"),
+          expect.stringContaining("result 7"),
+          expect.stringContaining("result 8"),
+          expect.stringContaining("result 9"),
+        ]);
+      });
+
+      expect(screen.getByText(/page:/i)).toHaveTextContent(/^Page: 1$/);
+    });
+
+    it("does not go before first page", async () => {
+      setup();
+
+      await waitForElementToBeRemoved(screen.queryByText(/loading/i));
+      fireEvent.click(
+        screen.getByRole("button", {
+          name: /prev/i,
+        })
+      );
+
+      await waitForElementToBeRemoved(screen.queryAllByText(/loading/i));
+
+      await waitFor(() => {
+        const itemsContent = screen
+          .getAllByRole("listitem")
+          .map((i) => i.textContent);
+
+        expect(itemsContent).toEqual([
+          expect.stringContaining("result 0"),
+          expect.stringContaining("result 1"),
+          expect.stringContaining("result 2"),
+          expect.stringContaining("result 3"),
+          expect.stringContaining("result 4"),
+          expect.stringContaining("result 5"),
+          expect.stringContaining("result 6"),
+          expect.stringContaining("result 7"),
+          expect.stringContaining("result 8"),
+          expect.stringContaining("result 9"),
+        ]);
+      });
+
+      expect(screen.getByText(/page:/i)).toHaveTextContent(/^Page: 1$/);
     });
   });
 
