@@ -8,3 +8,5 @@ export default function Details({ backPath }: { backPath: string }) {
     </>
   );
 }
+
+export const path = "details";
