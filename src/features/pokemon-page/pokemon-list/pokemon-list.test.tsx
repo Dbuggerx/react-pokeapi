@@ -29,7 +29,7 @@ describe("Pokemon list component", () => {
     server.close();
   });
   function setup() {
-    const store = buildStore();
+    const { store } = buildStore();
 
     render(
       <MemoryRouter>

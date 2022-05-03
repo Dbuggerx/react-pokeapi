@@ -15,7 +15,7 @@ describe("Pokemon card component", () => {
     pokemonName: string;
     pokemonOrder: number;
   }) {
-    const store = buildStore({
+    const { store } = buildStore({
       pokemonPage: {
         pageCount: 4,
         currentPage: 1,

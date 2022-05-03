@@ -1,13 +1,20 @@
+import React from "react";
 import type { EntityId } from "@reduxjs/toolkit";
 import { generatePath, Link } from "react-router-dom";
-import PokemonInfo from "../features/pokemon-details/pokemon-info";
+
+const LazyPokemonInfo = React.lazy(
+  () => import("../features/pokemon-details/pokemon-info")
+);
 
 export default function Details({ backPath }: { backPath: string }) {
   return (
     <>
       <h1>Details</h1>
       <Link to={backPath}>Back</Link>
-      <PokemonInfo />
+
+      <React.Suspense fallback={<strong>Loading component...</strong>}>
+        <LazyPokemonInfo />
+      </React.Suspense>
     </>
   );
 }

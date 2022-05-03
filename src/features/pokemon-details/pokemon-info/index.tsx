@@ -1,7 +1,11 @@
 import { useParams } from "react-router-dom";
 import { usePokemonInfo } from "./hooks";
+import pokemonDetailsSlice, {
+  selectors as pokemonDetailsSelectors,
+} from "../slice";
+import withLazyRedux from "../../../redux/with-lazy-redux";
 
-export default function PokemonInfo() {
+function PokemonInfo() {
   const { pokemonName } = useParams();
   const { isLoading, isError, speciesId, pokemonInfo } =
     usePokemonInfo(pokemonName);
@@ -17,3 +21,9 @@ export default function PokemonInfo() {
     </article>
   );
 }
+
+export default withLazyRedux(
+  PokemonInfo,
+  pokemonDetailsSlice,
+  pokemonDetailsSelectors.sliceAvailable
+);

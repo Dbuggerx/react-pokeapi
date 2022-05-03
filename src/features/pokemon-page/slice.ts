@@ -28,7 +28,7 @@ const initialState: LoadableResource<EntityState<PokemonPageItem>> & {
   nextUrl: string | null;
   prevUrl: string | null;
 } = {
-  loading: false,
+  loading: true,
   error: false,
   lastUrlFetched: null,
   nextUrl: null,

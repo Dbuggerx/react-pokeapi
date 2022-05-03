@@ -1,35 +1,37 @@
-import type { ThunkAction, Action } from "@reduxjs/toolkit";
+import type { ReducersMapObject, Slice } from "@reduxjs/toolkit";
+import { combineReducers } from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit";
-import pokemonPageSlice from "../features/pokemon-page/slice";
-import pokemonDetailsSlice from "../features/pokemon-details/slice";
+import type { CompleteStoreType, LazyReducers } from "./lazy-reducers";
+import type { StaticReducers } from "./static-reducers";
+import { staticReducers } from "./static-reducers";
 
-function getRootReducer() {
-  return {
-    [pokemonPageSlice.name]: pokemonPageSlice.reducer,
-    [pokemonDetailsSlice.name]: pokemonDetailsSlice.reducer,
-  };
-}
+type ReducerState<T extends ReducersMapObject> = {
+  [K in keyof T]: ReturnType<T[K]>;
+};
 
-type RootReducer = ReturnType<typeof getRootReducer>;
+export type RootState = ReducerState<StaticReducers> &
+  ReducerState<LazyReducers>;
 
-export function buildStore(
-  preloadedState?: Partial<{
-    [K in keyof RootReducer]: ReturnType<RootReducer[K]>;
-  }>
-) {
-  return configureStore({
-    reducer: getRootReducer(),
+export function buildStore(preloadedState?: Partial<RootState>) {
+  const store = configureStore({
+    reducer: staticReducers,
     preloadedState,
   });
+
+  const asyncReducers: ReducersMapObject = {};
+
+  /**
+   * @see https://redux.js.org/usage/code-splitting#defining-an-injectreducer-function
+   */
+  const injectSlice = (slice: Slice) => {
+    asyncReducers[slice.name] = slice.reducer;
+
+    store.replaceReducer(
+      combineReducers({ ...staticReducers, ...asyncReducers })
+    );
+  };
+
+  return { store, injectSlice };
 }
 
-type Store = ReturnType<typeof buildStore>;
-
-export type AppDispatch = Store["dispatch"];
-export type RootState = ReturnType<Store["getState"]>;
-export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  Action<string>
->;
+export type AppDispatch = CompleteStoreType["dispatch"];
