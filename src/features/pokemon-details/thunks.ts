@@ -2,16 +2,17 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { RootState } from "../../redux/store";
 import { idFromUrl, speciesUrlSelector } from "../pokemon-page/service";
 import { fetchPokemonInfo } from "../pokemon-page/thunks";
-import type { PokemonSpecies } from "./types";
+import type { PokemonDetailsError, PokemonSpecies } from "./types";
 
-export const fetchPokemonDetails = createAsyncThunk<
+export const getPokemonDetails = createAsyncThunk<
   void,
   { pokemonName: string },
   {
     state: RootState;
+    rejectValue: PokemonDetailsError;
   }
 >(
-  "pokemonDetails/fetchPokemonDetails",
+  "pokemonDetails/getPokemonDetails",
   async (args, { dispatch, getState, signal, rejectWithValue }) => {
     const pokemonInfo = dispatch(fetchPokemonInfo(args));
 
@@ -26,7 +27,7 @@ export const fetchPokemonDetails = createAsyncThunk<
     } = getState();
 
     const speciesUrl = speciesUrlSelector(info, args.pokemonName);
-    if (!speciesUrl) return rejectWithValue("No species URL available");
+    if (!speciesUrl) return rejectWithValue("species not found");
 
     const pokemonSpecies = dispatch(
       fetchPokemonSpecies({

@@ -5,8 +5,14 @@ import { selectors as pokemonPageSelectors } from "../../pokemon-page/slice";
 
 export function usePokemonInfo(pokemonName: string | undefined) {
   const dispatch = useAppDispatch();
-  const isLoading = useAppSelector(pokemonDetailsSelectors.species.isLoading);
-  const isError = useAppSelector(pokemonDetailsSelectors.species.isError);
+  const error = useAppSelector(pokemonDetailsSelectors.error);
+
+  const isSpeciesLoading = useAppSelector(
+    pokemonDetailsSelectors.species.isLoading
+  );
+  const isSpeciesError = useAppSelector(
+    pokemonDetailsSelectors.species.isError
+  );
 
   const pokemonInfoSelectors = React.useMemo(
     () => pokemonPageSelectors.makeInfoSelectors(),
@@ -27,7 +33,7 @@ export function usePokemonInfo(pokemonName: string | undefined) {
     function fetchDetails() {
       if (!pokemonName) return;
 
-      const promise = dispatch(actions.fetchPokemonDetails({ pokemonName }));
+      const promise = dispatch(actions.getPokemonDetails({ pokemonName }));
 
       return () => {
         promise.abort();
@@ -36,5 +42,5 @@ export function usePokemonInfo(pokemonName: string | undefined) {
     [dispatch, pokemonName]
   );
 
-  return { isLoading, isError, pokemonInfo, speciesId };
+  return { error, isSpeciesLoading, isSpeciesError, pokemonInfo, speciesId };
 }

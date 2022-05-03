@@ -3,14 +3,14 @@ import type { RootState } from "../../redux/store";
 import { getUrlData } from "./service";
 import type { PokemonInfo, PokemonPageList } from "./types";
 
-export const fetchPokemonPage = createAsyncThunk<
+export const getPokemonPage = createAsyncThunk<
   void,
   { size: number; offset: number } | { url: string },
   {
     state: RootState;
   }
 >(
-  "pokemonPage/fetchPokemonPage",
+  "pokemonPage/getPokemonPage",
   async (args, { dispatch, getState, signal }) => {
     const pokemonList = dispatch(fetchPokemonList(args));
 

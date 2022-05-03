@@ -13,10 +13,8 @@ export function useFetchPage() {
 
   React.useEffect(
     function fetchFirstPage() {
-      if (currentPage > 0) return;
-      const promise = dispatch(
-        actions.fetchPokemonPage({ size: 10, offset: 0 })
-      );
+      if (currentPage > 1) return;
+      const promise = dispatch(actions.getPokemonPage({ size: 10, offset: 0 }));
 
       return () => {
         promise.abort();
@@ -29,7 +27,7 @@ export function useFetchPage() {
     if (!prevPage) return;
     lastPromise.current?.abort();
     lastPromise.current = dispatch(
-      actions.fetchPokemonPage({
+      actions.getPokemonPage({
         url: prevPage,
       })
     );
@@ -39,7 +37,7 @@ export function useFetchPage() {
     if (!nextPage) return;
     lastPromise.current?.abort();
     lastPromise.current = dispatch(
-      actions.fetchPokemonPage({
+      actions.getPokemonPage({
         url: nextPage,
       })
     );

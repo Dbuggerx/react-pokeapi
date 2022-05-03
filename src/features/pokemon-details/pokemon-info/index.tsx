@@ -7,11 +7,13 @@ import withLazyRedux from "../../../redux/with-lazy-redux";
 
 function PokemonInfo() {
   const { pokemonName } = useParams();
-  const { isLoading, isError, speciesId, pokemonInfo } =
+  const { error, isSpeciesLoading, isSpeciesError, speciesId, pokemonInfo } =
     usePokemonInfo(pokemonName);
 
-  if (isLoading) return <strong>Loading...</strong>;
-  if (isError) return <strong>Error!</strong>;
+  if (error === "species not found") return <strong>Not found!</strong>;
+  if (isSpeciesLoading) return <strong>Loading...</strong>;
+  if (error === "unexpected error" || isSpeciesError)
+    return <strong>Error!</strong>;
 
   return (
     <article>

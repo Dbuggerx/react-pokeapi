@@ -13,6 +13,7 @@ specifiers:
   '@types/testing-library__jest-dom': ^5.14.3
   cross-env: ^7.0.3
   msw: ^0.39.2
+  pokemon: ^2.3.3
   pokenode-ts: ^1.13.1
   react: ^18.1.0
   react-dom: ^18.1.0
@@ -32,6 +33,7 @@ dependencies:
   '@types/node': 17.0.30
   '@types/react': 18.0.8
   '@types/react-dom': 18.0.3
+  pokemon: 2.3.3
   react: 18.1.0
   react-dom: 18.1.0_react@18.1.0
   react-redux: 8.0.1_3vjunwlmc3akvx5gzli76tirsm
@@ -7407,6 +7409,13 @@ packages:
       find-up: 3.0.0
     dev: false
 
+  /pokemon/2.3.3:
+    resolution: {integrity: sha512-Ck2uuq0I4a1TVoe6kJFTb8BfbEB6dMnJX6hel170aisDNSmNrAzMWu8EqmESX1qJ281uC5Ue2qxpEuHuDuRnVg==}
+    engines: {node: '>=8'}
+    dependencies:
+      unique-random-array: 2.0.0
+    dev: false
+
   /pokenode-ts/1.13.1:
     resolution: {integrity: sha512-O4HMjz+wdl/XSH8LPUvKsivfHdjg1Xa4PRSRgyB43RvIVP18t7rDJMvhVTfOmCOr3h71YP3gHBVpjzNyzxEbTg==}
     engines: {node: '>=14'}
@@ -9765,6 +9774,18 @@ packages:
   /unicode-property-aliases-ecmascript/2.0.0:
     resolution: {integrity: sha512-5Zfuy9q/DFr4tfO7ZPeVXb1aPoeQSdeFMLpYuFebehDAhbuevLs5yxSZmIFN1tP5F9Wl4IpJrYojg85/zgyZHQ==}
     engines: {node: '>=4'}
+    dev: false
+
+  /unique-random-array/2.0.0:
+    resolution: {integrity: sha512-xR87O95fZ7hljw84J8r1YDXrvffPLWN513BNOP4Bv0KcgG5dyEUrHwsvP7mVAOKg4Y80uqRbpUk0GKr8il70qg==}
+    engines: {node: '>=8'}
+    dependencies:
+      unique-random: 2.1.0
+    dev: false
+
+  /unique-random/2.1.0:
+    resolution: {integrity: sha512-iQ1ZgWac3b8YxGThecQFRQiqgk6xFERRwHZIWeVVsqlbmgCRl0PY13R4mUkodNgctmg5b5odG1nyW/IbOxQTqg==}
+    engines: {node: '>=6'}
     dev: false
 
   /unique-string/2.0.0:

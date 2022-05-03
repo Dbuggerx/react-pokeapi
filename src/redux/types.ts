@@ -1,5 +1,5 @@
-export type LoadableResource<T> = {
+export type LoadableResource<T, E = boolean> = {
   loading: boolean;
-  error: boolean;
+  error: E;
   data: T;
 };

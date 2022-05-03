@@ -14,7 +14,7 @@ export default function List() {
         <span>Page: {currentPage}</span>
         <button onClick={fetchNextPage}>Next</button>
       </header>
-      {isLoading && <strong>Loading...</strong>}
+      {isLoading && <strong>Loading list...</strong>}
       {isError && <strong>Error!</strong>}
       <ul>
         {pokemonInfoIds.map((pokemonName) => (

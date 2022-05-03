@@ -35,7 +35,7 @@ const initialState: LoadableResource<EntityState<PokemonPageItem>> & {
   prevUrl: null,
   data: pokemonListEntityAdapter.getInitialState(),
   pageCount: 0,
-  currentPage: 0,
+  currentPage: 1,
   info: pokemonInfoEntityAdapter.getInitialState(),
 };
 
@@ -48,8 +48,12 @@ const slice = createSlice({
       .addCase(thunks.fetchPokemonList.pending, (state) => {
         state.loading = true;
         state.error = false;
+        pokemonListEntityAdapter.removeAll(state.data);
+        pokemonInfoEntityAdapter.removeAll(state.info);
       })
       .addCase(thunks.fetchPokemonList.rejected, (state, action) => {
+        pokemonInfoEntityAdapter.removeAll(state.info);
+        pokemonListEntityAdapter.removeAll(state.data);
         state.loading = false;
         state.lastUrlFetched = null;
         if (action.meta.aborted) return;
@@ -57,7 +61,6 @@ const slice = createSlice({
       })
       .addCase(thunks.fetchPokemonList.fulfilled, (state, action) => {
         pokemonInfoEntityAdapter.removeAll(state.info);
-
         state.loading = false;
         state.error = false;
         state.lastUrlFetched = action.payload.url;

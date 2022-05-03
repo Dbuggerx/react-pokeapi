@@ -11,6 +11,7 @@
     "@types/node": "^17.0.30",
     "@types/react": "^18.0.8",
     "@types/react-dom": "^18.0.3",
+    "pokemon": "^2.3.3",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-redux": "^8.0.1",
@@ -22,10 +23,12 @@
   "engines": {
     "node": ">=16.14.0"
   },
+  "packageManager": "pnpm@7.0.0",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test-debug": "NODE_OPTIONS='--inspect-brk' pnpm test -- --runInBand",
     "eject": "react-scripts eject",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "analyze": "cross-env ANALYZE=true craco build"
