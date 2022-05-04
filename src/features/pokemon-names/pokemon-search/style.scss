@@ -1,0 +1,42 @@
+.search {
+  --border-radius: 4px;
+
+  display: flex;
+  flex-flow: row nowrap;
+
+  &__input {
+    appearance: none;
+    background-color: white;
+    border: solid 1px var(--bg-color);
+    box-sizing: border-box;
+    border-radius: var(--border-radius);
+    display: block;
+    font-size: 1em;
+    font-style: italic;
+    margin: 0;
+    padding: 0.5em;
+    position: relative;
+    transition: border-color;
+    width: 100%;
+    min-width: 35vw;
+    outline: none;
+
+    &:focus {
+      border-width: 2px;
+    }
+  }
+
+  &__button {
+    border-radius: var(--border-radius);
+    outline: none;
+    border: none;
+    margin-left: 0.5em;
+    background-color: var(--bg-color);
+    color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--accent-color-highlight);
+    }
+  }
+}

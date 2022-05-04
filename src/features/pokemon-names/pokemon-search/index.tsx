@@ -1,4 +1,5 @@
 import * as hooks from "./hooks";
+import "./style.scss";
 
 export default function PokemonSearch() {
   hooks.useInitialFilterSuggestionsEffect();
@@ -13,6 +14,7 @@ export default function PokemonSearch() {
         evt.preventDefault();
       }}
       className="search"
+      role="search"
     >
       <input
         type="search"

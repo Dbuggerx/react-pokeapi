@@ -1,0 +1,30 @@
+.pagination {
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1em 0;
+
+  &__button-left {
+    margin-right: 1.5em;
+    transform: rotate(180deg);
+  }
+
+  &__button-right {
+    margin-left: 1.5em;
+  }
+
+  &__button-left,
+  &__button-right {
+    color: var(--accent-color);
+    cursor: pointer;
+    background: none;
+    border: none;
+
+    &:hover {
+      color: var(--accent-color-highlight);
+    }
+  }
+}

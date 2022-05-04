@@ -1,0 +1,27 @@
+.footer {
+  flex: 0;
+  font-family: "Open Sans", sans-serif;
+  background-color: var(--bg-color);
+  color: white;
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  padding: 0 1em;
+
+  &__info {
+    position: absolute;
+    left: var(--layout-padding);
+    top: 1.3em;
+    color: #ccc;
+    text-align: left;
+  }
+
+  @media (max-width: 625px) {
+    .footer__info {
+      position: static;
+      text-align: center;
+      display: block;
+      padding-bottom: 1em;
+    }
+  }
+}

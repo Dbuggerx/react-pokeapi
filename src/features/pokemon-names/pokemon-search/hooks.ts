@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { generateDetailsPath } from "../../../pages/details";
+import { pokemonDetailsRoute } from "../../../pages/routes";
 import { useAppSelector } from "../../../redux/hooks";
 import { actions } from "../slice";
 
@@ -30,7 +30,7 @@ export function useChangeRouteCallback() {
 
   return () => {
     if (filterState.name.trim().length > 0)
-      navigate(generateDetailsPath(filterState.name));
+      navigate(pokemonDetailsRoute.generate(filterState.name));
   };
 }
 

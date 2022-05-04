@@ -7,9 +7,10 @@ export function useFetchPage() {
   const currentPage = useAppSelector(selectors.list.currentPage);
   const prevPage = useAppSelector(selectors.list.prevPage);
   const nextPage = useAppSelector(selectors.list.nextPage);
-  const lastPromise = React.useRef<{
-    abort: () => void;
-  }>();
+  const lastPromise =
+    React.useRef<{
+      abort: () => void;
+    }>();
 
   React.useEffect(
     function fetchFirstPage() {
@@ -53,11 +54,12 @@ export function usePageData() {
   const isLoading = useAppSelector(selectors.list.isLoading);
   const isError = useAppSelector(selectors.list.isError);
   const currentPage = useAppSelector(selectors.list.currentPage);
+  const pageCount = useAppSelector(selectors.list.pageCount);
   const pokemonInfoSelectors = React.useMemo(
     () => selectors.makeInfoSelectors(),
     []
   );
   const pokemonInfoIds = useAppSelector(pokemonInfoSelectors.selectIds);
 
-  return { isLoading, isError, pokemonInfoIds, currentPage };
+  return { isLoading, isError, pokemonInfoIds, currentPage, pageCount };
 }

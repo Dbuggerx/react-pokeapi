@@ -58,7 +58,8 @@ describe("Pokemon card component", () => {
       pokemonName: "test",
       pokemonOrder: 1,
     });
-    expect(screen.getByText(/loading/i)).toBeInTheDocument();
+
+    expect(screen.getByRole("alert")).toHaveAttribute("aria-busy", "true");
   });
 
   it("does not display error message", () => {
@@ -79,8 +80,10 @@ describe("Pokemon card component", () => {
       pokemonOrder: 10,
     });
 
-    expect(screen.getByText(/test/i)).toBeInTheDocument();
-    expect(screen.getByText(/10/i)).toBeInTheDocument();
+    // eslint-disable-next-line testing-library/no-node-access
+    expect(document.getElementsByTagName("textPath")![0]).toHaveTextContent(
+      "test"
+    );
   });
 
   describe("errors", () => {

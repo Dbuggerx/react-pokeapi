@@ -1,0 +1,153 @@
+.pokemon-details {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  border-radius: 1.5em;
+  color: var(--accent-text-color);
+  position: relative;
+  border: solid 4px white;
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.2));
+  background-color: var(--accent-color);
+  overflow: hidden;
+  display: flex;
+  margin: var(--layout-padding, 1em);
+  padding: calc(var(--layout-padding, 1em) / 2);
+  scrollbar-color: var(--accent-color-highlight) transparent;
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--accent-color-highlight);
+  }
+
+  &__content {
+    padding: calc(var(--layout-padding) / 2);
+    width: 100%;
+    overflow: auto;
+    display: grid;
+    grid-template:
+      "header header header" max-content
+      "images images images" max-content
+      "description description types" 1fr
+      "profile abilities stats" max-content / auto auto minmax(
+        15vmax,
+        max-content
+      );
+    gap: 2em;
+
+    @media (max-width: 625px) {
+      grid-template:
+        "header" max-content
+        "images" max-content
+        "types" max-content
+        "description" 1fr
+        "profile" max-content
+        "abilities" max-content
+        "stats" max-content / auto;
+    }
+  }
+
+  ul {
+    list-style-type: circle;
+  }
+
+  &__background {
+    background-repeat: no-repeat;
+    background-position: 85% 85%;
+    background-size: 50%;
+    background-attachment: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    filter: opacity(0.15);
+
+    @media (max-width: 625px) {
+      background-size: 100%;
+      background-position: center;
+    }
+  }
+
+  &__abilities {
+    grid-area: abilities;
+  }
+
+  &__stats {
+    grid-area: stats;
+  }
+
+  &__description {
+    grid-area: description;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__descrition-text {
+    padding: 1em 0 0 1em;
+    line-height: 1.5em;
+  }
+
+  &__profile {
+    grid-area: profile;
+  }
+
+  &__header {
+    grid-area: header;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.5em;
+    font-weight: 800;
+  }
+
+  &__name {
+    font-size: 1.5em;
+    margin: 0;
+  }
+
+  &__status {
+    grid-area: header;
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__images {
+    grid-area: images;
+    flex: 1 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+    background: white;
+    padding: 2em 0;
+    color: black;
+    border-radius: 1em;
+  }
+
+  &__types {
+    grid-area: types;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: flex-end;
+    align-content: flex-start;
+
+    @media (min-width: 625px) {
+      > * {
+        position: sticky;
+        top: 0;
+      }
+    }
+  }
+
+  &__section-title {
+    font-size: 1.5em;
+    padding: 0 0.8em;
+    border-radius: 1em;
+    background-color: var(--accent-text-color, white);
+    color: var(--accent-color);
+    opacity: 0.8;
+  }
+}

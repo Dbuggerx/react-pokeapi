@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/no-node-access */
 import {
   render,
   screen,
@@ -42,7 +43,7 @@ describe("Pokemon list component", () => {
 
   it("displays the loading indicator", () => {
     setup();
-    expect(screen.getByText(/loading/i)).toBeInTheDocument();
+    expect(screen.getByRole("alert")).toHaveAttribute("aria-busy", "true");
   });
 
   it("does not display error message", () => {
@@ -52,31 +53,49 @@ describe("Pokemon list component", () => {
 
   it("displays the items", async () => {
     setup();
-    await waitForElementToBeRemoved(screen.queryByText(/loading/i));
+    await waitForElementToBeRemoved(screen.queryByRole("alert"));
+    await waitFor(() => {
+      const itemsContent = Array.from(
+        document.getElementsByTagName("textPath")
+      ).map((i) => i.textContent);
+
+      expect(itemsContent).toEqual([
+        expect.stringContaining("result 0"),
+        expect.stringContaining("result 1"),
+        expect.stringContaining("result 2"),
+        expect.stringContaining("result 3"),
+        expect.stringContaining("result 4"),
+        expect.stringContaining("result 5"),
+        expect.stringContaining("result 6"),
+        expect.stringContaining("result 7"),
+        expect.stringContaining("result 8"),
+        expect.stringContaining("result 9"),
+      ]);
+    });
   });
 
   describe("page navigation", () => {
     it("displays the correct page number", async () => {
       setup();
-      await waitForElementToBeRemoved(screen.queryByText(/loading/i));
 
-      expect(screen.getByText(/page:/i)).toHaveTextContent(/^Page: 1$/);
+      expect(await screen.findByText(/page/i)).toHaveTextContent(
+        /^page 1 of 13$/
+      );
     });
 
     it("goes to the next page", async () => {
       setup();
 
-      await waitForElementToBeRemoved(screen.queryByText(/loading/i));
       fireEvent.click(
-        screen.getByRole("button", {
+        await screen.findByRole("button", {
           name: /next/i,
         })
       );
 
       await waitFor(() => {
-        const itemsContent = screen
-          .getAllByRole("listitem")
-          .map((i) => i.textContent);
+        const itemsContent = Array.from(
+          document.getElementsByTagName("textPath")
+        ).map((i) => i.textContent);
 
         expect(itemsContent).toEqual([
           expect.stringContaining("result 10"),
@@ -92,23 +111,22 @@ describe("Pokemon list component", () => {
         ]);
       });
 
-      expect(screen.getByText(/page:/i)).toHaveTextContent(/^Page: 2$/);
+      expect(screen.getByText(/page/i)).toHaveTextContent(/^page 2 of 13$/);
     });
 
     it("goes to the prev page", async () => {
       setup();
 
-      await waitForElementToBeRemoved(screen.queryByText(/loading/i));
       fireEvent.click(
-        screen.getByRole("button", {
+        await screen.findByRole("button", {
           name: /next/i,
         })
       );
 
       await waitFor(() => {
-        const itemsContent = screen
-          .getAllByRole("listitem")
-          .map((i) => i.textContent);
+        const itemsContent = Array.from(
+          document.getElementsByTagName("textPath")
+        ).map((i) => i.textContent);
 
         expect(itemsContent).toEqual([
           expect.stringContaining("result 10"),
@@ -125,15 +143,15 @@ describe("Pokemon list component", () => {
       });
 
       fireEvent.click(
-        screen.getByRole("button", {
+        await screen.findByRole("button", {
           name: /prev/i,
         })
       );
 
       await waitFor(() => {
-        const itemsContent = screen
-          .getAllByRole("listitem")
-          .map((i) => i.textContent);
+        const itemsContent = Array.from(
+          document.getElementsByTagName("textPath")
+        ).map((i) => i.textContent);
 
         expect(itemsContent).toEqual([
           expect.stringContaining("result 0"),
@@ -149,25 +167,23 @@ describe("Pokemon list component", () => {
         ]);
       });
 
-      expect(screen.getByText(/page:/i)).toHaveTextContent(/^Page: 1$/);
+      expect(screen.getByText(/page/i)).toHaveTextContent(/^page 1 of 13$/);
     });
 
     it("does not go before first page", async () => {
       setup();
 
-      await waitForElementToBeRemoved(screen.queryByText(/loading/i));
       fireEvent.click(
-        screen.getByRole("button", {
+        await screen.findByRole("button", {
           name: /prev/i,
         })
       );
-
-      await waitForElementToBeRemoved(screen.queryAllByText(/loading/i));
+      await waitForElementToBeRemoved(screen.queryAllByRole("alert"));
 
       await waitFor(() => {
-        const itemsContent = screen
-          .getAllByRole("listitem")
-          .map((i) => i.textContent);
+        const itemsContent = Array.from(
+          document.getElementsByTagName("textPath")
+        ).map((i) => i.textContent);
 
         expect(itemsContent).toEqual([
           expect.stringContaining("result 0"),
@@ -183,7 +199,7 @@ describe("Pokemon list component", () => {
         ]);
       });
 
-      expect(screen.getByText(/page:/i)).toHaveTextContent(/^Page: 1$/);
+      expect(screen.getByText(/page/i)).toHaveTextContent(/^page 1 of 13$/);
     });
   });
 
@@ -194,9 +210,8 @@ describe("Pokemon list component", () => {
 
     it("displays error message", async () => {
       setup();
-      await waitForElementToBeRemoved(screen.queryByText(/loading/i));
 
-      expect(screen.queryByText(/loading/i)).not.toBeInTheDocument();
+      await waitForElementToBeRemoved(screen.queryByRole("alert"));
       expect(screen.getByText(/error/i)).toBeInTheDocument();
     });
   });

@@ -1,0 +1,19 @@
+.card-layout {
+  --size: 15em;
+
+  padding: var(--layout-padding);
+  flex: 1;
+  overflow: auto;
+
+  &__content {
+    display: grid;
+    gap: 3em;
+    grid-auto-rows: var(--size);
+    grid-template-columns: repeat(auto-fill, var(--size));
+    justify-content: space-between;
+
+    @media (max-width: 625px) {
+      justify-content: center;
+    }
+  }
+}

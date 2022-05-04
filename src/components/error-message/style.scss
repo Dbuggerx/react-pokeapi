@@ -1,0 +1,13 @@
+.error-message {
+  font-family: "Open Sans", sans-serif;
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em 0;
+  background-color: white;
+
+  svg {
+    margin-right: 0.2em;
+  }
+}

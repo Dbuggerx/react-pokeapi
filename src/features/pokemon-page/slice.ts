@@ -136,6 +136,7 @@ export const selectors = {
       pokemonPageSelector,
       (state) => state.currentPage
     ),
+    pageCount: createSelector(pokemonPageSelector, (state) => state.pageCount),
   },
   /***
    * When the selector is used in multiple component instances and depends on the component's props, you need to ensure that each component instance gets its own selector instance

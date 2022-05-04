@@ -3,10 +3,11 @@ import { Provider } from "react-redux";
 import { buildStore } from "../../redux/store";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
-import Layout from "../../components/layout";
-import Details, { path as detailsPath } from "../../pages/details";
-import List from "../../pages/list";
 import { InjectSliceContext } from "../../redux/inject-slice-context";
+import Layout from "../../components/layout";
+import Details from "../../pages/details";
+import List from "../../pages/list";
+import { pokemonDetailsRoute } from "../../pages/routes";
 import "./style.scss";
 
 function App() {
@@ -39,7 +40,7 @@ function App() {
               >
                 <Route path="*" element={<Navigate to="/" replace />} />
                 <Route index element={<List />} />
-                <Route path={detailsPath} element={<Details backPath="/" />} />
+                <Route path={pokemonDetailsRoute.path} element={<Details />} />
               </Route>
             </Routes>
           </CSSTransition>

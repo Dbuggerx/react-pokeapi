@@ -1,0 +1,112 @@
+.pokemon-card {
+  font-family: "Open Sans", sans-serif;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  transform-origin: center center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  overflow: hidden;
+  border-radius: 50%;
+  align-items: center;
+  box-sizing: border-box;
+  transform: perspective(10em);
+  border: solid 2px #f0f0f0;
+  background-color: white;
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.2));
+  box-shadow: inset 0 0 2px 5px #ccc;
+  padding: 0;
+
+  &,
+  &__background {
+    transition-property: filter transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+  }
+
+  &__background {
+    --filters: blur(10px) opacity(0.65);
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 550%;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    z-index: -1;
+    opacity: 0.8;
+    filter: var(--filters);
+
+    &::before {
+      display: block;
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: -1;
+      background: radial-gradient(
+        closest-side,
+        rgba(255, 255, 255, 0.9) 25%,
+        rgba(255, 255, 255, 0) 75%
+      );
+    }
+  }
+
+  &:hover {
+    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.2));
+    transform: perspective(10em) translateZ(1em);
+
+    .pokemon-card__background {
+      filter: var(--filters) saturate(300%);
+    }
+  }
+
+  &__curved-text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    top: 0;
+
+    text {
+      font-size: 0.5em;
+      font-weight: bold;
+      text-transform: uppercase;
+      transform-origin: center center;
+      transform: scale(0.7);
+    }
+  }
+
+  &__status {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  &__image {
+    flex: 2 1 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin-top: 4em;
+    max-height: 50%;
+  }
+
+  &__types {
+    flex: 0 1 auto;
+    display: flex;
+    flex-flow: row wrap;
+    width: 60%;
+    justify-content: center;
+    margin-bottom: 0.7em;
+  }
+}
