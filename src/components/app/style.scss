@@ -1,0 +1,21 @@
+.route {
+  &__transition {
+    &-enter-active,
+    &-exit-active {
+      transition: opacity 0.2s;
+    }
+    &-enter {
+      opacity: 0;
+    }
+    &-enter-active {
+      z-index: 2;
+      opacity: 1;
+    }
+    &-exit {
+      opacity: 1;
+    }
+    &-exit-active {
+      opacity: 0;
+    }
+  }
+}

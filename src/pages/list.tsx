@@ -9,5 +9,3 @@ export default function List() {
     </>
   );
 }
-
-export const path = "list";

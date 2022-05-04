@@ -17,6 +17,7 @@
     "react-redux": "^8.0.1",
     "react-router-dom": "6",
     "react-scripts": "5.0.1",
+    "react-transition-group": "^4.4.2",
     "typescript": "^4.6.4",
     "web-vitals": "^2.1.4"
   },
@@ -58,10 +59,12 @@
     "@storybook/preset-create-react-app": "^4.1.0",
     "@storybook/react": "^6.4.22",
     "@storybook/testing-library": "^0.0.11",
+    "@types/react-transition-group": "^4.4.4",
     "@types/testing-library__jest-dom": "^5.14.3",
     "cross-env": "^7.0.3",
     "msw": "^0.39.2",
     "pokenode-ts": "^1.13.1",
+    "sass": "^1.51.0",
     "webpack-bundle-analyzer": "^4.5.0"
   }
 }
