@@ -23,12 +23,11 @@
   "engines": {
     "node": ">=16.14.0"
   },
-  "packageManager": "pnpm@7.0.0",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test-debug": "NODE_OPTIONS='--inspect-brk' pnpm test -- --runInBand",
+    "test-debug": "NODE_OPTIONS='--inspect-brk' npm test -- --runInBand",
     "eject": "react-scripts eject",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "analyze": "cross-env ANALYZE=true craco build"
