@@ -12,3 +12,8 @@ parserOptions:
   sourceType: module
 rules:
   "@typescript-eslint/consistent-type-imports": "error"
+overrides:
+  - files:
+      - "**/*.stories.*"
+    rules:
+      import/no-anonymous-default-export: "off"

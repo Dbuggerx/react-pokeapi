@@ -30,7 +30,9 @@
     "test-debug": "NODE_OPTIONS='--inspect-brk' npm test -- --runInBand",
     "eject": "react-scripts eject",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
-    "analyze": "cross-env ANALYZE=true craco build"
+    "analyze": "cross-env ANALYZE=true craco build",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "browserslist": {
     "production": [
@@ -46,6 +48,16 @@
   },
   "devDependencies": {
     "@craco/craco": "^6.4.3",
+    "@storybook/addon-actions": "^6.4.22",
+    "@storybook/addon-essentials": "^6.4.22",
+    "@storybook/addon-interactions": "^6.4.22",
+    "@storybook/addon-links": "^6.4.22",
+    "@storybook/builder-webpack5": "^6.4.22",
+    "@storybook/manager-webpack5": "^6.4.22",
+    "@storybook/node-logger": "^6.4.22",
+    "@storybook/preset-create-react-app": "^4.1.0",
+    "@storybook/react": "^6.4.22",
+    "@storybook/testing-library": "^0.0.11",
     "@types/testing-library__jest-dom": "^5.14.3",
     "cross-env": "^7.0.3",
     "msw": "^0.39.2",
