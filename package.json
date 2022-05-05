@@ -1,6 +1,9 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
+  "name": "react-pokeapi",
+  "version": "2.0.0",
+  "license": "AGPL-3.0",
+  "description": "Simple application made with React, Redux, etc to interact with the PokeApi v2",
+  "homepage": "https://dbuggerx.github.io/react-pokeapi",
   "private": true,
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
