@@ -24,6 +24,7 @@ export function buildStore(preloadedState?: Partial<RootState>) {
    * @see https://redux.js.org/usage/code-splitting#defining-an-injectreducer-function
    */
   const injectSlice = (slice: Slice) => {
+    if (asyncReducers[slice.name]) return;
     asyncReducers[slice.name] = slice.reducer;
 
     store.replaceReducer(

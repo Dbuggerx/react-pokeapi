@@ -1,20 +1,20 @@
 import React from "react";
-import type { Slice } from "@reduxjs/toolkit";
-import { useAppSelector } from "./hooks";
 import { useInjectReduxSlice } from "./inject-slice-context";
-import type { RootState } from "./store";
+import type { Slice } from "@reduxjs/toolkit";
 
-export default function withLazyRedux<P>(
+export default function withLazyRedux<P extends JSX.IntrinsicAttributes>(
   Component: React.JSXElementConstructor<P>,
-  slice: Slice,
-  sliceReadySelector: (reduxState: RootState) => boolean
+  slice: Slice
 ) {
   return function LazyRedux(props: P) {
-    const sliceReady = useAppSelector(sliceReadySelector);
     const injectSlice = useInjectReduxSlice();
+    const [sliceReady, setSliceReady] = React.useState(false);
 
     React.useEffect(() => {
-      if (!sliceReady) injectSlice(slice);
+      if (sliceReady) return;
+
+      injectSlice(slice);
+      setSliceReady(true);
     }, [injectSlice, sliceReady]);
 
     return sliceReady ? <Component {...props} /> : null;

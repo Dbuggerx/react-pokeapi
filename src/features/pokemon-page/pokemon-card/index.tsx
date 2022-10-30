@@ -17,7 +17,7 @@ export function PokemonCardData(props: {
   info: LoadableResource<PokemonInfo> | undefined;
 }) {
   const backgroundImageUrl =
-    props.info?.data?.sprites?.other["official-artwork"].front_default;
+    props.info?.data?.sprites?.other?.["official-artwork"].front_default;
 
   return (
     <section className="pokemon-card" data-testid="card">
@@ -55,7 +55,7 @@ function PokemonImage({
   images: PokemonInfo["sprites"] | undefined;
   alt: string;
 }) {
-  const imageSrc = images?.other["official-artwork"].front_default;
+  const imageSrc = images?.other?.["official-artwork"].front_default;
   return imageSrc ? (
     <img
       src={imageSrc}

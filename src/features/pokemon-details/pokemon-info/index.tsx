@@ -1,8 +1,6 @@
 import { useParams } from "react-router-dom";
 import { usePokemonInfo } from "./hooks";
-import pokemonDetailsSlice, {
-  selectors as pokemonDetailsSelectors,
-} from "../slice";
+import pokemonDetailsSlice from "../slice";
 import withLazyRedux from "../../../redux/with-lazy-redux";
 import ErrorMessage from "../../../components/error-message";
 import LoadingSpinner from "../../../components/loading-spinner";
@@ -122,8 +120,4 @@ function PokemonInfo() {
   );
 }
 
-export default withLazyRedux(
-  PokemonInfo,
-  pokemonDetailsSlice,
-  pokemonDetailsSelectors.sliceAvailable
-);
+export default withLazyRedux(PokemonInfo, pokemonDetailsSlice);

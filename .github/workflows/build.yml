@@ -26,20 +26,19 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Setup Node 🔧
-        uses: actions/setup-node@v3
+      - name: Setup 🔧
+        uses: pnpm/action-setup@v2.2.4
         with:
-          node-version: "16"
-          cache: "npm"
+          version: 7.14.1
 
       - name: Test 🔎
         run: |
-          npm install
-          npm test
-          npm run lint
+          pnpm install
+          pnpm test
+          pnpm lint
 
       - name: Build 👷
-        run: npm run build
+        run: pnpm build
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.3.3

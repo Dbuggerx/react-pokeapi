@@ -1,4 +1,4 @@
-import type { DefaultRequestBody, PathParams } from "msw";
+import type { DefaultBodyType, PathParams } from "msw";
 import { rest } from "msw";
 import type { PokemonInfo, PokemonPageList } from "../types";
 
@@ -19,7 +19,7 @@ export const getPokemonPagePayload = (
 });
 
 export const regularPokemonPageHandler = rest.get<
-  DefaultRequestBody,
+  DefaultBodyType,
   PathParams,
   PokemonPageList
 >("https://pokeapi.co/api/v2/pokemon", (req, res, ctx) => {
@@ -32,7 +32,7 @@ export const regularPokemonPageHandler = rest.get<
 });
 
 export const errorPokemonPageHandler = rest.get<
-  DefaultRequestBody,
+  DefaultBodyType,
   PathParams,
   string
 >("https://pokeapi.co/api/v2/pokemon", (req, res, ctx) =>
@@ -40,7 +40,7 @@ export const errorPokemonPageHandler = rest.get<
 );
 
 export const regularPokemonInfoHandler = rest.get<
-  DefaultRequestBody,
+  DefaultBodyType,
   PathParams,
   PokemonInfo
 >("https://pokeapi.co/api/v2/pokemon/:pokemonId/", (req, res, ctx) => {

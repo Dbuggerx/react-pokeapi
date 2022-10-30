@@ -33,7 +33,7 @@ function App() {
           >
             <Routes location={location}>
               <Route
-                path="/"
+                path="*"
                 element={
                   <Layout key={location.key} ref={ref} className="route" />
                 }
