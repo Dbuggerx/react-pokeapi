@@ -4544,7 +4544,7 @@ packages:
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.8
       '@storybook/node-logger': 6.5.13
       '@storybook/react': 6.5.13_gwrmvg6iqcsoe6yfdnq3fnj454
-      '@storybook/react-docgen-typescript-plugin': 1.0.2-canary.6.9d540b91e815f8fc2f8829189deb00553559ff63.0_typescript@4.8.4
+      '@storybook/react-docgen-typescript-plugin': 1.0.2--canary.12.cf35881ff63bf958b8998e8dd1dfd5626ee868c2.0_typescript@4.8.4
       '@types/babel__core': 7.1.19
       babel-plugin-react-docgen: 4.2.1
       pnp-webpack-plugin: 1.7.0_typescript@4.8.4
@@ -4589,6 +4589,24 @@ packages:
       util-deprecate: 1.0.2
     dev: true
 
+  /@storybook/react-docgen-typescript-plugin/1.0.2--canary.12.cf35881ff63bf958b8998e8dd1dfd5626ee868c2.0_typescript@4.8.4:
+    resolution: {integrity: sha512-ETyfTFGUgw6I2mdqBpTtCFYLoE9jMMqsVW54Lj/MPKplQNjpekzCJcancQ3JSUpFrBQIPcb6qYAv78IC5iStYw==}
+    peerDependencies:
+      typescript: '>= 4.x'
+      webpack: '>= 4'
+    dependencies:
+      debug: 4.3.4
+      endent: 2.1.0
+      find-cache-dir: 3.3.2
+      flat-cache: 3.0.4
+      micromatch: 4.0.5
+      react-docgen-typescript: 2.2.2_typescript@4.8.4
+      tslib: 2.4.0
+      typescript: 4.8.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /@storybook/react-docgen-typescript-plugin/1.0.2-canary.6.9d540b91e815f8fc2f8829189deb00553559ff63.0_qqxisngxjbp7lstdk7boexbu3e:
     resolution: {integrity: sha512-eVg3BxlOm2P+chijHBTByr90IZVUtgRW56qEOLX7xlww2NBuKrcavBlcmn+HH7GIUktquWkMPtvy6e0W0NgA5w==}
     peerDependencies:
@@ -4604,24 +4622,6 @@ packages:
       tslib: 2.4.0
       typescript: 4.8.4
       webpack: 5.74.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
-  /@storybook/react-docgen-typescript-plugin/1.0.2-canary.6.9d540b91e815f8fc2f8829189deb00553559ff63.0_typescript@4.8.4:
-    resolution: {integrity: sha512-eVg3BxlOm2P+chijHBTByr90IZVUtgRW56qEOLX7xlww2NBuKrcavBlcmn+HH7GIUktquWkMPtvy6e0W0NgA5w==}
-    peerDependencies:
-      typescript: '>= 3.x'
-      webpack: '>= 4'
-    dependencies:
-      debug: 4.3.4
-      endent: 2.1.0
-      find-cache-dir: 3.3.2
-      flat-cache: 3.0.4
-      micromatch: 4.0.5
-      react-docgen-typescript: 2.2.2_typescript@4.8.4
-      tslib: 2.4.0
-      typescript: 4.8.4
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -9439,7 +9439,7 @@ packages:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
     engines: {node: '>= 4.0'}
     os: [darwin]
-    deprecated: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
+    deprecated: The v1 package contains DANGEROUS / INSECURE binaries. Upgrade to safe fsevents v2
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
@@ -11413,8 +11413,8 @@ packages:
   /json-stable-stringify-without-jsonify/1.0.1:
     resolution: {integrity: sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==}
 
-  /json5/1.0.1:
-    resolution: {integrity: sha512-aKS4WQjPenRxiQsC93MNfjx+nbF4PAdYzmd/1JIj8HYzqfbu86beTuNgXDzPknWk0n0uARlyewZo4s++ES36Ow==}
+  /json5/1.0.2:
+    resolution: {integrity: sha512-g1MWMLBiz8FKi1e4w0UyVL3w+iJceWAFBAaBnnGKOpNa5f8TLktkbre1+s6oICydWAm+HRUGTmI+//xv2hvXYA==}
     hasBin: true
     dependencies:
       minimist: 1.2.7
@@ -11549,7 +11549,7 @@ packages:
     dependencies:
       big.js: 5.2.2
       emojis-list: 3.0.0
-      json5: 1.0.1
+      json5: 1.0.2
     dev: true
 
   /loader-utils/2.0.3:
@@ -15941,7 +15941,7 @@ packages:
     resolution: {integrity: sha512-fxDhWnFSLt3VuTwtvJt5fpwxBHg5AdKWMsgcPOOIilyjymcYVZoCQF8fvFRezCNfblEXmi+PcM1eYHeOAgXCOQ==}
     dependencies:
       '@types/json5': 0.0.29
-      json5: 1.0.1
+      json5: 1.0.2
       minimist: 1.2.7
       strip-bom: 3.0.0
 
