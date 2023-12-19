@@ -6,9 +6,9 @@
   "homepage": "https://dbuggerx.github.io/react-pokeapi",
   "private": true,
   "engines": {
-    "node": ">=16.14.0"
+    "node": ">=20.10.0"
   },
-  "packageManager": "pnpm@7.14.1",
+  "packageManager": "pnpm@8.12.1",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
