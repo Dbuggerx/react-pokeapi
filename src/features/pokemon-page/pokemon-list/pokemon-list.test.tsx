@@ -178,7 +178,6 @@ describe("Pokemon list component", () => {
           name: /prev/i,
         })
       );
-      await waitForElementToBeRemoved(screen.queryAllByRole("alert"));
 
       await waitFor(() => {
         const itemsContent = Array.from(

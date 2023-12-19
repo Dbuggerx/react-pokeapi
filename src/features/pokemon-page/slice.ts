@@ -7,23 +7,24 @@ import type { RootState } from "../../redux/store";
 import * as thunks from "./thunks";
 import { getPaginationInfo, idFromUrl, speciesUrlSelector } from "./service";
 
-const pokemonListEntityAdapter = createEntityAdapter<PokemonPageItem>({
+const pokemonListEntityAdapter = createEntityAdapter<PokemonPageItem, string>({
   selectId: (pokemon) => pokemon.name,
   sortComparer: (a, b) => a.name.localeCompare(b.name),
 });
 
 const pokemonInfoEntityAdapter = createEntityAdapter<
-  LoadableResource<PokemonInfo>
+  LoadableResource<PokemonInfo>,
+  string
 >({
   selectId: (pokemon) => pokemon.data.name,
   sortComparer: (a, b) =>
     a.data.order && b.data.order ? a.data.order - b.data.order : 0,
 });
 
-const initialState: LoadableResource<EntityState<PokemonPageItem>> & {
+const initialState: LoadableResource<EntityState<PokemonPageItem, string>> & {
   pageCount: number;
   currentPage: number;
-  info: EntityState<LoadableResource<PokemonInfo>>;
+  info: EntityState<LoadableResource<PokemonInfo>, string>;
   lastUrlFetched: string | null;
   nextUrl: string | null;
   prevUrl: string | null;

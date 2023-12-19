@@ -1,4 +1,3 @@
-import type { EntityId } from "@reduxjs/toolkit";
 import ResourceState from "../../../components/resource-state";
 import type { LoadableResource } from "../../../redux/types";
 import type { PokemonInfo } from "../types";
@@ -6,14 +5,14 @@ import { usePokemonInfo } from "./hooks";
 import TypePill from "../../../components/pokemon-type-pill";
 import "./style.scss";
 
-export default function PokemonCard(props: { pokemonName: EntityId }) {
+export default function PokemonCard(props: { pokemonName: string }) {
   const pokemonInfo = usePokemonInfo(props.pokemonName);
 
   return <PokemonCardData info={pokemonInfo} {...props} />;
 }
 
 export function PokemonCardData(props: {
-  pokemonName: EntityId;
+  pokemonName: string;
   info: LoadableResource<PokemonInfo> | undefined;
 }) {
   const backgroundImageUrl =

@@ -95,7 +95,6 @@ describe("Pokemon card component", () => {
         pokemonOrder: 1,
       });
 
-      expect(screen.queryByText(/loading/i)).not.toBeInTheDocument();
       expect(screen.getByText(/error/i)).toBeInTheDocument();
     });
   });

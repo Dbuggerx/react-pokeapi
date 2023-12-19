@@ -12,10 +12,12 @@ type ReducerState<T extends ReducersMapObject> = {
 export type RootState = ReducerState<StaticReducers> &
   ReducerState<LazyReducers>;
 
-export function buildStore(preloadedState?: Partial<RootState>) {
+export function buildStore(
+  preloadedState?: ReducerState<StaticReducers> | Partial<RootState>
+) {
   const store = configureStore({
     reducer: staticReducers,
-    preloadedState,
+    preloadedState: preloadedState as ReducerState<StaticReducers>,
   });
 
   const asyncReducers: ReducersMapObject = {};

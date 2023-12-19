@@ -6,14 +6,16 @@ import type { PokemonDetailsError, PokemonSpecies } from "./types";
 import type { RootState } from "../../redux/store";
 import * as thunks from "./thunks";
 
-const pokemonSpeciesEntityAdapter = createEntityAdapter<PokemonSpecies>({
-  selectId: (species) => species.id,
-  sortComparer: (a, b) => (a.order && b.order ? a.order - b.order : 0),
-});
+const pokemonSpeciesEntityAdapter = createEntityAdapter<PokemonSpecies, number>(
+  {
+    selectId: (species) => species.id,
+    sortComparer: (a, b) => (a.order && b.order ? a.order - b.order : 0),
+  }
+);
 
 const initialState: {
   error: PokemonDetailsError | undefined;
-  species: LoadableResource<EntityState<PokemonSpecies>>;
+  species: LoadableResource<EntityState<PokemonSpecies, number>>;
 } = {
   error: undefined,
   species: {

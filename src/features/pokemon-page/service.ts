@@ -41,11 +41,11 @@ export function getPaginationInfo(
 }
 
 export function idFromUrl(url: string) {
-  return url.match(/(\d+)\/$/)?.[1];
+  return Number(url.match(/(\d+)\/$/)?.[1]);
 }
 
 export function speciesUrlSelector(
-  state: EntityState<LoadableResource<PokemonInfo>>,
+  state: EntityState<LoadableResource<PokemonInfo>, string>,
   pokemonName: string
 ) {
   return state.entities[pokemonName]?.data?.species?.url;
