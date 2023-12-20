@@ -27,9 +27,7 @@ jobs:
           persist-credentials: false
 
       - name: Setup 🔧
-        uses: pnpm/action-setup@v2.2.4
-        with:
-          version: 7.14.1
+        uses: pnpm/action-setup@v2.4.0
 
       - name: Test 🔎
         run: |
