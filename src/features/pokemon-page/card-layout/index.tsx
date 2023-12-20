@@ -1,16 +1,14 @@
 import React from "react";
 import "./style.scss";
 
-export default React.forwardRef<HTMLDivElement, { children: React.ReactNode }>(
-  function CardLayout({ children }, ref) {
-    return (
-      <article className="card-layout" ref={ref}>
-        <div className="card-layout__content">
-          {React.Children.map(children, (child) =>
-            React.cloneElement(child as React.ReactElement)
-          )}
-        </div>
-      </article>
-    );
-  }
-);
+export default function CardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <article className="card-layout">
+      <div className="card-layout__content">{children}</div>
+    </article>
+  );
+}

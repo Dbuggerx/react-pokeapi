@@ -7,11 +7,13 @@ import LoadingSpinner from "../../../components/loading-spinner";
 import CardLayout from "../card-layout";
 import Pagination from "../pagination";
 import Footer from "../footer";
+import { useDeferredValue } from "react";
 
-export default function List() {
+export default function PokemonList() {
   const { fetchNextPage, fetchPrevPage } = useFetchPage();
   const { isLoading, isError, pokemonInfoIds, currentPage, pageCount } =
     usePageData();
+  const deferredIds = useDeferredValue(pokemonInfoIds);
 
   return (
     <>
@@ -24,7 +26,7 @@ export default function List() {
       ) : (
         <>
           <CardLayout>
-            {pokemonInfoIds.map((pokemonName) => (
+            {deferredIds.map((pokemonName) => (
               <Link
                 key={pokemonName}
                 to={`/${pokemonDetailsRoute.generate(pokemonName)}`}

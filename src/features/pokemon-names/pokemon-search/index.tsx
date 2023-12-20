@@ -1,3 +1,4 @@
+import { useDeferredValue } from "react";
 import * as hooks from "./hooks";
 import "./style.scss";
 
@@ -6,6 +7,7 @@ export default function PokemonSearch() {
   const updateSuggestions = hooks.useUpdateSuggestionsCallback();
   const changeRoute = hooks.useChangeRouteCallback();
   const filterState = hooks.useFilterState();
+  const deferredFilterState = useDeferredValue(filterState);
 
   return (
     <form
@@ -20,14 +22,14 @@ export default function PokemonSearch() {
         type="search"
         list="pokemonNames"
         placeholder="Search"
-        value={filterState.name}
+        value={deferredFilterState.name}
         onChange={(evt) => {
           updateSuggestions(evt.target.value);
         }}
         className="search__input"
       />
       <datalist id="pokemonNames">
-        {filterState.suggestions.map((r) => (
+        {deferredFilterState.suggestions.map((r) => (
           <option key={r} value={r} />
         ))}
       </datalist>
