@@ -41,7 +41,11 @@ export function PokemonCardData(props: {
       </div>
       <div
         className="pokemon-card__background"
-        style={{ backgroundImage: `url(${backgroundImageUrl})` }}
+        style={{
+          backgroundImage: backgroundImageUrl
+            ? `url(${backgroundImageUrl})`
+            : undefined,
+        }}
       ></div>
     </section>
   );

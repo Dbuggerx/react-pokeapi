@@ -50,7 +50,11 @@ export default function PokemonDetailsLayout(props: Props) {
         </section>
         <div
           className="pokemon-details__background"
-          style={{ backgroundImage: `url(${props.backgroundImageUrl})` }}
+          style={{
+            backgroundImage: props.backgroundImageUrl
+              ? `url(${props.backgroundImageUrl})`
+              : undefined,
+          }}
         ></div>
       </article>
     </article>
