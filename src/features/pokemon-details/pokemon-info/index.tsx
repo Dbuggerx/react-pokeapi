@@ -22,7 +22,7 @@ function PokemonInfo() {
     <ErrorMessage message="Not Found!" />
   ) : error === "unexpected error" || isSpeciesError ? (
     <ErrorMessage message="Error!" />
-  ) : isSpeciesLoading || !pokemonInfo?.data ? (
+  ) : isSpeciesLoading || pokemonInfo?.loading || !pokemonInfo?.data ? (
     <LoadingSpinner />
   ) : (
     <PokemonDetailsLayout
