@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/react-pokeapi/static/css/main.798a1f36.css",
-    "main.js": "/react-pokeapi/static/js/main.8daf3ff4.js",
+    "main.js": "/react-pokeapi/static/js/main.573769dc.js",
     "static/css/792.b7ee87c2.chunk.css": "/react-pokeapi/static/css/792.b7ee87c2.chunk.css",
-    "static/js/792.837e52ca.chunk.js": "/react-pokeapi/static/js/792.837e52ca.chunk.js",
+    "static/js/792.7001a051.chunk.js": "/react-pokeapi/static/js/792.7001a051.chunk.js",
     "static/js/948.ae0336e1.chunk.js": "/react-pokeapi/static/js/948.ae0336e1.chunk.js",
     "static/media/background.jpg": "/react-pokeapi/static/media/background.8dc836c26f35bad9827c.jpg",
     "index.html": "/react-pokeapi/index.html",
     "main.798a1f36.css.map": "/react-pokeapi/static/css/main.798a1f36.css.map",
-    "main.8daf3ff4.js.map": "/react-pokeapi/static/js/main.8daf3ff4.js.map",
+    "main.573769dc.js.map": "/react-pokeapi/static/js/main.573769dc.js.map",
     "792.b7ee87c2.chunk.css.map": "/react-pokeapi/static/css/792.b7ee87c2.chunk.css.map",
-    "792.837e52ca.chunk.js.map": "/react-pokeapi/static/js/792.837e52ca.chunk.js.map",
+    "792.7001a051.chunk.js.map": "/react-pokeapi/static/js/792.7001a051.chunk.js.map",
     "948.ae0336e1.chunk.js.map": "/react-pokeapi/static/js/948.ae0336e1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.798a1f36.css",
-    "static/js/main.8daf3ff4.js"
+    "static/js/main.573769dc.js"
   ]
 }
